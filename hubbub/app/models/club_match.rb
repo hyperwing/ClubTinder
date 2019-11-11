@@ -1,0 +1,2 @@
+class ClubMatch < ApplicationRecord
+end
