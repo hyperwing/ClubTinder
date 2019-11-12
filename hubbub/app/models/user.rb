@@ -1,9 +1,8 @@
-
+# Created 11/09/2019 by Sri Ramya Dandu
 # Edited 11/10/2019 by Neel Mansukhani: Added admin role.
 class User < ApplicationRecord
-  enum role: [:user, :vip, :admin]
+  enum role: [:user, :club, :admin]
   after_initialize :set_default_role, :if => :new_record?
-
   def set_default_role
     self.role ||= :user
   end

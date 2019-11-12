@@ -1,0 +1,6 @@
+# File Created 11/12/2019 by Neel Mansukhani 
+class ClubsController  < ApplicationController
+    def index
+
+    end
+end
