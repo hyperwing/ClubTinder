@@ -1,5 +1,54 @@
-<%# File Created 11/12/2019 by Neel Mansukhani 
+<%# File Created 11/12/2019 by Neel Mansukhani %>
+<p id="notice"><%= notice %></p>
 
+<h1>Clubs</h1>
 
-%>
-<h2> hello </h2>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>String</th>
+      <th>Mission</th>
+      <th>String</th>
+      <th>Affiliations</th>
+      <th>String</th>
+      <th>Link</th>
+      <th>String</th>
+      <th>Img url</th>
+      <th>String</th>
+      <th>Location</th>
+      <th>String</th>
+      <th>Other</th>
+      <th>String</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clubs.each do |club| %>
+      <tr>
+        <td><%= club.name %></td>
+        <td><%= club.string %></td>
+        <td><%= club.mission %></td>
+        <td><%= club.string %></td>
+        <td><%= club.affiliations %></td>
+        <td><%= club.string %></td>
+        <td><%= club.link %></td>
+        <td><%= club.string %></td>
+        <td><%= club.img_url %></td>
+        <td><%= club.string %></td>
+        <td><%= club.location %></td>
+        <td><%= club.string %></td>
+        <td><%= club.other %></td>
+        <td><%= club.string %></td>
+        <td><%= link_to 'Show', club %></td>
+        <td><%= link_to 'Edit', edit_club_path(club) %></td>
+        <td><%= link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Club', new_club_path %>
