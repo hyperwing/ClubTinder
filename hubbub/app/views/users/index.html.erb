@@ -1,0 +1,21 @@
+<%# File created 11/12/2019 by Sri Ramya Dandu %>
+
+
+<h1> <%= @title %> </h1>
+<table>
+    <% @users.each do |user| %>
+    <tr>   
+    <td> <%= user.email %></td>
+    <td> <%= user.role %></td>
+    </tr>
+    <% end %>
+</table>
+
+
+<form>
+  <input type="radio" name="gender" value="male" checked> Male<br>
+  <input type="radio" name="gender" value="female"> Female<br>
+  <input type="radio" name="gender" value="other"> Other  
+  <input type="submit" value="Submit">
+</form> 
+

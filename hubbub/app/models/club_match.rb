@@ -1,4 +1,6 @@
 # Created 11/09/2019 by Sharon Qiu
+# Edited 11/12/2019 by Neel Mansukhani: Added relations
 class ClubMatch < ApplicationRecord
-    #has_many :clubs
+    belongs_to :clubs
+    belongs_to :user
 end

@@ -1,3 +1,4 @@
+# Edited 11/08/2019 by Sri Ramya Dandu: Added function to allow more paramters of info 
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
