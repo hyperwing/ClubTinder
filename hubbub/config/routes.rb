@@ -2,6 +2,8 @@
 # Edited 11/10/2019 by Neel Mansukhani: Added default route to sign up page.
 # Edited 11/12/2019 by Neel Mansukhani: Fixed root routing.
 Rails.application.routes.draw do
+  get 'users/index'
+  get 'interests/new'
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
