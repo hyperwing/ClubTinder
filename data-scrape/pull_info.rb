@@ -10,7 +10,7 @@ require 'mechanize'
 # Caches club info
 def club_cache(page)
     information = Hash.new
-    fields = [:name,:mission,:link,:location,:type,:service]
+    fields = [:name,:mission,:link,:location,:affiliations,:service]
 
     table_info = page.css('table[class="c-table"]').children
 
@@ -32,9 +32,9 @@ def club_cache(page)
                     elsif inside == 2
                         pre_split = value.text.strip
                         post_split = pre_split.split(',')
-                        location, type, *service = pre_split.split(',')
+                        location, affiliations, *service = pre_split.split(',')
                         club_info[:location] = location
-                        club_info[:type] = type
+                        club_info[:affiliations] = affiliations
                         club_info[:service] = service*", "
                     end
                     inside += 1
@@ -46,7 +46,7 @@ def club_cache(page)
     end
     
     #Saves as json 
-    json_file = File.open('data-scrape/clubs.json', 'w') {|file| file.write JSON.pretty_generate(information)}
+    json_file = File.open('clubs.json', 'w') {|file| file.write JSON.pretty_generate(information)}
 
 end
 

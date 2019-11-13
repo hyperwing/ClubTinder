@@ -2,6 +2,7 @@
 # Edited 11/10/2019 by Neel Mansukhani: Added default route to sign up page.
 # Edited 11/12/2019 by Neel Mansukhani: Fixed root routing.
 Rails.application.routes.draw do
+  get 'club_matches/matches'
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
@@ -16,5 +17,6 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <title>Matches</title>
+  </head>
+  <body>
+    <h1>Matches</h1>
+    <table>
+      <tr>
+          <th>user id</th>
+          <th>club_id</th>
+          <th>matched</th>
+      </tr>
+      <%@matched.each do |match|%>
+          <tr>
+            <th><%=%"#{match.user_id}"%></th>
+            <th><%=%"#{match.club_id}"%></th>
+            <th><%=%"#{match.matched}"%></th>
+          </th>
+      <%end%>
+    </table>
+    <%# <%=render :partial => "/partials/match",
+            :collection => @matched %>  
+  </body>
+</html>
