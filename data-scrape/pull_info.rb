@@ -1,5 +1,6 @@
 # File created 11/6/2019 by Sharon Qiu
 # Edited 11/9/2019 by Sharon Qiu
+# Edited 11/14/2019 by Leah Gillespie
 # Caches necessary information on page.
 
 require 'json'
@@ -46,7 +47,7 @@ def club_cache(page)
     end
     
     #Saves as json 
-    json_file = File.open('clubs.json', 'w') {|file| file.write JSON.pretty_generate(information)}
+    json_file = File.write 'clubs.txt', information.to_s
 
 end
 
