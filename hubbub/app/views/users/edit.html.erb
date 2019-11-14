@@ -1,0 +1,34 @@
+
+
+<h1>Update User Information</h1>
+<%= form_for(@user) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autocomplete: "first-name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autocomplete: "last-name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :grad_year %><br />
+    <%= f.text_field :grad_year, autocomplete: "grad-year" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender %><br />
+    <%= f.text_field :gender, autocomplete: "gender" %>
+  </div>
+
+
+    <%= f.submit "Save changes" %>
+<% end %>
+
+   
