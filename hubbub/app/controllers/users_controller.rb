@@ -1,5 +1,6 @@
 # File created 11/12/2019 by Sri Ramya Dandu
 # File edited 11/13/2019 by Sri Ramya Dandu: Added CRUD operations 
+# File edited 11/13/2019 by Sri Ramya Dandu: Added stats displays 
 class UsersController < ApplicationController
   
   include Devise::Controllers::Helpers 
@@ -13,13 +14,18 @@ class UsersController < ApplicationController
   end
 
   def stats
-    @title = "Females"
-    @users = User.where(gender: "female")
+    
   end
 
-  def parseByGraduation 
-    @title = "Users graduating in "
-    @users = User.where(grad_year: "2019")
+  def display_stats
+    @keysArray = params.keys
+    if(@keysArray[0] == "grad_year")
+      @title = "Users graduating in" + params[:grad_year]
+      @users = User.where(grad_year: params[:grad_year])
+    elsif (@keysArray[0] == "gender")
+      @title = "Users with gender: " + params[:gender]
+      @users = User.where(gender: params[:gender])
+    end 
   end
 
   def new
@@ -32,6 +38,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @user.update(user_params)
   end
 
   def update

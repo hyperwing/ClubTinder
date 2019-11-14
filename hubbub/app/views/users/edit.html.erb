@@ -1,7 +1,8 @@
-
+<%# File created 10/13/2019 by Sri Ramya Dandu %>
 
 <h1>Update User Information</h1>
 <%= form_for(@user) do |f| %>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

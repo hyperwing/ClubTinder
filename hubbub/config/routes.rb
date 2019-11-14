@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'club_matches/matches'
   get 'users/index'
   get 'users/stats'
+  get 'users/display_stats'
   get 'interests/new'
   devise_for :users, controllers: {
     sessions: 'users/sessions'
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
   resources :users
   devise_scope :user do
     authenticated do
-      root 'users#index'
+      root 'clubs#index'
     end
   
     unauthenticated do
