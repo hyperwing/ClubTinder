@@ -8,7 +8,7 @@ class ClubMatchesController < ApplicationController
     current_user = 1
     @matched = ClubMatch.where(user_id: current_user).where(matched: 1)
     
-    @matched_clubs = ClubMatch.joins(:clubs).where
+    #@matched_clubs = ClubMatch.joins(:clubs).where
     
   end
 
