@@ -10,13 +10,14 @@ require 'mechanize'
 # Caches club info
 def club_cache_img(page)
     information = Hash.new
-    next_page = page.css('a[title="Go to Next Page"]')
+    next_page = "____"
     current_page = page
     #fields = [:name,:mission,:link,:location,:affiliations,:service,:img]
     fields = [:img]
     count = 1
     club_id = 1
-    while !next_page.empty?
+
+    loop do
         table = current_page.css('div[id="ctl00_ContentBody_pageFormControl_panel_listing"]')[0].children[5].children
         table.each do |club|
             club_img = ''
@@ -73,6 +74,8 @@ def club_cache_img(page)
         end
         
         #puts "pre-link-get string"
+        next_page = current_page.css('a[title="Go to Next Page"]')
+        break if next_page.empty?
         next_page_link = next_page[0].attribute('href')
         #puts "post-link-get string"
         link_check = current_page.link_with(:href => next_page_link.to_s)
@@ -81,7 +84,6 @@ def club_cache_img(page)
             #puts "pre-hit"
             current_page = link_check.click
             #puts "hit"
-            next_page = current_page.css('a[title="Go to Next Page"]')
             puts count
             count += 1
             
