@@ -12,65 +12,65 @@ def club_cache_img(page)
     information = Hash.new
     next_page = "____"
     current_page = page
-    #fields = [:name,:mission,:link,:location,:affiliations,:service,:img]
-    fields = [:img]
+    fields = [:name,:mission,:link,:location,:affiliations,:img]
+    #fields = [:img]
     count = 1
-    club_id = 1
+    #club_id = 1
 
     loop do
         table = current_page.css('div[id="ctl00_ContentBody_pageFormControl_panel_listing"]')[0].children[5].children
         table.each do |club|
-            club_img = ''
+            #club_img = ''
             name = ''
-            #club_info = fields.each_with_object(nil).to_h
+            club_info = fields.each_with_object(nil).to_h
             if !club.text.strip.empty?
                 club.children.each do |inside|
                     if !inside.text.strip.empty?
-                        #club_info[:link] = "https://activities.osu.edu" + inside.css('a').attribute('href')
+                        club_info[:link] = "https://activities.osu.edu" + inside.css('a').attribute('href')
                         inside.children.each do |field|
                             if !field.text.strip.empty?
                                 club_img = "https://activities.osu.edu" + field.children[0].css('img').attribute('src') #image link
-                                #club_info[:img] = "https://activities.osu.edu" + field.children[0].css('img').attribute('src') #image link
-                                # field.children.each do |next_layer|                                    
-                                #     if !next_layer.text.strip.empty?
-                                #         inside = 0
-                                #         next_layer.children.each do |card_values|
-                                #             if !card_values.text.strip.empty?
-                                #                 if inside == 0
-                                #                     club_info[:location] = card_values.children[5].text.strip
-                                #                 elsif inside == 1
-                                #                     name = card_values.children[0].text.strip
-                                #                     club_info[:name] = name
-                                #                 elsif inside == 2
-                                #                     affiliations, *service = card_values.children[0].text.strip.split(',')
-                                #                     club_info[:affiliations] = affiliations
-                                #                     club_info[:service] = service*", "
-                                #                 elsif inside == 3
-                                #                     club_info[:mission] = card_values.children[0].text.strip
-                                #                 end
-                                #                 inside += 1
-                                #             end
-                                #         end
-                                #     end
-                                # end
+                                club_info[:img] = "https://activities.osu.edu" + field.children[0].css('img').attribute('src') #image link
+                                field.children.each do |next_layer|                                    
+                                    if !next_layer.text.strip.empty?
+                                        inside = 0
+                                        next_layer.children.each do |card_values|
+                                            if !card_values.text.strip.empty?
+                                                if inside == 0
+                                                    club_info[:location] = card_values.children[5].text.strip
+                                                elsif inside == 1
+                                                    name = card_values.children[0].text.strip
+                                                    club_info[:name] = name
+                                                elsif inside == 2
+                                                    affiliations = card_values.children[0].text.strip
+                                                    club_info[:affiliations] = affiliations
+                                                elsif inside == 3
+                                                    club_info[:mission] = card_values.children[0].text.strip
+                                                end
+                                                inside += 1
+                                            end
+                                        end
+                                    end
+                                end
                             end
                         end
                     end
                 end
             end
-            club_img
-            if !club_img.empty?
-                information[club_id] = club_img
-                club_id+=1
-            end
+            
+            # if !club_img.empty?
+            #     information[club_id] = club_img
+            #     club_id+=1
+            # end
+
             # if club_info[:img] != nil
             #     information[club_id] = club_img
             #     club_id+=1
             # end
             
-            # if !name.empty?
-            #     information[club_id] = club_info
-            # end
+            if !name.empty?
+                information[name] = club_info
+            end
         end
         
         #puts "pre-link-get string"
@@ -94,11 +94,11 @@ def club_cache_img(page)
 
     end
 
-    # hashit = JSON.pretty_generate(information)
     File.write 'clubsimg.txt', information.to_s
-    # open('data-scrape/clubs_with_img.json','w+') {|file|
-    #     file.puts hashit
-    # }
+    hashit = JSON.pretty_generate(information)
+    open('data-scrape/clubs_with_img.json','w+') {|file|
+        file.puts hashit
+    }
 
 end
 
