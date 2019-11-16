@@ -1,3 +1,7 @@
+# Edited 11/13/2019 by Leah Gillespie
+
+require 'csv'
+
 class ClubsController < ApplicationController
   before_action :set_club, only: [:show, :edit, :update, :destroy]
 
@@ -58,6 +62,14 @@ class ClubsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to clubs_url, notice: 'Club was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  # Created 11/13/2019 by Leah Gillespie
+  # Adds parsed data to database
+  def add_from_csv
+    CSV.foreach 'clubs.json.csv', :headers =>true do |row|
+      Club.create! row.to_hash
     end
   end
 

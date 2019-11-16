@@ -1,21 +1,24 @@
-<%# File created 11/12/2019 by Sri Ramya Dandu %>
+<%# File created 11/12/2019 by Sri Ramya Dandu 
+    Edited 11/15/2019 by Sri Ramya Dandu: Changed display and added more routes%>
 
 
 <h1> <%= @title %> </h1>
 <table>
     <% @users.each do |user| %>
-    <tr>   
+    <tr>  
+    <td> <%= user.first_name %></td>
+    <td> <%= user.last_name %></td>
     <td> <%= user.email %></td>
-    <td> <%= user.role %></td>
+    <td> <%= user.grad_year %></td>
+    <td> <a href = "/users/<%= user.id %>"> Show </a></td>
+    <td> <a href = "/users/<%= user.id %>/edit"> Edit </a></td>
+    <td><%= link_to 'Destroy', user, method: :delete,
+                                     data: { confirm: 'Are you sure?' } %></td>
     </tr>
     <% end %>
 </table>
+<a href = "/users/stats"> Stats </a>
+<br/>
+<%= link_to('Logout', destroy_user_session_path, method: :delete) %>   
 
-
-<form>
-  <input type="radio" name="gender" value="male" checked> Male<br>
-  <input type="radio" name="gender" value="female"> Female<br>
-  <input type="radio" name="gender" value="other"> Other  
-  <input type="submit" value="Submit">
-</form> 
 

@@ -2,14 +2,17 @@
 # Edited 11/10/2019 by Neel Mansukhani: Added default route to sign up page.
 # Edited 11/12/2019 by Neel Mansukhani: Fixed root routing.
 Rails.application.routes.draw do
+  
   get 'club_matches/matches'
   get 'users/index'
+  get 'users/stats'
+  get 'users/display_stats'
   get 'interests/new'
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
   resources :clubs
-
+  resources :users
   devise_scope :user do
     authenticated do
       root 'clubs#index'

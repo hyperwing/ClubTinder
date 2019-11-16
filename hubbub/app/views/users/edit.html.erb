@@ -1,0 +1,37 @@
+<%# File created 10/13/2019 by Sri Ramya Dandu 
+    Edited 11/15/2019 by Sri Ramya Dandu: Added drop down features  %>
+
+<h1>Update User Information</h1>
+<% years = (1950..2050).to_a %>
+<%= form_for(@user) do |f| %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autocomplete: "first-name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autocomplete: "last-name" %>
+  </div>
+
+  <div class="field">
+  <%= f.label :grad_year %><br />
+  <%= f.select :grad_year, options_for_select(years, selected_key = f.object.grad_year)%>
+</div>
+
+<div class="field">
+  <%= f.label :gender%><br />
+  <%= f.select :gender, options_for_select(['Male', 'Female', 'Other'], selected_key = f.object.gender)%>
+</div>
+
+
+    <%= f.submit "Save changes" %>
+<% end %>
+
+   
