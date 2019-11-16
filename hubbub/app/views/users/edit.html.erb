@@ -1,6 +1,8 @@
-<%# File created 10/13/2019 by Sri Ramya Dandu %>
+<%# File created 10/13/2019 by Sri Ramya Dandu 
+    Edited 11/15/2019 by Sri Ramya Dandu: Added drop down features  %>
 
 <h1>Update User Information</h1>
+<% years = (1950..2050).to_a %>
 <%= form_for(@user) do |f| %>
 
   <div class="field">
@@ -19,14 +21,14 @@
   </div>
 
   <div class="field">
-    <%= f.label :grad_year %><br />
-    <%= f.text_field :grad_year, autocomplete: "grad-year" %>
-  </div>
+  <%= f.label :grad_year %><br />
+  <%= f.select :grad_year, options_for_select(years, selected_key = f.object.grad_year)%>
+</div>
 
-  <div class="field">
-    <%= f.label :gender %><br />
-    <%= f.text_field :gender, autocomplete: "gender" %>
-  </div>
+<div class="field">
+  <%= f.label :gender%><br />
+  <%= f.select :gender, options_for_select(['Male', 'Female', 'Other'], selected_key = f.object.gender)%>
+</div>
 
 
     <%= f.submit "Save changes" %>

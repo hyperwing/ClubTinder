@@ -1,5 +1,8 @@
-<h2>Sign up</h2>
+<%# Edited 11/10/2019 by Sri Ramya Dandu: Added additional fields
+    Edited 11/15/2019 by Sri Ramya Dandu: Created drop downs %>
 
+<h2>Sign up</h2>
+<% years = (1950..2050).to_a %>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -20,12 +23,12 @@
 
   <div class="field">
     <%= f.label :grad_year %><br />
-    <%= f.text_field :grad_year, autocomplete: "grad-year" %>
+    <%= f.select :grad_year, options_for_select(years)%>
   </div>
 
   <div class="field">
-    <%= f.label :gender %><br />
-    <%= f.text_field :gender, autocomplete: "gender" %>
+    <%= f.label :gender%><br />
+    <%= f.select :gender, options_for_select(['Male', 'Female', 'Other'])%>
   </div>
 
   <div class="field">

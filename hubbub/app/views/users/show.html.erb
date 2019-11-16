@@ -1,4 +1,7 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-
-<%= @user.first_name %>, <%= @user.email %>
+<%# File created 10/13/2019 by Sri Ramya Dandu 
+    Edited 11/15/2019 by Sri Ramya Dandu: Added drop down features and changed display %>
+    
+<h2>User Profile for <%= @user.first_name %> <%= @user.last_name %></h2>
+<h4> Email: </h4> <%= @user.email %> 
+<h4> Graduation Year: </h4> <%= @user.grad_year %>
+<h4> Gender: </h4> <%= @user.gender %>
