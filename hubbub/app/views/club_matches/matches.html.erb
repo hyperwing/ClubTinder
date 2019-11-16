@@ -12,10 +12,11 @@
           <th>user id</th>
           <th>club_id</th>
           <th>matched</th>
+          <th>name</th>
       </tr>
-      <%@matched.each do |match|%>
+      <%@matched.clubs.each do |match|%>
           <tr>
-            <th><%=%"#{match.user_id}"%></th>
+            <th><%=%"#{match.name}"%></th>
             <th><%=%"#{match.club_id}"%></th>
             <th><%=%"#{match.matched}"%></th>
           </th>
