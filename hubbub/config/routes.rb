@@ -4,6 +4,7 @@
 Rails.application.routes.draw do
   
   get 'club_matches/matches'
+  get 'clubs/choose', to: 'clubs#choose'
   get 'users/index'
   get 'users/stats'
   get 'users/new'
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
   resources :users
   devise_scope :user do
     authenticated do
-      root 'clubs#index'
+      root 'clubs#choose'
     end
   
     unauthenticated do

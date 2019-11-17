@@ -1,0 +1,13 @@
+<%# File Created 11/16/2019 by Neel Mansukhani %>
+<table>
+    <tr>
+        <td>Club</td>
+        <td>Weight</td>
+    </tr>
+    <% @clubs.each do |club, weight| %>
+        <tr>
+            <td><%= club.name %></td>
+            <td><%= weight %></td>
+        </tr>
+    <% end %>
+</table>
