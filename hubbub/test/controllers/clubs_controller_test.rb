@@ -17,7 +17,7 @@ class ClubsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create club" do
     assert_difference('Club.count') do
-      post clubs_url, params: { club: { affiliations: @club.affiliations, img_url: @club.img_url, link: @club.link, location: @club.location, mission: @club.mission, name: @club.name, other: @club.other, string: @club.string } }
+      post clubs_url, params: { club: { affiliations: @club.affiliations, link: @club.link, location: @club.location, mission: @club.mission, name: @club.name } }
     end
 
     assert_redirected_to club_url(Club.last)
@@ -34,7 +34,7 @@ class ClubsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update club" do
-    patch club_url(@club), params: { club: { affiliations: @club.affiliations, img_url: @club.img_url, link: @club.link, location: @club.location, mission: @club.mission, name: @club.name, other: @club.other, string: @club.string } }
+    patch club_url(@club), params: { club: { affiliations: @club.affiliations, link: @club.link, location: @club.location, mission: @club.mission, name: @club.name } }
     assert_redirected_to club_url(@club)
   end
 
