@@ -11,6 +11,7 @@
 Club.destroy_all
 User.destroy_all
 ClubMatch.destroy_all
+Interest.destroy_all
 data_file = File.open '../data-scrape/clubs.txt', 'r'
 data_string = data_file.read
 data = eval data_string
@@ -40,3 +41,9 @@ end
     ClubMatch.create({:user_id => user.id,:club_id => club.id,:matched => 1}).save
   end
 end
+interestsArr = ["Awareness/Activism", "Academic/College", "Cultural/Ethnic", "Community Serivce/Service Learning", "Creative and Performing Arts", "Goverance Organization", "Honoraries/Honor Societies", "Media", "Performing Arts", "Religious/Spiritual", "Social Fraternities/Sororities","Sports and Recreation","Service","Special Interest","Technology"]
+
+interestsArr.each do |interestOption|
+  newInterest = Interest.create name: interestOption
+  newInterest.save
+end 
