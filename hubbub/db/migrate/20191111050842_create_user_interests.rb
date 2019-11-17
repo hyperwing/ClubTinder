@@ -1,8 +1,8 @@
 class CreateUserInterests < ActiveRecord::Migration[5.2]
   def change
     create_table :user_interests do |t|
-      t.integer :interest_id
-      t.integer :user_id
+      t.belongs_to :user
+      t.belongs_to :interest
 
       t.timestamps
     end

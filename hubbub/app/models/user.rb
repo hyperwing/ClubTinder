@@ -16,20 +16,7 @@ class User < ApplicationRecord
     self.role ||= :user
   end
 
-  # Created 11/12/2019 by Neel Mansukhani
-  # Returns all clubs ordered by how likely a user is to like this club.
-  def ordered_clubs
-    other_users = self.class.all.where.not id: self.id
-    clubs = Hash.new 0
-    other_users.each do |user|
-      common_clubs = user.clubs & self.clubs
-      weight = common_clubs.length.to_f / user.clubs.length
-      (user.clubs — common_clubs).each do |club|
-        clubs[club] += weight
-      end
-    end
-    sorted = clubs.sort_by{ |k, v| v }.reverse
-  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
