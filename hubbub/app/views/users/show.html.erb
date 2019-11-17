@@ -1,7 +1,11 @@
 <%# File created 10/13/2019 by Sri Ramya Dandu 
-    Edited 11/15/2019 by Sri Ramya Dandu: Added drop down features and changed display %>
+    Edited 11/15/2019 by Sri Ramya Dandu: Added drop down features and changed display 
+    Edited 11/16/2019 by Sri Ramya Dandu: Added routes to view %>
     
 <h2>User Profile for <%= @user.first_name %> <%= @user.last_name %></h2>
 <h4> Email: </h4> <%= @user.email %> 
 <h4> Graduation Year: </h4> <%= @user.grad_year %>
 <h4> Gender: </h4> <%= @user.gender %>
+<br/>
+<br/>
+<a href = "/users/index"> User Info </a>

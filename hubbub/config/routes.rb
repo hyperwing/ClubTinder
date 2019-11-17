@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get 'club_matches/matches'
   get 'users/index'
   get 'users/stats'
+  get 'users/new'
   get 'users/display_stats'
+  get 'users/create'
   get 'interests/new'
   devise_for :users, controllers: {
     sessions: 'users/sessions'

@@ -1,5 +1,6 @@
 # Edited 11/14/2019 by Leah Gillespie
 # Edited 11/16/2019 by Neel Mansukhani: Seed fix
+# Edited 11/16/2019 by Sri Ramya Dandu: Populated interests table
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #

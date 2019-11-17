@@ -21,3 +21,15 @@
   <br>
   <input type="submit" value="Submit">
 </form> 
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<form action="/users/display_stats">
+  <select data-placeholder="Begin typing a name to filter..." multiple class="chosen-select" name="test">
+    <% @clubs.each do |club| %>
+    <option><%= club.name%> </option>
+    <% end %>
+  </select>
+  <input type="submit">
+</form>
