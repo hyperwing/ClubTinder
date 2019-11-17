@@ -1,3 +1,4 @@
+<%# Edited 10/16/2019 by Neel Mansukhani: Fixed tests %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -14,9 +15,9 @@
           <th>matched</th>
           <th>name</th>
       </tr>
-      <%@matched.clubs.each do |match|%>
+      <%@matched.each do |match|%>
           <tr>
-            <th><%=%"#{match.name}"%></th>
+            <th><%=%"#{match.user_id}"%></th>
             <th><%=%"#{match.club_id}"%></th>
             <th><%=%"#{match.matched}"%></th>
           </th>
