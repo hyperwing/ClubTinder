@@ -15,3 +15,11 @@ data.each do |c, d|
   x = Club.create name: d[:name], mission: d[:mission], link: d[:link], location: d[:location], affiliations: d[:affiliations], service: d[:service]
   x.save
 end
+
+Interest.destroy_all
+interestsArr = ["Awareness/Activism", "Academic/College", "Cultural/Ethnic", "Community Serivce/Service Learning", "Creative and Performing Arts", "Goverance Organization", "Honoraries/Honor Societies", "Media", "Performing Arts", "Religious/Spiritual", "Social Fraternities/Sororities","Sports and Recreation","Service","Special Interest","Technology"]
+
+interestsArr.each do |interestOption|
+  newInterest = Interest.create name: interestOption
+  newInterest.save
+end 
