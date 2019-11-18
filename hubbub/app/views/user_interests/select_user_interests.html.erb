@@ -6,15 +6,28 @@
 
 <!DOCTYPE html>
 <html>
-        <head>
-                <title> choose interests</title>
-        </head>
-
         <body>
-                Select interests<br>
+                Select interests for <%= @cur_u.email%> <br>
+
 
                 <% @interests.each do |interest| %>
-                        <input type="checkbox" name="<%=interest%>"><%=interest.name%> <br>
+                        <% selected= false %>
+                        
+                        <% @user_interests.each do |user_interest| %>
+
+                                <% if user_interest.interest_id == interest.id  %>
+                                        <% selected = true %>        
+                                        <% break %>
+                                <% end %>
+                        
+                        <% end %>
+
+                        <% if selected == true  %>
+                                <input type="checkbox" name="<%=interest%>" checked><%=interest.name%> <br>
+                        <% else %>
+                                <input type="checkbox" name="<%=interest%>"><%=interest.name%> <br>
+                        <% end %>
+
                 <% end %>
                 <input type="button" name="submit" value="submit"><br>
         </body>
