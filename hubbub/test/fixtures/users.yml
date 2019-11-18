@@ -5,7 +5,11 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-  email: test1@test.com
+    email: "dandu.7@osu.edu"
+    first_name: "Sri"
+    last_name: "Dandu"
+    gender: "Female"
+    grad_year: "2021"
 
 two:
   email: test2@test.com

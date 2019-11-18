@@ -1,15 +1,16 @@
-<%# File created 11/16/2019 by Sri Ramya Dandu %>
+<%# File created 11/16/2019 by Sri Ramya Dandu 
+    Edited 11/17/2019 by Sri Ramya Dandu: Added form validations %>
 <h2>Create a dummy user</h2>
 <% years = (1950..2050).to_a %>
 
 
 <form action = "/users/create">
-  Email: <input type="text" name="email"> <br><br>
-  First name: <input type="text" name="first_name">  <br><br>
-  Last name: <input type="text" name="last_name">  <br><br>
+  Email: <input type="email" name="email" required> <br><br>
+  First name: <input type="text" name="first_name" required>  <br><br>
+  Last name: <input type="text" name="last_name" required>  <br><br>
 
   Graduation Year:<br>
-  <input type="text" name="grad_year">
+  <input type="text" name="grad_year" required>
   <br>
   <br>
 
@@ -21,7 +22,7 @@
   <br>
   <br>
 
-  Password: <input type="text" name="password">  <br><br>
+  Password: <input type="text" name="password" required>  <br><br>
   <input type="submit" value="Submit">
   <br>
 </form> 
