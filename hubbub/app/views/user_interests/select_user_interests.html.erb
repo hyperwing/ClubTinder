@@ -1,0 +1,22 @@
+<%# # Created 11/11/19 David Wing
+# edited 11/16/19 David Wing
+# edited 11/17/19 David Wing %>
+
+
+
+<!DOCTYPE html>
+<html>
+        <head>
+                <title> choose interests</title>
+        </head>
+
+        <body>
+                Select interests<br>
+
+                <% @interests.each do |interest| %>
+                        <input type="checkbox" name="<%=interest%>"><%=interest.name%> <br>
+                <% end %>
+                <input type="button" name="submit" value="submit"><br>
+        </body>
+
+</html>

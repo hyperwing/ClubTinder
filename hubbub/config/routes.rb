@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'users/display_stats'
   get 'users/create'
   get 'interests/new'
+  get 'user_interests/select_user_interests'
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
