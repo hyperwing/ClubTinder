@@ -3,17 +3,19 @@
 # Edited 11/12/2019 by Neel Mansukhani: Fixed root routing.
 Rails.application.routes.draw do
   
-  get 'club_matches/matches'
   get 'clubs/choose', to: 'clubs#choose'
   get 'users/index'
   get 'users/stats'
   get 'users/new'
   get 'users/display_stats'
   get 'users/create'
+  get 'users/matched'
+  get 'users/not_matched'
   get 'interests/new'
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
+  resources :club_matches
   resources :clubs
   resources :users
   devise_scope :user do
