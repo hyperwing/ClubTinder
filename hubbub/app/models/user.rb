@@ -2,8 +2,10 @@
 # Edited 11/10/2019 by Neel Mansukhani: Added admin role.
 # Edited 11/12/2019 by Sri Ramya Dandu: Added validation for grad year
 # Edited 11/12/2019 by Neel Mansukhani: Added relations
+# Edited 11/17/2019 by Neel Mansukhani: Added validations
 class User < ApplicationRecord
-  validates :grad_year, length: {maximum: 4, minimum: 4}
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   has_many :club_matches
   has_many :clubs, through: :club_matches
 

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'users/create'
   get 'users/matched', to: 'users#matched'
   get 'users/not_matched', to: 'users#not_matched'
+  get 'club_matches/update'
   get 'interests/new'
   get 'user_interests/select_user_interests'
   get 'user_interests/handle_check_boxes'
