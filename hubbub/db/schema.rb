@@ -12,6 +12,15 @@
 
 ActiveRecord::Schema.define(version: 2019_11_17_233438) do
 
+  create_table "club_interests", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "interest_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["interest_id"], name: "index_club_interests_on_interest_id"
+    t.index ["user_id"], name: "index_club_interests_on_user_id"
+  end
+
   create_table "club_matches", force: :cascade do |t|
     t.integer "club_id"
     t.integer "user_id"

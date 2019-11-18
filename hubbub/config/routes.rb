@@ -9,9 +9,10 @@ Rails.application.routes.draw do
   get 'users/new'
   get 'users/display_stats'
   get 'users/create'
-  get 'users/matched'
-  get 'users/not_matched'
+  get 'users/matched', to: 'users#matched'
+  get 'users/not_matched', to: 'users#not_matched'
   get 'interests/new'
+  get 'user_interests/select_user_interests'
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
