@@ -17,7 +17,7 @@ class ClubMatchesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create club_match" do
     assert_difference('ClubMatch.count') do
-      post club_matches_url, params: { club_match: {  } }
+      post club_matches_url, params: { club_match: {club_id:@club_match.club_id, user_id:@club_match.user_id, matched:@club_match.matched  } }
     end
 
     assert_redirected_to club_match_url(ClubMatch.last)
@@ -34,7 +34,7 @@ class ClubMatchesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update club_match" do
-    patch club_match_url(@club_match), params: { club_match: {  } }
+    patch club_match_url(@club_match), params: { club_match: {club_id:@club_match.club_id, user_id:@club_match.user_id, matched:@club_match.matched  } }
     assert_redirected_to club_match_url(@club_match)
   end
 

@@ -42,11 +42,11 @@ class ClubMatchesController < ApplicationController
   def update
 
     if @club_match.matched == 1
-      ClubMatch.find(params[:id]).update_attributes(:matched: 0)
+      ClubMatch.find(params[:id]).update_attributes(matched: 0)
     else
-      ClubMatch.find(params[:id]).update_attributes(:matched: 1)
+      ClubMatch.find(params[:id]).update_attributes(matched: 1)
     end
-    
+
       # respond_to do |format|
     #   if @club_match.update(club_match_params)
         
