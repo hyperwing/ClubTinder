@@ -13,11 +13,11 @@ Club.destroy_all
 User.destroy_all
 ClubMatch.destroy_all
 Interest.destroy_all
-data_file = File.open '../data-scrape/clubs.txt', 'r'
+data_file = File.open '../data-scrape/clubsimg.txt', 'r'
 data_string = data_file.read
 data = eval data_string
 data.each do |c, d|
-  x = Club.create name: d[:name], mission: d[:mission], link: d[:link], location: d[:location], affiliations: d[:affiliations], service: d[:service]
+  x = Club.create name: d[:name], mission: d[:mission], link: d[:link], location: d[:location], affiliations: d[:affiliations], img: d[:img]
   x.save
 end
 
