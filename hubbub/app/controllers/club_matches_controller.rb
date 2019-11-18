@@ -41,11 +41,11 @@ class ClubMatchesController < ApplicationController
   # PATCH/PUT /club_matches/1.json
   def update
 
-    if @club_match.matched == 1
-      ClubMatch.find(params[:id]).update_attributes(:matched: 0)
-    else
-      ClubMatch.find(params[:id]).update_attributes(:matched: 1)
-    end
+   # if @club_match.matched == 1
+    #  ClubMatch.find(params[:id]).update_attributes(:matched: 0)
+    #else
+     # ClubMatch.find(params[:id]).update_attributes(:matched: 1)
+    #end
     
       # respond_to do |format|
     #   if @club_match.update(club_match_params)
