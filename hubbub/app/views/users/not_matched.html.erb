@@ -1,6 +1,6 @@
 <%# File created 11/17/2019 by Sharon Qiu %>
 
-<%if @matched_clubs.count == 0%>
+<%if @not_matched_clubs.count == 0%>
     <h1>No clubs rejected yet</h1>
 <%else%>
 <h1 style=text-align:center> Rejected </h1>
@@ -13,7 +13,7 @@
         <td>link</td>
         <td>img</td>
     </tr>
-    <%@matched_clubs.each do |club| %>
+    <%@not_matched_clubs.each do |club| %>
         <tr>
             <td><%=club.name%></td>
             <td><%=club.mission%></td>

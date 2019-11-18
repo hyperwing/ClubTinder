@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   # Created 11/17/2019 by Sharon Qiu
   # Gets the rejections
   def not_matched
-    @matched_clubs = []
+    @not_matched_clubs = []
     @clubs = current_user.clubs
     @matches = current_user.club_matches
 
@@ -62,7 +62,7 @@ class UsersController < ApplicationController
       if !matched
         @clubs.each do |club|
           if club_id == club.id
-            @matched_clubs.push club
+            @not_matched_clubs.push club
           end
         end
       end
