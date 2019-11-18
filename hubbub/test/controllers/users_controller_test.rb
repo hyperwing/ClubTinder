@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
+
+
+
+
+
   test "should get stats" do
     get users_stats_url
     assert_response :success
@@ -10,5 +15,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get users_new_url
     assert_response :success
   end
+
+
 
 end

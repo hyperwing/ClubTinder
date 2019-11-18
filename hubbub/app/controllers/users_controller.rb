@@ -4,6 +4,7 @@
 # File edited 11/15/2019 by Sri Ramya Dandu: Edit changes reflected in the database 
 # File edited 11/15/2019 by Sri Ramya Dandu: Added destory and new view for admin 
 # File edited 11/16/2019 by Sri Ramya Dandu: Allow admin to create dummy users 
+# File edited 11/17/2019 by Sharon Qiu: Added matches and rejections querying
 
 class UsersController < ApplicationController
   
@@ -20,6 +21,58 @@ class UsersController < ApplicationController
 
   def stats
     @clubs = Club.all
+  end
+
+  # Created 11/17/2019 by Sharon Qiu
+  # Gets the matches
+  def matched
+    @matched_clubs = []
+    @clubs = current_user.clubs
+    @matches = current_user.club_matches
+
+    @matches.each do |val|
+      matched = val.matched
+      club_id = val.club_id
+      if matched
+        @clubs.each do |club|
+          if club_id == club.id
+            @matched_clubs.push club
+          end
+        end
+      end
+    end
+
+    # @matched_clubs = Club.join(:users, :club_matches)
+    # .where({
+    #   users: {id:current_user},
+    #   club_matches: {matched:1}
+    # })
+  end
+
+  # Created 11/17/2019 by Sharon Qiu
+  # Gets the rejections
+  def not_matched
+    @matched_clubs = []
+    @clubs = current_user.clubs
+    @matches = current_user.club_matches
+
+    @matches.each do |val|
+      matched = val.matched
+      club_id = val.club_id
+      if !matched
+        @clubs.each do |club|
+          if club_id == club.id
+            @matched_clubs.push club
+          end
+        end
+      end
+    end
+
+    # @matched_clubs = Club.join(:users, :club_matches)
+    # .where({
+    #   users: {id:current_user},
+    #   club_matches: {matched:0}
+    # })
   end
 
   # Created 11/13/2019 by Sri Ramya Dandu
@@ -48,7 +101,7 @@ class UsersController < ApplicationController
 
     if @user.save
       render :show
-    else  
+    else
       render :new
     end
 
