@@ -1,0 +1,30 @@
+<%# Created 10/17/2019 by Leah Gillespie %>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <title>Choose your Clubs</title>
+  </head>
+  <body>
+    <h1>Choose your Clubs</h1>
+    <h2>Press the left arrow for "no" and the right arrow for "yes"</h2>
+    <table>
+      <tr>
+          <th>user id</th>
+          <th>club_id</th>
+          <th>matched</th>
+          <th>name</th>
+      </tr>
+      <%@matched.each do |match|%>
+          <tr>
+            <th><%=%"#{match.user_id}"%></th>
+            <th><%=%"#{match.club_id}"%></th>
+            <th><%=%"#{match.matched}"%></th>
+          </tr>
+      <%end%>
+    </table>
+    <%# <%=render :partial => "/partials/match",
+            :collection => @matched %>  
+  </body>
+</html>
