@@ -2,34 +2,31 @@
 # edited 11/16/19 David Wing
 # edited 11/17/19 David Wing %>
 
+Select interests for <%= @cur_u.email %> <br>
 
+<form action = "/user_interests/handle_check_boxes">
 
-<!DOCTYPE html>
-<html>
-        <body>
-                Select interests for <%= @cur_u.email%> <br>
+        <% @interests.each do |interest| %>
+                <% selected= false %>
+                
+                <% @user_interests.each do |user_interest| %>
 
-
-                <% @interests.each do |interest| %>
-                        <% selected= false %>
-                        
-                        <% @user_interests.each do |user_interest| %>
-
-                                <% if user_interest.interest_id == interest.id  %>
-                                        <% selected = true %>        
-                                        <% break %>
-                                <% end %>
-                        
+                        <% if user_interest.interest_id == interest.id  %>
+                                <% selected = true %>        
+                                <% break %>
                         <% end %>
-
-                        <% if selected == true  %>
-                                <input type="checkbox" name="<%=interest%>" checked><%=interest.name%> <br>
-                        <% else %>
-                                <input type="checkbox" name="<%=interest%>"><%=interest.name%> <br>
-                        <% end %>
-
+                
                 <% end %>
-                <input type="button" name="submit" value="submit"><br>
-        </body>
 
-</html>
+                <%# prefills the form %>
+                <% if selected == true %>
+                        <%=interest.name%> <%= check_box_tag name="tag_id[]", value=interest.id, checked = true%> <br>
+                
+                <% else %>
+                        <!-- <%=interest.name%> <%= check_box_tag  name="tag_id[]", value=interest.id, checked = false%> <br> -->
+                        <%=interest.name%><input type="checkbox" name="tag_ids[]" value="<%=interest.id %>" /> <br>
+                <% end %>
+
+        <% end %>
+        <input type="submit" value="Submit"><br>
+</form>

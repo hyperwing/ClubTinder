@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'club_matches/update'
   get 'interests/new'
   get 'user_interests/select_user_interests'
+  get 'user_interests/handle_check_boxes'
+  get 'user_interests/update'
   get 'users/preferences'
   devise_for :users, controllers: {
     sessions: 'users/sessions'
