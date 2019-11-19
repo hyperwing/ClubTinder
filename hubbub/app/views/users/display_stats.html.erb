@@ -1,18 +1,59 @@
-<%# File created 11/13/2019 by Sri Ramya Dandu %>
+<%# File created 11/13/2019 by Sri Ramya Dandu
+    Edited 11/18/2019 by Sri Ramya Dandu: Changed display 
+    Edited 11/18/2019 by Sri Ramya Dandu: Added Bootstrap %>
 
 
 <h1> <%= @title %> </h1>
-<%= @keyS %>
-<table>
-    <% count= 1 %>
-    <% @users.each do |user| %>
-    <tr>  
-    <td> <%= user.email %></td>
-    <td> <%= user.role %></td>
-    <td> <a href = "/users/<%= count %>"> Show </a></td>
-    <td> <a href = "/users/<%= count %>/edit"> Edit </a></td>
+<p> Total Users: <%= @total %> </p>
+<table class="table table-nonfluid">
+  <thead class="thead-dark">
+    <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Matched Clubs</th>
+        <th scope="col">Options</th>
+        <th scope="col"></th>
     </tr>
-    <% count += 1 %>
+ </thead>
+ <tbody>
+    <% @users.each do |user| %>
+    <% 
+        @matched_clubs = []
+        @clubs = user.clubs
+        @matches = user.club_matches
+    
+        @matches.each do |val|
+          matched = val.matched
+          club_id = val.club_id
+          if matched
+            @clubs.each do |club|
+              if club_id == club.id
+                @matched_clubs.push club
+              end
+            end
+          end
+        end
+    %>
+    <tr>
+    <td> <%= user.first_name %></td>
+    <td> <%= user.last_name %></td>
+    <td> <%= user.email %></td>
+
+    <td> 
+    <div class="list-group">
+    <ul class="list-group">
+    <% @matched_clubs.each do |club| %>
+        <a href=" <%= club.link %> class="list-group-item-action"><%=club.name%></a>
+        <% end %>
+    </ul>
+    </div>
+        
+    </td>
+    <td> <a href = "/users/<%= user.id %>"> Profile </a></td>
+    <td> <a href = "/users/<%= user.id %>/edit"> Edit </a></td>
+    </tr>
     <% end %>
+    </tbody>
 </table>
 <a href = "/users/stats"> Stats </a>

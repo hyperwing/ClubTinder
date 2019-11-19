@@ -1,5 +1,6 @@
 <%# File created 11/13/2019 by Sri Ramya Dandu 
-    Edited 11/15/2019 by Sri Ramya Dandu: Edited display options%>
+    Edited 11/15/2019 by Sri Ramya Dandu: Edited display options
+    Edited 11/18/2019 by Sri Ramya Dandu: Edited select options %>
 
 <h1> Select the stats you wish to see </h1>
 
@@ -22,14 +23,42 @@
   <input type="submit" value="Submit">
 </form> 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://davidstutz.de/bootstrap-multiselect/dist/js/bootstrap-multiselect.js"></script>
+<link href="https://davidstutz.de/bootstrap-multiselect/docs/css/bootstrap-3.3.2.min.css" rel="stylesheet"/>
+<link href="https://davidstutz.de/bootstrap-multiselect/dist/css/bootstrap-multiselect.css" rel="stylesheet"/>
+<script src="https://davidstutz.de/bootstrap-multiselect/docs/js/bootstrap-3.3.2.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<form id="form1">
+  <div style="padding:20px">
 
-<form action="/users/display_stats">
-  <select data-placeholder="Begin typing a name to filter..." multiple class="chosen-select" name="test">
-    <% @clubs.each do |club| %>
-    <option><%= club.name%> </option>
-    <% end %>
-  </select>
-  <input type="submit">
+    <select id="clubChoice" multiple="multiple">
+      <% @clubs.each do |club| %>
+        <option value= "<%= club.name%>"><%= club.name%> </option>
+      <% end %>
+    </select>
+    
+    <br /><br />
+
+    <input type="button" id="buttonSubmit" value="Get Club Info" />
+  </div>
 </form>
+
+<script>
+$(function() {
+
+  $('#clubChoice').multiselect({
+    includeSelectAllOption: true
+  });
+
+  $('#buttonSubmit').click(function() {
+    choice = $('#clubChoice').val() || [];
+    urlStr = '/users/display_stats?';
+    
+    choice.forEach(function(elm){
+      urlStr += '&name=' + elm;
+    })
+    document.writeln(urlStr)
+  });
+});
+</script>

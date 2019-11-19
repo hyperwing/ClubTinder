@@ -10,6 +10,23 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+
+ // File edited 11/18/2019 by Sri Ramya Dandu: Added bootstrap
+ @import "bootstrap";
+
+ /*
+ .table-nonfluid {
+    width: auto !important;
+    margin-left: 100px;
+ }*/
+
+
+ .show {
+    margin: auto;
+    width: 30%;
+ }
+
+ .user_info {
+    display: inline;
+ }
