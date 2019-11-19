@@ -1,13 +1,21 @@
-<link rel="stylesheet" type="text/css" href="../app/assets/stylesheets/login.scss">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <div class="sidenav">
-</br>
-</br>
-</br>
-</br>
-<%=image_tag("hubbub.png", alt: "Example Image", width: "500px")%>
-        </div>
-      <div class="main">
 
+<br/>
+<br/>
+<br/>
+  <%=image_tag("hubbub.png", alt: "Example Image", width: "90%")%>
+</div>
+  
+<div class="main">
+<div class="col-md-6 col-sm-12">
+<div class="login-form">
+
+<h1>&nbsp &nbsp &nbsp &nbsp Login </h1>
+
+</br>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -32,5 +40,7 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</div>
 </div>
 </div>
