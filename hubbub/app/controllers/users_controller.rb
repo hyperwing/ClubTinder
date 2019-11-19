@@ -28,21 +28,21 @@ class UsersController < ApplicationController
   # Created 11/17/2019 by Sharon Qiu
   # Gets the matches
   def matched
-    @matched_clubs = []
-    @clubs = current_user.clubs
-    @matches = current_user.club_matches
+    @matched_clubs = current_user.clubs
+    # @clubs = current_user.clubs
+    # @matches = current_user.club_matches
 
-    @matches.each do |val|
-      matched = val.matched
-      club_id = val.club_id
-      if matched
-        @clubs.each do |club|
-          if club_id == club.id
-            @matched_clubs.push club
-          end
-        end
-      end
-    end
+    # @matches.each do |val|
+    #   matched = val.matched
+    #   club_id = val.club_id
+    #   if matched
+    #     @clubs.each do |club|
+    #       if club_id == club.id
+    #         @matched_clubs.push club
+    #       end
+    #     end
+    #   end
+    #end
 
     # @matched_clubs = Club.join(:users, :club_matches)
     # .where({
