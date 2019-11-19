@@ -42,7 +42,7 @@ def club_cache_img(page)
                                                     name = card_values.children[0].text.strip
                                                     club_info[:name] = name
                                                 elsif inside == 2
-                                                    affiliations = card_values.children[0].text.strip
+                                                    affiliations = card_values.children[0].text.strip.gsub '|', ' '
                                                     club_info[:affiliations] = affiliations
                                                 elsif inside == 3
                                                     club_info[:mission] = card_values.children[0].text.strip
