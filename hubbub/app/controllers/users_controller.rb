@@ -7,6 +7,7 @@
 # File edited 11/17/2019 by Sharon Qiu: Added matches and rejections querying
 # File edited 11/18/2019 by Sri Ramya Dandu: Modified user display for stats query 
 # File edited 11/18/2019 by Sri Ramya Dandu: Modified titles
+# File edited 11/18/2019 by Sri Ramya Dandu: Explore page
 
 class UsersController < ApplicationController
   
@@ -25,6 +26,9 @@ class UsersController < ApplicationController
     @clubs = Club.all
   end
 
+  def explore
+    @clubs = Club.all.shuffle
+  end 
   # Created 11/17/2019 by Sharon Qiu
   # Gets the matches
   def matched

@@ -13,6 +13,7 @@
  */
 
  // File edited 11/18/2019 by Sri Ramya Dandu: Added bootstrap
+ // File edited 11/18/2019 by Sri Ramya Dandu: Added CSS to explore page
  @import "bootstrap";
 
  /*
@@ -29,4 +30,31 @@
 
  .user_info {
     display: inline;
+ }
+
+
+// Explore page CSS
+ .card-columns {
+   @include media-breakpoint-only(lg) {
+     column-count: 4;
+   }
+   @include media-breakpoint-only(xl) {
+     column-count: 5;
+   }
+ }
+
+ .explore-cards,.search-bar{
+    margin: 50px;
+ }
+
+ .search-bar{
+   padding-right: 100px;
+ }
+
+ .explore-page{
+    text-align: center;
+    margin-top: 50px;
+    font-weight: bold;
+    font-variant: small-caps;
+    letter-spacing: 3px;
  }
