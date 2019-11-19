@@ -5,6 +5,7 @@
 # File edited 11/15/2019 by Sri Ramya Dandu: Added destory and new view for admin 
 # File edited 11/16/2019 by Sri Ramya Dandu: Allow admin to create dummy users 
 # File edited 11/17/2019 by Sharon Qiu: Added matches and rejections querying
+# File edited 11/18/2019 by Sri Ramya Dandu: Modified user display for stats query 
 
 class UsersController < ApplicationController
   
@@ -88,6 +89,8 @@ class UsersController < ApplicationController
         @users = @users.where("#{@keysArray[x]}": params["#{@keysArray[x]}".to_sym])
       end
     }   
+    @users = @users.where(role: "user")
+    @total = @users.length
   end
 
   # Created 11/12/2019 by Sri Ramya Dandu
