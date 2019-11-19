@@ -40,26 +40,36 @@ class ClubMatchesController < ApplicationController
 
   # PATCH/PUT /club_matches/1
   # PATCH/PUT /club_matches/1.json
-  def update #club
+  def update
 
-    # if @club_match.matched == 1
-    #   ClubMatch.find(params[:id]).update_attributes(matched: 0)
-    # else
-    #   ClubMatch.find(params[:id]).update_attributes(matched: 1)
-    # end
-
-    respond_to do |format|
-      if @club_match.update(club_match_params)
-        
-        format.html { redirect_to @club_match, notice: 'Club match was successfully updated.' }
-        format.json { render :show, status: :ok, location: @club_match }
-      else
-        format.html { render :edit }
-        format.json { render json: @club_match.errors, status: :unprocessable_entity }
-      end
+    current_club_match = ClubMatch.find_by(club_id:params[:club], user_id:current_user)
+    if current_club_match.matched == 1
+      current_club_match.update(club_match_params)
+      current_club_match.matched = 0
+      current_club_match.save
+      redirect_to({:controller => "users", :action => "matched"})
+    else
+      current_club_match.update(matched: 1)
+      # current_club_match.save
+      # current_club_match.reload
+      redirect_to({:controller => "users", :action => "not_matched"})
     end
+
+
+
+    # respond_to do |format|
+    #   if @club_match.update(club_match_params)
+        
+    #     format.html { redirect_to @club_match, notice: 'Club match was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @club_match }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @club_match.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
+  
   # DELETE /club_matches/1
   # DELETE /club_matches/1.json
   def destroy
@@ -73,8 +83,8 @@ class ClubMatchesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_club_match
-      @club_match = ClubMatch.find(params[:id])
+    def set_club_match 
+      @club_match = ClubMatch.find(current_user.id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
