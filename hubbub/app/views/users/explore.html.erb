@@ -17,7 +17,7 @@
   <div class="card-columns">
     <% @clubs.each do |club| %>
       <div class="card">
-        <img src=<%= club.img %> class="card-img-top" alt="<%= club.name %>">
+        <img src="<%=club.img%>" class="card-img-top" alt= "<%=club.name%>" %>
         <div class="card-body">
           <h5 class="card-title"><%= club.name %></h5>
           <p class="card-text"><%= club.mission %></p>

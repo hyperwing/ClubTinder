@@ -45,6 +45,7 @@ class UsersController < ApplicationController
   # Gets the matches
   def matched
     @matched_clubs = []
+    @matched_club_names = []
     @clubs = current_user.clubs
     @matches = current_user.club_matches
 
@@ -55,22 +56,20 @@ class UsersController < ApplicationController
         @clubs.each do |club|
           if club_id == club.id
             @matched_clubs.push club
+            @matched_club_names.push club.name
           end
         end
       end
     end
 
-    # @matched_clubs = Club.join(:users, :club_matches)
-    # .where({
-    #   users: {id:current_user},
-    #   club_matches: {matched:1}
-    # })
+
   end
 
   # Created 11/17/2019 by Sharon Qiu
   # Gets the rejections
   def not_matched
     @not_matched_clubs = []
+    @not_matched_club_names = []
     @clubs = current_user.clubs
     @matches = current_user.club_matches
 
@@ -81,6 +80,7 @@ class UsersController < ApplicationController
         @clubs.each do |club|
           if club_id == club.id
             @not_matched_clubs.push club
+            @not_matched_club_names.push club.name
           end
         end
       end

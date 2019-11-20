@@ -14,6 +14,7 @@
 
  // File edited 11/18/2019 by Sri Ramya Dandu: Added bootstrap
  // File edited 11/18/2019 by Sri Ramya Dandu: Added CSS to explore page
+ // File edited 11/21/2019 by Sharon Qiu: Added CSS to match/unmatched page
  @import "bootstrap";
 
  /*
@@ -22,7 +23,79 @@
     margin-left: 100px;
  }*/
 
+ //css for matched/unmatched
 
+  div.grid-and-clubs-container {
+    max-height: 50%;
+  }
+
+  div.row.full-body-match{
+    max-height: 50%;
+    
+  }
+  h1.page-title-selected-matches {
+    font-size: 3rem;
+    font-weight: bold;
+    font-variant: small-caps;
+    letter-spacing: 3px;
+    text-align: center;
+  }
+
+  div.tab-pane.active.show {
+    margin-left:10%;
+    height: auto;
+    width: auto;
+  }
+
+  div.club-match-and-update{
+    display: grid;
+    vertical-align: center;
+  }
+  a.go-to-club{
+    font-size: 30px;
+    justify-content: center;
+    display: grid;
+  }
+
+  div.match-update{
+    font-size: 30px;
+    justify-content: center;
+    display: grid;
+  }
+
+  div.row.tab-panel {
+    margin-left: -10%;
+    margin-right: -30%;
+  }
+
+  .club-cards-container {
+    height:50%;
+  }
+
+  div.col-2.club-and-match-update{
+    display:grid;
+    align-content: center;
+  }
+
+  button.btn.btn-arrow-right.goto-website-button {
+    float: right;
+  }
+
+  .list-group{
+    max-height: 600px;
+    overflow:scroll;
+    margin-bottom: 10px;
+  }
+
+  div.tab-content{
+    max-height: 60%;
+  }
+
+  .list-group .list-group-item {
+    width: 100%;
+  }
+
+  //?????
  .show {
     margin: auto;
     width: 30%;
@@ -55,6 +128,7 @@
     text-align: center;
     margin-top: 30px;
     font-weight: bold;
+    font-size: 3rem;
     font-variant: small-caps;
     letter-spacing: 3px;
  }
