@@ -1,6 +1,7 @@
 # File Created 11/09/2019 by Sri Ramya Dandu 
 # Edited 11/10/2019 by Neel Mansukhani: Added default route to sign up page.
 # Edited 11/12/2019 by Neel Mansukhani: Fixed root routing.
+# Edited 11/20/2019 by Neel Mansukhani: Added my_club.
 Rails.application.routes.draw do
   
   get 'clubs/choose', to: 'clubs#choose'
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   get 'users/not_matched', to: 'users#not_matched'
   get 'club_matches/update'
   get 'interests/new'
+  get 'users/my_club', to: 'users#club'
   get 'user_interests/select_user_interests'
   get 'user_interests/handle_check_boxes'
   get 'user_interests/update'

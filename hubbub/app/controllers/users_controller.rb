@@ -7,6 +7,8 @@
 # File edited 11/17/2019 by Sharon Qiu: Added matches and rejections querying
 # File edited 11/18/2019 by Sri Ramya Dandu: Modified user display for stats query 
 # File edited 11/18/2019 by Sri Ramya Dandu: Modified titles
+# File edited 11/18/2019 by Neel Mansukhani: Added club page
+
 
 class UsersController < ApplicationController
   
@@ -146,16 +148,19 @@ class UsersController < ApplicationController
     flash[:success] = "User deleted"
     redirect_to users_url
   end
-
+  # Created 11/20/2019 by Neel Mansukhani
+  def club
+    @club = Club.find(current_user.club_id)
+  end
   private
 
   # Created 11/15/2019 by Sri Ramya Dandu
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :grad_year, :gender)
+    params.require(:user).permit(:email, :first_name, :last_name, :grad_year, :gender, :role)
   end
 
   # Created 11/16/2019 by Sri Ramya Dandu
   def new_user_params
-    params.permit(:email, :first_name, :last_name, :grad_year, :gender, :password)
+    params.permit(:email, :first_name, :last_name, :grad_year, :gender, :password, :role)
   end
 end

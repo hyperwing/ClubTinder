@@ -1,3 +1,5 @@
+<%# Edited 11/19/2019 by Neel Mansukhani: Fixed after migrations %>
+<%# Edited 11/20/2019 by Neel Mansukhani: Rearranged forms%>
 <%= form_with(model: club, local: true) do |form| %>
   <% if club.errors.any? %>
     <div id="error_explanation">
@@ -10,77 +12,7 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :string %>
-    <%= form.text_field :string %>
-  </div>
-
-  <div class="field">
-    <%= form.label :mission %>
-    <%= form.text_field :mission %>
-  </div>
-
-  <div class="field">
-    <%= form.label :string %>
-    <%= form.text_field :string %>
-  </div>
-
-  <div class="field">
-    <%= form.label :affiliations %>
-    <%= form.text_field :affiliations %>
-  </div>
-
-  <div class="field">
-    <%= form.label :string %>
-    <%= form.text_field :string %>
-  </div>
-
-  <div class="field">
-    <%= form.label :link %>
-    <%= form.text_field :link %>
-  </div>
-
-  <div class="field">
-    <%= form.label :string %>
-    <%= form.text_field :string %>
-  </div>
-
-  <div class="field">
-    <%= form.label :img_url %>
-    <%= form.text_field :img_url %>
-  </div>
-
-  <div class="field">
-    <%= form.label :string %>
-    <%= form.text_field :string %>
-  </div>
-
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location %>
-  </div>
-
-  <div class="field">
-    <%= form.label :string %>
-    <%= form.text_field :string %>
-  </div>
-
-  <div class="field">
-    <%= form.label :other %>
-    <%= form.text_field :other %>
-  </div>
-
-  <div class="field">
-    <%= form.label :string %>
-    <%= form.text_field :string %>
-  </div>
-
+  <%= render 'form_entries', club: club, form: form %>
   <div class="actions">
     <%= form.submit %>
   </div>
