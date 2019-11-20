@@ -1,0 +1,46 @@
+<%# File Created 11/19/2019 by Sri Ramya Dandu %>
+  
+ 
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top ">
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+<a class="navbar-brand" href="#">Hubbub</a>
+
+<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    <li class="nav-item ">
+      <a class="nav-link" href = "/users/<%= current_user.id %>">Profile<span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link" href = "/users/edit"> Settings <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/users/index">All Users</a>
+     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/users/stats">User Stats</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Club Stats</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="/users/explore">Explore</a>
+  </li>
+  </ul>
+  <ul class="navbar-nav  mt-2 mt-lg-0" style="list-style-type:none">
+      <li class="nav-item">
+        
+          <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "nav-link") %>   
+      </li>
+   </ul>
+
+
+</div>
+</nav>
+<br/>
+<br/>
+<br/>
+<br/>
+

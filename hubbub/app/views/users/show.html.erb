@@ -3,10 +3,9 @@
     Edited 11/16/2019 by Sri Ramya Dandu: Added routes to view 
     Edited 11/18/2019 by Sri Ramya Dandu: Added Bootstrap%>
 
-    <%= stylesheet_link_tag("/user_show") %>
 
 <div class = "show">
-<h2>User Profile</h2>
+
 <br/>
 <div class="card" style="width: 20rem;">
   <img class="card-img-top" src="https://activities.osu.edu/img/blank-group-640x480.png" alt="Card image cap">
@@ -16,11 +15,12 @@
   <h5 class = "user_info"> Email: </h5> <%= @user.email %> <br/>  <br/>
   <h5 class = "user_info"> Graduation Year: </h5> <%= @user.grad_year %> <br/>  <br/>
   <h5 class = "user_info"> Gender: </h5> <%= @user.gender %> <br/>  <br/>
-
-<br/>
-<br/>
-<a href = "/users/index"> User Info </a>
+<a href = "/users/edit"> Edit Info </a>
   </div>
 </div>
 
 </div>
+<br/>
+<br/>
+<br/>
+<br/>

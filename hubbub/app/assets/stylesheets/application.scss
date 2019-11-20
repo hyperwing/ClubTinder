@@ -53,8 +53,22 @@
 
  .explore-page{
     text-align: center;
-    margin-top: 50px;
+    margin-top: 30px;
     font-weight: bold;
     font-variant: small-caps;
     letter-spacing: 3px;
+ }
+
+
+ .stats-options{
+    margin: 0px 300px;
+ }
+
+ .stats-display,.user-display{
+   margin: 20px;
+ }
+
+ .stats-display h1, .stats-display p, .user-display h1, .user-display p{
+   text-align: center;
+   font-weight: bold;
  }

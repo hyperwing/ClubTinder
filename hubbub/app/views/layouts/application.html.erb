@@ -10,6 +10,15 @@
   </head>
 
   <body>
+    <% if current_user%>
+      <% if current_user.role == "user" %>
+          <%= render "layouts/usernavbar" %>
+        <% elsif current_user.role == "admin" %>
+          <%= render "layouts/adminnavbar" %>
+        <% elsif current_user.role == "club" %>
+        <%= render "layouts/clubnavbar" %>
+        <%end%>
+    <%end%>
     <%= yield %>
   </body>
 </html>
