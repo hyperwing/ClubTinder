@@ -9,48 +9,56 @@ class UserInterestsController < ApplicationController
         @user_interests = UserInterest.where(:user_id== current_user.id)
         @cur_u = current_user
 
-
-        tag_ids = params[:tag_ids]
-
-
-
-    end
-
-    def handle_check_boxes
-        @interests = Interest.all
-
-        # if box checked, add to model, else destroy from model
-        @interests.each do |i_box|
-            if tag_ids.include? i_box.id
-                create
-            else
-                destroy
-            end
-        end
-    end
-
-    def update
-        @user_interests = UserInterest.find(params[:id])
-        if @user_interests.update(user_params)
-          redirect_to @user_interests
-        end    
-    end
-
-    def destroy
-        UserInterest.find(params[:id]).destroy
-
-        flash[:success] = "User deleted"
-        redirect_to users_url
-    
     end
 
     def create 
-        @new_interest = UserInterest.new(new_user_interest_params)
+        logger.debug("creating new user_interest")
 
-        if @new_interest.save
-            render :show
-        else  
-            render :new
+        new_interest = UserInterest.new
+        new_interest.user_id = current_user.id
+        # new_interest.interest_id = @interest_info
+        new_interest.interest_id = 1
+
+        if new_interest.save
+            logger.debug("saved successfully")  
+        else    
+            logger.debug("failed to save")  
+        end
+
+        redirect_to select_user_interests
+        
+    end
+
+    def destroy
+        logger.debug("deleting user_interest")
+
+        UserInterest.find().destroy
+
+        flash[:success] = "User_interest deleted"
+
+        # redirect to preferences
+        # render "users/preferences"
+        return true;
+    
+    end
+
+    def handle_check_boxes
+
+        tag_ids = params[:tag_ids]
+
+        @interests = Interest.all
+        # if box checked, add to model, else destroy from model
+        @interests.each do |i_box|
+            # Set the interest information from form to instance variable
+            @interest_info = i_box.id
+
+            logger.debug("handling " +i_box.name.to_s)
+
+            # if tag_ids.include? i_box.id
+            #     redirect_to :action=>"destroy"
+            # else
+            redirect_to :action=>"create"
+            # end
         end
     end
 
