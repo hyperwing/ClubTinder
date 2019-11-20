@@ -21,7 +21,7 @@
             <td><%=club.affiliations%></td>
             <td><%=club.link%></td>
             <td><%=image_tag club.img%></td>
-            <td><%= link_to 'Match', {:controller => 'club_matches', :action => 'update', :club => club.id}%></td>
+            <td><%= link_to 'Match',add_current_club_matches_url(:club => club.id), :method => :patch%></td>
         </tr>
     <%end%>
 </table>

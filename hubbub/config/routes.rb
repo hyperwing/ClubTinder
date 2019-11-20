@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get 'users/create'
   get 'matched', to: 'users#matched'
   get 'not_matched', to: 'users#not_matched'
-  patch 'club_matches/update', to: 'club_matches#update'
   get 'interests/new'
   get 'user_interests/select_user_interests'
   get 'user_interests/handle_check_boxes'
@@ -20,7 +19,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
-  resources :club_matches
+  resources :club_matches, except: [:update, :show] do
+    collection do
+      patch 'update_current', as: :add_current, to: 'club_matches#update_existing_match'
+    end
+  end
   resources :clubs
   resources :users
   devise_scope :user do

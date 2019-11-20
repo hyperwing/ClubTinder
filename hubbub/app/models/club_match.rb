@@ -2,5 +2,5 @@
 # Edited 11/12/2019 by Neel Mansukhani: Added relations
 class ClubMatch < ApplicationRecord
     belongs_to :club
-    belongs_to :user, foreign_key: 'club_id'
+    belongs_to :user
 end

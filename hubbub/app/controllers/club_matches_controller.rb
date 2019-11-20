@@ -1,5 +1,10 @@
-# File created 11/17/2019 by Sharon Qiu
+# Created 11/09/2019 by Sharon Qiu
+# Edited 11/17/2019 by Leah Gillespie
+# Edited 11/17/2019 by Sharon Qiu
+# Controller for club matches page
+
 class ClubMatchesController < ApplicationController
+
   before_action :set_club_match, only: [:show, :edit, :update, :destroy]
 
   # GET /club_matches
@@ -40,19 +45,20 @@ class ClubMatchesController < ApplicationController
 
   # PATCH/PUT /club_matches/1
   # PATCH/PUT /club_matches/1.json
-  def update
+  def update_existing_match
 
-    current_club_match = ClubMatch.find_by(club_id:params[:club], user_id:current_user)
-    if current_club_match.matched == 1
-      current_club_match.update(club_match_params)
-      current_club_match.matched = 0
-      current_club_match.save
-      redirect_to({:controller => "users", :action => "matched"})
+    @current_club_match = ClubMatch.find_by(club_id:params[:club], user_id:current_user)
+    p @current_club_match.matched
+    if @current_club_match.matched
+      if @current_club_match.update(matched: 0)
+        @current_club_match.reload
+        redirect_to({:controller => "users", :action => "not_matched"})
+      end
     else
-      current_club_match.update(matched: 1)
-      # current_club_match.save
-      # current_club_match.reload
-      redirect_to({:controller => "users", :action => "not_matched"})
+      if @current_club_match.update(matched: 1)
+        @current_club_match.reload
+        redirect_to({:controller => "users", :action => "matched"})
+      end
     end
 
 
@@ -79,7 +85,7 @@ class ClubMatchesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -91,5 +97,5 @@ class ClubMatchesController < ApplicationController
     def club_match_params
       params.require(:club_match).permit(:club_id, :user_id, :matched)
     end
-  
+
 end
