@@ -16,8 +16,8 @@ class UserInterestsController < ApplicationController
 
         new_interest = UserInterest.new
         new_interest.user_id = current_user.id
-        # new_interest.interest_id = @interest_info
-        new_interest.interest_id = 1
+        new_interest.interest_id = @interest_info
+        # new_interest.interest_id = 1
 
         if new_interest.save
             logger.debug("saved successfully")  
@@ -25,7 +25,7 @@ class UserInterestsController < ApplicationController
             logger.debug("failed to save")  
         end
 
-        redirect_to select_user_interests
+        return true
         
     end
 
@@ -53,13 +53,31 @@ class UserInterestsController < ApplicationController
             @interest_info = i_box.id
 
             logger.debug("handling " +i_box.name.to_s)
+            logger.debug("tag_ids: " +tag_ids.to_s)
 
-            # if tag_ids.include? i_box.id
-            #     redirect_to :action=>"destroy"
-            # else
-            redirect_to :action=>"create"
-            # end
+            if tag_ids.include? i_box.id.to_s
+
+                logger.debug("creating new user_interest")
+
+                new_interest = UserInterest.new
+                new_interest.user_id = current_user.id
+                new_interest.interest_id = i_box.id
+        
+                if new_interest.save
+                    logger.debug("saved successfully")  
+                else    
+                    logger.debug("failed to save")  
+                end
+
+            else
+                logger.debug("deleting user_interest")
+
+                UserInterest.where(:user_id => current_user.id)
+                    .where(:interest_id =>i_box.id).destroy_all
+                
+            end
         end
+        render "users/preferences"
     end
 
 end
