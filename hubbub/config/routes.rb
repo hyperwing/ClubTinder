@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
-  resources :club_matches, except: [:update, :show] do
+  resources :club_matches do
     collection do
       patch 'update_current', as: :add_current, to: 'club_matches#update_existing_match'
     end
