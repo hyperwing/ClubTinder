@@ -15,16 +15,67 @@
  // File edited 11/18/2019 by Sri Ramya Dandu: Added bootstrap
  // File edited 11/18/2019 by Sri Ramya Dandu: Added CSS to explore page
  // File edited 11/21/2019 by Sharon Qiu: Added CSS to match/unmatched page
+ // File edited 11/21/2019 by Sharon Qiu: Added CSS to login page & signup page.
  @import "bootstrap";
-
  /*
  .table-nonfluid {
     width: auto !important;
     margin-left: 100px;
  }*/
 
- //css for matched/unmatched
+ //css for new.html.erb (new session)
+ #gradient-bg{
+   background-image: linear-gradient(white, rgb(153, 141, 207));
+   position:fixed;
+   padding:0;
+   margin:0;
 
+   top:0;
+   left:0;
+
+   width: 100%;
+   height: 100%;
+ }
+
+ .about-hubbub h1.new-session-page-title {
+   font-size: 7rem;
+   font-weight: bold;
+   font-variant: small-caps;
+   letter-spacing: 3px;
+   text-align: center;
+ }
+ 
+ .about-hubbub, .sign-in-form{
+  font-size: 1em;
+  font-weight: bold;
+  font-variant: small-caps;
+  letter-spacing: 3px;
+  text-align: center;
+ }
+ 
+ .about-hubbub{
+   margin-top:10%;
+ }
+
+ .sign-in-form {
+   margin-top: 3%;
+ }
+
+ //css for registrations/new.html.erb
+ h2.sign-up-title{
+   margin-top:7%;
+   font-size: 5em;
+   font-weight: bold;
+   font-variant: small-caps;
+   letter-spacing: 3px;
+   text-align: center;
+ }
+
+ .sign-up-form-container{
+   text-align: center;
+ }
+
+ //css for matched/unmatched
   div.grid-and-clubs-container {
     max-height: 50%;
   }

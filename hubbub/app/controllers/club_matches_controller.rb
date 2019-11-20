@@ -52,12 +52,12 @@ class ClubMatchesController < ApplicationController
     if @current_club_match.matched
       if @current_club_match.update(matched: 0)
         @current_club_match.reload
-        redirect_to({:controller => "users", :action => "not_matched"})
+        redirect_to({:controller => "users", :action => "matched"})
       end
     else
       if @current_club_match.update(matched: 1)
         @current_club_match.reload
-        redirect_to({:controller => "users", :action => "matched"})
+        redirect_to({:controller => "users", :action => "not_matched"})
       end
     end
 
