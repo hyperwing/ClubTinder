@@ -1,5 +1,10 @@
-# File created 11/17/2019 by Sharon Qiu
+# Created 11/09/2019 by Sharon Qiu
+# Edited 11/17/2019 by Leah Gillespie
+# Edited 11/17/2019 by Sharon Qiu
+# Controller for club matches page
+
 class ClubMatchesController < ApplicationController
+
   before_action :set_club_match, only: [:show, :edit, :update, :destroy]
 
   # GET /club_matches
@@ -50,7 +55,7 @@ class ClubMatchesController < ApplicationController
 
     respond_to do |format|
       if @club_match.update(club_match_params)
-        
+
         format.html { redirect_to @club_match, notice: 'Club match was successfully updated.' }
         format.json { render :show, status: :ok, location: @club_match }
       else
@@ -69,7 +74,7 @@ class ClubMatchesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -81,5 +86,5 @@ class ClubMatchesController < ApplicationController
     def club_match_params
       params.require(:club_match).permit(:club_id, :user_id, :matched)
     end
-  
+
 end

@@ -1,35 +1,35 @@
+
 <%# File created 11/13/2019 by Sri Ramya Dandu 
-    Edited 11/15/2019 by Sri Ramya Dandu: Edited display options%>
+    Edited 11/15/2019 by Sri Ramya Dandu: Edited display options
+    Edited 11/18/2019 by Sri Ramya Dandu: Edited select options 
+    Edited 11/19/2019 by Sri Ramya Dandu: Added Bootstrap %%>
 
-<h1> Select the stats you wish to see </h1>
+<div class = "stats-options">
+<h1> User Stats</h1>
 
+<br/>
+<label for="formGroupExampleInput2">Select attributes and submit to view respective users</label>
+<br/>
+<br/>
+  <form action = "/users/display_stats">
+  <label for="formGroupExampleInput2">Gender</label>
+    <select name = "gender" class="custom-select">
+      <option value="All" selected>All</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+    <br/>
+    <br/>
+    <br/>
 
-<h3> Filter by Gender </h3>
-<form action = "/users/display_stats">
-  <input type="radio" name="gender" value="Male" checked> Male<br>
-  <input type="radio" name="gender" value="Female"> Female<br>
-  <input type="radio" name="gender" value="Other"> Other  
-  <br>
-  <br>
- 
+    <div class="form-group">
+      <label for="formGroupExampleInput2">Graduation Year</label>
+      <input type="number" min="1950" max="2050" name="grad_year" class="form-control">
+      <sub> Leave empty for all grad years</sub>
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form> 
 
-<h3> Filter by Graduation Date </h3>
-
- Graduation Year:<br>
-  <input type="text" name="grad_year">
-  <br>
-  <br>
-  <input type="submit" value="Submit">
-</form> 
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-<form action="/users/display_stats">
-  <select data-placeholder="Begin typing a name to filter..." multiple class="chosen-select" name="test">
-    <% @clubs.each do |club| %>
-    <option><%= club.name%> </option>
-    <% end %>
-  </select>
-  <input type="submit">
-</form>
+</div>

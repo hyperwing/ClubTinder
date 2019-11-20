@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'clubs/choose', to: 'clubs#choose'
   get 'users/index'
   get 'users/stats'
+  get 'users/explore'
   get 'users/new'
   get 'users/display_stats'
   get 'users/create'

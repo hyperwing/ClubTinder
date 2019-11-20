@@ -1,11 +1,26 @@
-<%# File created 10/13/2019 by Sri Ramya Dandu 
+<%# File created 11/13/2019 by Sri Ramya Dandu 
     Edited 11/15/2019 by Sri Ramya Dandu: Added drop down features and changed display 
-    Edited 11/16/2019 by Sri Ramya Dandu: Added routes to view %>
-    
-<h2>User Profile for <%= @user.first_name %> <%= @user.last_name %></h2>
-<h4> Email: </h4> <%= @user.email %> 
-<h4> Graduation Year: </h4> <%= @user.grad_year %>
-<h4> Gender: </h4> <%= @user.gender %>
+    Edited 11/16/2019 by Sri Ramya Dandu: Added routes to view 
+    Edited 11/18/2019 by Sri Ramya Dandu: Added Bootstrap%>
+
+
+<div class = "show">
+
+<br/>
+<div class="card" style="width: 20rem;">
+  <img class="card-img-top" src="https://activities.osu.edu/img/blank-group-640x480.png" alt="Card image cap">
+  <div class="card-body">
+  <h5 class = "user_info"> Name: </h5> <%= @user.first_name %> <%= @user.last_name %>  <br/>  <br/>
+  <h5 class = "user_info"> Gender: </h5> <%= @user.gender %> <br/>  <br/>
+  <h5 class = "user_info"> Email: </h5> <%= @user.email %> <br/>  <br/>
+  <h5 class = "user_info"> Graduation Year: </h5> <%= @user.grad_year %> <br/>  <br/>
+  <h5 class = "user_info"> Gender: </h5> <%= @user.gender %> <br/>  <br/>
+<a href = "/users/edit"> Edit Info </a>
+  </div>
+</div>
+
+</div>
 <br/>
 <br/>
-<a href = "/users/index"> User Info </a>
+<br/>
+<br/>
