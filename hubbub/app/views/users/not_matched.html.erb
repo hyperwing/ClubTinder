@@ -1,0 +1,43 @@
+<%# File created 11/17/2019 by Sharon Qiu %>
+<%# Edited 11/20/2019 by Sharon Qiu %>
+<h1 class="page-title-selected-matches">REJECTIONS</h1>
+<hr/>
+<div class="grid-and-clubs-container">
+    <%if @not_matched_clubs.count == 0%>
+        <h2 class="empty-matches">No clubs rejected yet.</h2>
+    <%else%>
+        <div class="row full-body-match">
+            <div class="col-4 list-of-clubs-container">
+                <div class="list-group" id="list-tab" role="tablist">
+                    <%@not_matched_club_names.each do |club_name| %>
+                        <a class="list-group-item list-group-item-action selected-matches-list-group-item" data-toggle="list" href="#<%=club_name.gsub(/\s+/, "")%>" role="tab" aria-controls="<%=club_name%>"><%=club_name%></a>
+                    <%end%>
+                </div>
+            </div>
+            <div class="col-6 club-cards-container">
+                <div class="tab-content" id="nav-tabContent">
+                <%@not_matched_clubs.each do |club| %>
+                    <div class="tab-pane" id="<%=club.name.gsub(/\s+/, "")%>" role="tabpanel">
+                        <div class="row tab-panel">
+                            <div class="col-10 list-of-clubs-container">
+                                <img src="<%=club.img%>" class="card-img-top-selected" alt="<%=club.name%>"%>
+                                <div class="selected-matches-card-body">
+                                    <h5 class="selected-matches-card-title"><%= club.name %></h5>
+                                    <p class="selected-matches-card-text"><%= club.mission %></p>
+                                </div>
+                            </div>
+                            <div class="col-2 club-and-match-update">
+                                <a href= "<%= club.link %>" class="btn go-to-club">&#8594;</a>
+                                <div class="match-update">
+                                    <%= link_to '✓',add_current_club_matches_url( :club => club.id), :method => :patch%>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <%end%>
+                </div>
+            </div>
+            
+    </div>
+    <%end%>
+</div>

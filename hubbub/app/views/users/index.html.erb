@@ -1,0 +1,36 @@
+<%# File created 11/12/2019 by Sri Ramya Dandu 
+    Edited 11/15/2019 by Sri Ramya Dandu: Changed display and added more routes
+    Edited 11/19/2019 by Sri Ramya Dandu: Added bootstrap%>
+
+<div class = "user-display">
+    <h1> <%= @title %> </h1>
+    <p> Total Users: <%= @users.length %> </p>
+    <p> <a href = "/users/new"> Create Dummy User </a> </p>
+    <table class="table table-nonfluid table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Grad Year</th>
+                <th colspan="3">Options</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @users.each do |user| %>
+                <tr>  
+                <td> <%= user.first_name %></td>
+                <td> <%= user.last_name %></td>
+                <td> <%= user.email %></td>
+                <td> <%= user.grad_year %></td>
+                <td> <a href = "/users/<%= user.id %>"> Show </a></td>
+                <td> <a href = "/users/<%= user.id %>/edit"> Edit </a></td>
+                <td><%= link_to 'Destroy', user, method: :delete,
+                                                data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,2 @@
+class ClubInterest < ApplicationRecord
+end

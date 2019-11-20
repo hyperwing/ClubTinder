@@ -1,0 +1,56 @@
+<%# Edited 11/10/2019 by Sri Ramya Dandu: Added additional fields
+    Edited 11/15/2019 by Sri Ramya Dandu: Created drop downs %>
+<div id="gradient-bg">
+
+<div class="container-fluid sign-up-form-container">
+<h2 class="sign-up-title">Sign up</h2>
+<% years = (1950..2050).to_a %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autocomplete: "first-name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autocomplete: "last-name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :grad_year %><br />
+    <%= f.select :grad_year, options_for_select(years)%>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender%><br />
+    <%= f.select :gender, options_for_select(['Male', 'Female', 'Other'])%>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+</div>
+</div>

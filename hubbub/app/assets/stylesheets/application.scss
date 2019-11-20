@@ -1,0 +1,199 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+ // File edited 11/18/2019 by Sri Ramya Dandu: Added bootstrap
+ // File edited 11/18/2019 by Sri Ramya Dandu: Added CSS to explore page
+ // File edited 11/21/2019 by Sharon Qiu: Added CSS to match/unmatched page
+ // File edited 11/21/2019 by Sharon Qiu: Added CSS to login page & signup page.
+ @import "bootstrap";
+ /*
+ .table-nonfluid {
+    width: auto !important;
+    margin-left: 100px;
+ }*/
+
+ //css for new.html.erb (new session)
+ #gradient-bg{
+   background-image: linear-gradient(white, rgb(153, 141, 207));
+   position:fixed;
+   padding:0;
+   margin:0;
+
+   top:0;
+   left:0;
+
+   width: 100%;
+   height: 100%;
+ }
+
+ .about-hubbub h1.new-session-page-title {
+   font-size: 7rem;
+   font-weight: bold;
+   font-variant: small-caps;
+   letter-spacing: 3px;
+   text-align: center;
+ }
+ 
+ .about-hubbub, .sign-in-form{
+  font-size: 1em;
+  font-weight: bold;
+  font-variant: small-caps;
+  letter-spacing: 3px;
+  text-align: center;
+ }
+ 
+ .about-hubbub{
+   margin-top:10%;
+ }
+
+ .sign-in-form {
+   margin-top: 3%;
+ }
+
+ //css for registrations/new.html.erb
+ h2.sign-up-title{
+   margin-top:7%;
+   font-size: 5em;
+   font-weight: bold;
+   font-variant: small-caps;
+   letter-spacing: 3px;
+   text-align: center;
+ }
+
+ .sign-up-form-container{
+   text-align: center;
+ }
+
+ //css for matched/unmatched
+  div.grid-and-clubs-container {
+    max-height: 50%;
+  }
+
+  div.row.full-body-match{
+    max-height: 50%;
+    
+  }
+  h1.page-title-selected-matches {
+    font-size: 3rem;
+    font-weight: bold;
+    font-variant: small-caps;
+    letter-spacing: 3px;
+    text-align: center;
+  }
+
+  div.tab-pane.active.show {
+    margin-left:10%;
+    height: auto;
+    width: auto;
+  }
+
+  div.club-match-and-update{
+    display: grid;
+    vertical-align: center;
+  }
+  a.go-to-club{
+    font-size: 30px;
+    justify-content: center;
+    display: grid;
+  }
+
+  div.match-update{
+    font-size: 30px;
+    justify-content: center;
+    display: grid;
+  }
+
+  div.row.tab-panel {
+    margin-left: -10%;
+    margin-right: -30%;
+  }
+
+  .club-cards-container {
+    height:50%;
+  }
+
+  div.col-2.club-and-match-update{
+    display:grid;
+    align-content: center;
+  }
+
+  button.btn.btn-arrow-right.goto-website-button {
+    float: right;
+  }
+
+  .list-group{
+    max-height: 600px;
+    overflow:scroll;
+    margin-bottom: 10px;
+  }
+
+  div.tab-content{
+    max-height: 60%;
+  }
+
+  .list-group .list-group-item {
+    width: 100%;
+  }
+
+  //?????
+ .show {
+    margin: auto;
+    width: 30%;
+ }
+
+ .user_info {
+    display: inline;
+ }
+
+
+// Explore page CSS
+ .card-columns {
+   @include media-breakpoint-only(lg) {
+     column-count: 4;
+   }
+   @include media-breakpoint-only(xl) {
+     column-count: 5;
+   }
+ }
+
+ .explore-cards,.search-bar{
+    margin: 50px;
+ }
+
+ .search-bar{
+   padding-right: 100px;
+ }
+
+ .explore-page{
+    text-align: center;
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 3rem;
+    font-variant: small-caps;
+    letter-spacing: 3px;
+ }
+
+
+ .stats-options{
+    margin: 0px 300px;
+ }
+
+ .stats-display,.user-display{
+   margin: 20px;
+ }
+
+ .stats-display h1, .stats-display p, .user-display h1, .user-display p{
+   text-align: center;
+   font-weight: bold;
+ }

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hubbub</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if current_user%>
+      <% if current_user.role == "user" %>
+          <%= render "layouts/usernavbar" %>
+        <% elsif current_user.role == "admin" %>
+          <%= render "layouts/adminnavbar" %>
+        <% elsif current_user.role == "club" %>
+        <%= render "layouts/clubnavbar" %>
+        <%end%>
+    <%end%>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+
+<%# File created 11/13/2019 by Sri Ramya Dandu 
+    Edited 11/15/2019 by Sri Ramya Dandu: Edited display options
+    Edited 11/18/2019 by Sri Ramya Dandu: Edited select options 
+    Edited 11/19/2019 by Sri Ramya Dandu: Added Bootstrap %%>
+
+<div class = "stats-options">
+<h1> User Stats</h1>
+
+<br/>
+<label for="formGroupExampleInput2">Select attributes and submit to view respective users</label>
+<br/>
+<br/>
+  <form action = "/users/display_stats">
+  <label for="formGroupExampleInput2">Gender</label>
+    <select name = "gender" class="custom-select">
+      <option value="All" selected>All</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+    <br/>
+    <br/>
+    <br/>
+
+    <div class="form-group">
+      <label for="formGroupExampleInput2">Graduation Year</label>
+      <input type="number" min="1950" max="2050" name="grad_year" class="form-control">
+      <sub> Leave empty for all grad years</sub>
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form> 
+
+</div>
