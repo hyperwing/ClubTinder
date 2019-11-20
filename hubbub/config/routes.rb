@@ -1,6 +1,7 @@
 # File Created 11/09/2019 by Sri Ramya Dandu 
 # Edited 11/10/2019 by Neel Mansukhani: Added default route to sign up page.
 # Edited 11/12/2019 by Neel Mansukhani: Fixed root routing.
+# Edited 11/19/2019 by Leah Gillespie: added route to swipe page
 Rails.application.routes.draw do
   
   get 'clubs/choose', to: 'clubs#choose'
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
   # get 'user_interests/create'
   # get 'user_interests/destroy'
   get 'users/preferences'
+  get 'club_matches/swipe'
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
