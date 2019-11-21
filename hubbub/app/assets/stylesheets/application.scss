@@ -14,14 +14,26 @@
 
  // File edited 11/18/2019 by Sri Ramya Dandu: Added bootstrap
  // File edited 11/18/2019 by Sri Ramya Dandu: Added CSS to explore page
- // File edited 11/21/2019 by Sharon Qiu: Added CSS to match/unmatched page
- // File edited 11/21/2019 by Sharon Qiu: Added CSS to login page & signup page.
+ // File edited 11/20/2019 by Sharon Qiu: Added CSS to match/unmatched page
+ // File edited 11/20/2019 by Sharon Qiu: Added CSS to login page & signup page.
+ // File edited 11/20/2019 by Sri Ramya Dandu: Moved CSS into separate files
  @import "bootstrap";
  /*
  .table-nonfluid {
     width: auto !important;
     margin-left: 100px;
  }*/
+
+ .headings{
+  text-align: center;
+  margin-top: 25px;
+  font-weight: bold;
+  font-size: 3rem;
+  font-variant: small-caps;
+  letter-spacing: 3px;
+}
+
+ //css for new.html.erb (new session)
  #gradient-bg{
    background-image: linear-gradient(white, rgb(153, 141, 207));
    position:fixed;
@@ -161,55 +173,3 @@
   .list-group .list-group-item {
     width: 100%;
   }
-
-  //?????
- .show {
-    margin: auto;
-    width: 30%;
- }
-
- .user_info {
-    display: inline;
- }
-
-
-// Explore page CSS
- .card-columns {
-   @include media-breakpoint-only(lg) {
-     column-count: 4;
-   }
-   @include media-breakpoint-only(xl) {
-     column-count: 5;
-   }
- }
-
- .explore-cards,.search-bar{
-    margin: 50px;
- }
-
- .search-bar{
-   padding-right: 100px;
- }
-
- .explore-page{
-    text-align: center;
-    margin-top: 30px;
-    font-weight: bold;
-    font-size: 3rem;
-    font-variant: small-caps;
-    letter-spacing: 3px;
- }
-
-
- .stats-options{
-    margin: 0px 300px;
- }
-
- .stats-display,.user-display{
-   margin: 20px;
- }
-
- .stats-display h1, .stats-display p, .user-display h1, .user-display p{
-   text-align: center;
-   font-weight: bold;
- }

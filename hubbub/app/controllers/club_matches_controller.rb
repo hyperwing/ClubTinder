@@ -89,6 +89,14 @@ class ClubMatchesController < ApplicationController
     end
   end
 
+  def swipe
+    @potential_matches =[]
+    clubs_by_weight = choose
+    clubs_by_weight.each do |curr_club|
+      c = Club.where name: curr_club[0].name
+      @potential_matches.push c
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

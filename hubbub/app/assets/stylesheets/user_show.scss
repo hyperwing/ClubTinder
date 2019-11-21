@@ -2,10 +2,23 @@
  
  /* User show page */
  .show {
-    margin: auto;
-    width: 30%;
- }
+   margin: auto;
+   width: 30%;
+   
+}
 
- .user_info {
-    display: inline;
- }
+th,td{
+   text-align: center;  
+}
+
+.interests{
+   text-align: left;
+}
+.user_info {
+   display: inline;
+}
+
+.table{
+   margin-top: 5rem;
+   margin-right: 5rem;
+}

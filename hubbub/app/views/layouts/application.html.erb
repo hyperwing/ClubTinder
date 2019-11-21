@@ -1,3 +1,6 @@
+<%# Edited 11/19/2019 by Sri Ramya Dandu: Added navbar
+    Edited 11/20/2019 by Sri Ramya Dandu: Added defualt navbar %>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -18,6 +21,8 @@
         <% elsif current_user.role == "club" %>
         <%= render "layouts/clubnavbar" %>
         <%end%>
+    <%else%>
+      <%= render "layouts/defaultnavbar" %>
     <%end%>
     <%= yield %>
   </body>
