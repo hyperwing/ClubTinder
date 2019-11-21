@@ -18,9 +18,12 @@ th,td{
    text-align: center;  
 }
 
-.interests{
+ul.interests{
    text-align: left;
+   overflow:scroll;
+   max-height:120px;
 }
+
 .user_info {
    display: inline;
 }
