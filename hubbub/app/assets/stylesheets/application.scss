@@ -22,8 +22,6 @@
     width: auto !important;
     margin-left: 100px;
  }*/
-
- //css for new.html.erb (new session)
  #gradient-bg{
    background-image: linear-gradient(white, rgb(153, 141, 207));
    position:fixed;
@@ -37,6 +35,7 @@
    height: 100%;
  }
 
+ //css for new.html.erb (new session)
  .about-hubbub h1.new-session-page-title {
    font-size: 7rem;
    font-weight: bold;
@@ -76,6 +75,19 @@
  }
 
  //css for matched/unmatched
+  hr{
+    border:3px solid;
+    margin:0;
+  }
+  .to-rejections {
+    text-align: right;
+    margin-right: 5%;
+    font-size: 1rem;
+    font-weight: bold;
+    font-variant: small-caps;
+    letter-spacing: 3px;
+  }
+  
   div.grid-and-clubs-container {
     max-height: 50%;
   }
@@ -89,7 +101,8 @@
     font-weight: bold;
     font-variant: small-caps;
     letter-spacing: 3px;
-    text-align: center;
+    text-align: left;
+    margin-left: 5%;
   }
 
   div.tab-pane.active.show {
@@ -107,7 +120,9 @@
     justify-content: center;
     display: grid;
   }
-
+  .empty-matches{
+    text-align: center;
+  }
   div.match-update{
     font-size: 30px;
     justify-content: center;
@@ -121,8 +136,9 @@
 
   .club-cards-container {
     height:50%;
+    margin-top:2%;
   }
-
+  
   div.col-2.club-and-match-update{
     display:grid;
     align-content: center;

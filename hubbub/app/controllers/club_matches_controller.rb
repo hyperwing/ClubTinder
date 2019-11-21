@@ -46,19 +46,22 @@ class ClubMatchesController < ApplicationController
   # PATCH/PUT /club_matches/1
   # PATCH/PUT /club_matches/1.json
   def update_existing_match
-
-    @current_club_match = ClubMatch.find_by(club_id:params[:club], user_id:current_user)
-    p @current_club_match.matched
+    @current_user = User.find(params[:id])
+    @current_club_match = ClubMatch.find_by(club_id:params[:club], user_id:params[:id])
     if @current_club_match.matched
       if @current_club_match.update(matched: 0)
         @current_club_match.reload
-        redirect_to({:controller => "users", :action => "matched"})
+      else
+        flash[:notice] = "Unable to update matched status."
       end
+      redirect_to request.referrer
     else
       if @current_club_match.update(matched: 1)
         @current_club_match.reload
-        redirect_to({:controller => "users", :action => "not_matched"})
+      else
+        flash[:notice] = "Unable to update matched status."
       end
+      redirect_to request.referrer
     end
 
 

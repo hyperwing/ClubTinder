@@ -44,53 +44,33 @@ class UsersController < ApplicationController
   # Created 11/17/2019 by Sharon Qiu
   # Gets the matches
   def matched
-    @matched_clubs = []
-    @matched_club_names = []
-    @clubs = current_user.clubs
-    @matches = current_user.club_matches
-
-    @matches.each do |val|
-      matched = val.matched
-      club_id = val.club_id
-      if matched
-        @clubs.each do |club|
-          if club_id == club.id
-            @matched_clubs.push club
-            @matched_club_names.push club.name
-          end
-        end
-      end
+    @user = User.find_by(id:params[:id])
+    if @user && (@user.role == "user" ||@user.role == "admin")
+      @matched_clubs = Club.left_joins(:club_matches,:users)
+        .where({
+          users: {id:params[:id]},
+          club_matches: {matched:1}
+        })
+    else
+      flash[:notice] = "Attempted access to restricted page. Redirecting..."
+      redirect_to @user
     end
-
-
   end
 
   # Created 11/17/2019 by Sharon Qiu
   # Gets the rejections
   def not_matched
-    @not_matched_clubs = []
-    @not_matched_club_names = []
-    @clubs = current_user.clubs
-    @matches = current_user.club_matches
-
-    @matches.each do |val|
-      matched = val.matched
-      club_id = val.club_id
-      if !matched
-        @clubs.each do |club|
-          if club_id == club.id
-            @not_matched_clubs.push club
-            @not_matched_club_names.push club.name
-          end
-        end
-      end
+    @user = User.find_by(id:params[:id])
+    if @user && (@user.role == "user" ||@user.role == "admin")
+      @not_matched_clubs = Club.left_joins(:club_matches,:users)
+        .where({
+          users: {id:params[:id]},
+          club_matches: {matched:0}
+        })
+    else
+      flash[:notice] = "Attempted access to restricted page. Redirecting..."
+      redirect_to @user
     end
-
-    # @matched_clubs = Club.join(:users, :club_matches)
-    # .where({
-    #   users: {id:current_user},
-    #   club_matches: {matched:0}
-    # })
   end
 
   # Created 11/13/2019 by Sri Ramya Dandu
@@ -195,7 +175,7 @@ class UsersController < ApplicationController
 
   # Created 11/15/2019 by Sri Ramya Dandu
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :grad_year, :gender)
+    params.require(:user).permit(:id, :email, :first_name, :last_name, :grad_year, :gender)
   end
 
   # Created 11/16/2019 by Sri Ramya Dandu
