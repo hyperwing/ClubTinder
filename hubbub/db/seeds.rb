@@ -3,6 +3,8 @@
 # Edited 11/16/2019 by Sri Ramya Dandu: Populated interests table
 # Edited 11/16/2019 by Neel Mansukhani: Created fake user and match data.
 # Edited 11/18/2019 by Leah Gillespie: Fixed typo
+# Edited 11/19/2019 by Neel Mansukhani: Added a destroy_all
+# Edited 11/19/2019 by Neel Mansukhani: Added fake user interests
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -15,6 +17,8 @@ Club.destroy_all
 User.destroy_all
 ClubMatch.destroy_all
 Interest.destroy_all
+ClubInterest.destroy_all
+UserInterest.destroy_all
 
 interestsArr = ["Awareness/Activism", "Academic/College", "Cultural/Ethnic", "Community Service/Service Learning", "Creative and Performing Arts", "Goverance Organization", "Honoraries/Honor Societies", "Media", "Performing Arts", "Religious/Spiritual", "Social Fraternities/Sororities","Sports and Recreation","Service","Special Interest","Technology"]
 interestsArr.each do |interestOption|
@@ -57,6 +61,16 @@ end
     next
   else
     ClubMatch.create({:user_id => user.id,:club_id => club.id,:matched => 1}).save
+  end
+end
+User.all.each do |user|
+  3.times do
+    interest = Interest.order("RANDOM()").limit(1)[0]
+    if user.interests.include? interest
+      next
+    else
+      UserInterest.create({:user_id => user.id,:interest_id => interest.id}).save
+    end
   end
 end
 

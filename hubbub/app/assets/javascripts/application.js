@@ -1,3 +1,4 @@
+// Edited 11/20/2019 by Neel Mansukhani: Added chart components
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -17,3 +18,5 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require chartkick
+//= require Chart.bundle

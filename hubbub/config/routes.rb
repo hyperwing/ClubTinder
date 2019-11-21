@@ -2,6 +2,7 @@
 # Edited 11/10/2019 by Neel Mansukhani: Added default route to sign up page.
 # Edited 11/12/2019 by Neel Mansukhani: Fixed root routing.
 # Edited 11/19/2019 by Leah Gillespie: added route to swipe page
+# Edited 11/20/2019 by Neel Mansukhani: Added my_club.
 Rails.application.routes.draw do
   
   get 'clubs/choose', to: 'clubs#choose'
@@ -11,9 +12,12 @@ Rails.application.routes.draw do
   get 'users/new'
   get 'users/display_stats'
   get 'users/create'
-  get 'matched', to: 'users#matched'
-  get 'not_matched', to: 'users#not_matched'
+  get 'users/matched', to: 'users#matched'
+  get 'users/not_matched', to: 'users#not_matched'
+  post 'users/sign_up', to: 'resources#sign_up'
+  get 'club_matches/update'
   get 'interests/new'
+  get 'users/my_club', to: 'users#club'
   get 'user_interests/select_user_interests'
   get 'user_interests/handle_check_boxes'
   get 'user_interests/update'

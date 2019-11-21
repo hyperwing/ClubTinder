@@ -1,0 +1,20 @@
+<%# File Created 11/20/2019 by Neel Mansukhani %>
+
+<h1> My Club </h1>
+<%= line_chart @club_match_data %>
+<%= bar_chart @user_interest_data %>
+<%= pie_chart @gender_data %>
+<table>
+    <tr>  
+        Club name: <%= @club.name %>
+    </tr>
+    <% @club.users.each do |user| %>
+        <tr>
+            <td> <%= user.first_name %></td>
+            <td> <%= user.last_name %></td>
+            <td> <%= user.email %></td>
+            <td> <%= user.grad_year %></td>
+            <td> <a href = "/users/<%= user.id %>"> Show </a></td>
+        </tr>
+    <% end %>
+</table>

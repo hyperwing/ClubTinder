@@ -8,6 +8,7 @@
 # File edited 11/18/2019 by Sri Ramya Dandu: Modified user display for stats query 
 # File edited 11/18/2019 by Sri Ramya Dandu: Modified titles
 # File edited 11/19/2019 by Sri Ramya Dandu: Explore page
+# File edited 11/20/2019 by Neel Mansukhani: Added club page
 # File edited 11/20/2019 by Sri Ramya Dandu: Added more data to show controller
 
 class UsersController < ApplicationController
@@ -213,17 +214,23 @@ class UsersController < ApplicationController
     flash[:success] = "User deleted"
     redirect_to users_url
   end
-
+  # Created 11/20/2019 by Neel Mansukhani
+  def club
+    @club = Club.find(current_user.club_id)
+    @club_match_data = ClubMatch.where(club_id: @club.id).group_by_day(:created_at).count
+    @user_interest_data = UserInterest.left_joins(:interest).where(user_id: @club.users).group(:name).limit(5).order('COUNT(interests.id) DESC').count
+    @gender_data = ClubMatch.left_joins(:user).where(club_id: @club.id).group(:gender).count
+  end
   private
 
   # Created 11/15/2019 by Sri Ramya Dandu
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :grad_year, :gender)
+    params.require(:user).permit(:email, :first_name, :last_name, :grad_year, :gender, :role)
   end
 
   # Created 11/16/2019 by Sri Ramya Dandu
   # Dummy user params 
   def new_user_params
-    params.permit(:email, :first_name, :last_name, :grad_year, :gender, :password)
+    params.permit(:email, :first_name, :last_name, :grad_year, :gender, :password, :role)
   end
 end

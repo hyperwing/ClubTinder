@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_18_233717) do
+ActiveRecord::Schema.define(version: 2019_11_19_161353) do
 
   create_table "club_interests", force: :cascade do |t|
     t.integer "club_id"
@@ -22,13 +22,11 @@ ActiveRecord::Schema.define(version: 2019_11_18_233717) do
   end
 
   create_table "club_matches", force: :cascade do |t|
-    t.integer "club_id"
     t.integer "user_id"
-    t.boolean "matched"
+    t.integer "club_id"
+    t.integer "matched"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["club_id"], name: "index_club_matches_on_club_id"
-    t.index ["user_id"], name: "index_club_matches_on_user_id"
   end
 
   create_table "clubs", force: :cascade do |t|
@@ -49,12 +47,10 @@ ActiveRecord::Schema.define(version: 2019_11_18_233717) do
   end
 
   create_table "user_interests", force: :cascade do |t|
-    t.integer "user_id"
     t.integer "interest_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["interest_id"], name: "index_user_interests_on_interest_id"
-    t.index ["user_id"], name: "index_user_interests_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -70,6 +66,8 @@ ActiveRecord::Schema.define(version: 2019_11_18_233717) do
     t.string "grad_year"
     t.string "gender"
     t.integer "role"
+    t.integer "club_id"
+    t.index ["club_id"], name: "index_users_on_club_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
