@@ -51,15 +51,19 @@ class UsersController < ApplicationController
   # Gets the matches
   def matched
     @user = User.find_by(id:params[:id])
-    @matched_clubs = []
-    @club_matches = @user.club_matches.map{|club| club.club_id if club.matched}.uniq.compact
-    @user_clubs = @user.clubs
+    # @matched_clubs = []
+    # @club_matches = @user.club_matches.map{|club| club.club_id if club.matched}.uniq.compact
+    # @user_clubs = @user.clubs
     if @user && (@user.role == "user" ||@user.role == "admin")
-      @user_clubs.each do |club|
-        if @club_matches.include? club.id
-          @matched_clubs.push club
-        end
-      end
+      @matched_clubs = Club.left_joins(:users,:club_matches).where(
+        :users => {:id => params[:id]},
+        :club_matches => {:matched => 1}
+      )
+      # @user_clubs.each do |club|
+      #   if @club_matches.include? club.id
+      #     @matched_clubs.push club
+      #   end
+      # end
     else
       flash[:notice] = "Attempted access to restricted page. Redirecting..."
       redirect_to @user
