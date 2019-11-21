@@ -5,6 +5,7 @@
 # Edited 11/17/2019 by Neel Mansukhani: Added validations
 # Edited 11/18/2019 by David Wing: added user interest relations
 # Edited 11/20/2019 by Neel Mansukhani: Added has_one club relation
+# Edited 11/20/2019 by Neel Mansukhani: Fixed relations
 class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -12,7 +13,7 @@ class User < ApplicationRecord
   has_many :clubs, through: :club_matches
 
   has_many :user_interests
-  has_many :interest, through: :user_interests
+  has_many :interests, through: :user_interests
 
   has_one :club
   enum role: [:user, :club, :admin]

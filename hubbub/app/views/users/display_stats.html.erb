@@ -1,19 +1,20 @@
 <%# File created 11/13/2019 by Sri Ramya Dandu
     Edited 11/18/2019 by Sri Ramya Dandu: Changed display 
-    Edited 11/18/2019 by Sri Ramya Dandu: Added Bootstrap %>
+    Edited 11/18/2019 by Sri Ramya Dandu: Added Bootstrap 
+    Edited 11/19/2019 by Sri Ramya Dandu: Added more bootstrap %>
 
 
+<div class = "stats-display">
 <h1> <%= @title %> </h1>
 <p> Total Users: <%= @total %> </p>
-<table class="table table-nonfluid">
+<table class="table table-nonfluid table-striped">
   <thead class="thead-dark">
     <tr>
         <th scope="col">First Name</th>
         <th scope="col">Last Name</th>
         <th scope="col">Email</th>
         <th scope="col">Matched Clubs</th>
-        <th scope="col">Options</th>
-        <th scope="col"></th>
+        <th colspan="2">Options</th>
     </tr>
  </thead>
  <tbody>
@@ -36,24 +37,25 @@
         end
     %>
     <tr>
-    <td> <%= user.first_name %></td>
-    <td> <%= user.last_name %></td>
-    <td> <%= user.email %></td>
+      <td> <%= user.first_name %></td>
+      <td> <%= user.last_name %></td>
+      <td> <%= user.email %></td>
 
-    <td> 
-    <div class="list-group">
-    <ul class="list-group">
-    <% @matched_clubs.each do |club| %>
-        <a href=" <%= club.link %> class="list-group-item-action"><%=club.name%></a>
-        <% end %>
-    </ul>
-    </div>
-        
-    </td>
-    <td> <a href = "/users/<%= user.id %>"> Profile </a></td>
-    <td> <a href = "/users/<%= user.id %>/edit"> Edit </a></td>
+      <td>
+      <div class="list-group">
+        <ul class="list-group">
+          <% @matched_clubs.each do |club| %>
+          
+          <a href=" <%= club.link %> class="list-group-item-action"><%=club.name%></a>
+          <% end %>
+        </ul>
+      </div>
+          
+      </td>
+      <td> <a href = "/users/<%= user.id %>"> Profile </a></td>
+      <td> <a href = "/users/<%= user.id %>/edit"> Edit </a></td>
     </tr>
     <% end %>
     </tbody>
 </table>
-<a href = "/users/stats"> Stats </a>
+</div>

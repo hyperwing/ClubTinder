@@ -52,6 +52,7 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+  <%= f.submit %>
 <% end %>
 <div id="club" style="display:none;">
   <%= form_with(model: Club.new, local: true, id: "club_form") do |form| %>

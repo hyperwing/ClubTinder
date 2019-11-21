@@ -1,0 +1,33 @@
+<%# File created 11/19/2019 by Sri Ramya Dandu %>
+
+<h2 class = "explore-page"> EXPLORE </h2>
+
+
+<div class="input-group mb-3 search-bar">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">Search</span>
+  </div>
+  <input type="text" class="form-control" aria-label="Search">
+  <input type="button" value = "&#128269;">
+</div>
+
+
+
+<div class = "explore-cards"> 
+  <div class="card-columns">
+    <% @clubs.each do |club| %>
+      <div class="card">
+        <img src=<%= club.img %> class="card-img-top" alt="<%= club.name %>">
+        <div class="card-body">
+          <h5 class="card-title"><%= club.name %></h5>
+          <p class="card-text"><%= club.mission %></p>
+          <a href= <%= club.link %> class="btn btn-primary btn-sm">Learn More</a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+  
