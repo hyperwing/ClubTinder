@@ -10,6 +10,8 @@
 # File edited 11/19/2019 by Sri Ramya Dandu: Explore page
 # File edited 11/20/2019 by Neel Mansukhani: Added club page
 # File edited 11/20/2019 by Sri Ramya Dandu: Added more data to show controller
+# File edited 11/20/2019 by Sharon Qiu: Fixed query for match/unmatch.
+# File edited 11/21/2019 by Sharon Qiu: Fixed query again for match/unmatch...
 
 class UsersController < ApplicationController
   
@@ -45,53 +47,43 @@ class UsersController < ApplicationController
   end 
 
   # Created 11/17/2019 by Sharon Qiu
+  # Edited 11/21/2019 by Sharon Qiu: Fixed query
   # Gets the matches
   def matched
+    @user = User.find_by(id:params[:id])
     @matched_clubs = []
-    @matched_club_names = []
-    @clubs = current_user.clubs
-    @matches = current_user.club_matches
-
-    @matches.each do |val|
-      matched = val.matched
-      club_id = val.club_id
-      if matched
-        @clubs.each do |club|
-          if club_id == club.id
-            @matched_clubs.push club
-            @matched_club_names.push club.name
-          end
+    @club_matches = @user.club_matches.map{|club| club.club_id if club.matched}.uniq.compact
+    @user_clubs = @user.clubs
+    if @user && (@user.role == "user" ||@user.role == "admin")
+      @user_clubs.each do |club|
+        if @club_matches.include? club.id
+          @matched_clubs.push club
         end
       end
+    else
+      flash[:notice] = "Attempted access to restricted page. Redirecting..."
+      redirect_to @user
     end
   end
 
   # Created 11/17/2019 by Sharon Qiu
+  # Edited 11/21/2019 by Sharon Qiu: Fixed query
   # Gets the rejections
   def not_matched
+    @user = User.find_by(id:params[:id])
     @not_matched_clubs = []
-    @not_matched_club_names = []
-    @clubs = current_user.clubs
-    @matches = current_user.club_matches
-
-    @matches.each do |val|
-      matched = val.matched
-      club_id = val.club_id
-      if !matched
-        @clubs.each do |club|
-          if club_id == club.id
-            @not_matched_clubs.push club
-            @not_matched_club_names.push club.name
-          end
+    @not_club_matches = @user.club_matches.map{|club| club.club_id if !club.matched}.uniq.compact
+    @user_clubs = @user.clubs
+    if @user && (@user.role == "user" ||@user.role == "admin")
+      @user_clubs.each do |club|
+        if @not_club_matches.include? club.id
+          @not_matched_clubs.push club
         end
       end
+    else
+      flash[:notice] = "Attempted access to restricted page. Redirecting..."
+      redirect_to @user
     end
-
-    # @matched_clubs = Club.join(:users, :club_matches)
-    # .where({
-    #   users: {id:current_user},
-    #   club_matches: {matched:0}
-    # })
   end
 
   # Created 11/13/2019 by Sri Ramya Dandu
@@ -181,7 +173,7 @@ class UsersController < ApplicationController
     @interests = []
     @all_interests.each do |interest|
       @user_interests.each do |user_interest|
-        if user_interest.interest_id == interest.id
+        if (user_interest.interest_id == interest.id) && !(@interests.include? interest)
           @interests.push(interest)
         end
       end
@@ -219,7 +211,7 @@ class UsersController < ApplicationController
 
   # Created 11/15/2019 by Sri Ramya Dandu
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :grad_year, :gender, :role)
+    params.require(:user).permit(:id ,:email, :first_name, :last_name, :grad_year, :gender, :role)
   end
 
   # Created 11/16/2019 by Sri Ramya Dandu

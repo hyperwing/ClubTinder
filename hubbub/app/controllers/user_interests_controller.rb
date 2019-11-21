@@ -45,6 +45,7 @@ class UserInterestsController < ApplicationController
     def handle_check_boxes
 
         tag_ids = params[:tag_ids]
+        logger.debug("tag_ids: " +tag_ids.to_s)
 
         @interests = Interest.all
         # if box checked, add to model, else destroy from model
@@ -59,14 +60,18 @@ class UserInterestsController < ApplicationController
 
                 logger.debug("creating new user_interest")
 
-                new_interest = UserInterest.new
-                new_interest.user_id = current_user.id
-                new_interest.interest_id = i_box.id
-        
-                if new_interest.save
-                    logger.debug("saved successfully")  
-                else    
-                    logger.debug("failed to save")  
+                # Where user_interests already has an entry for user
+                if (UserInterest.where(:interest_id => i_box.id).where(:user_id => current_user.id)).count ==0
+                
+                    new_interest = UserInterest.new
+                    new_interest.user_id = current_user.id
+                    new_interest.interest_id = i_box.id
+            
+                    if new_interest.save
+                        logger.debug("saved successfully")  
+                    else    
+                        logger.debug("failed to save")  
+                    end
                 end
 
             else

@@ -12,25 +12,22 @@
   <body>
     <h1>Choose your Clubs</h1>
     <h2>Press the left arrow for "no" and the right arrow for "yes"</h2>
-    <table>
       <div id="swipeCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-          <%@potential_matches.each do |c|
-            first = true;
+          <%first = true
+            @potential_matches.each do |c|
             if first
               active = "carousel-item active"
-              first = false;
+              first = false
              else
               active = "carousel-item"
              end
             %>
             <div class="<%= %"#{active}"%>">
-              <tr class="d-block w-100">
-                <td><%=%"#{c[0].name}"%></td>
-                <td><%=%"#{c[0].mission}"%></td>
-                <td><%=%"#{c[0].affiliations}"%></td>
-                <td><%=%"#{c[0].location}"%></td>
-              </tr>
+              <p class="d-block w-100"><%=%"#{c[0].name}"%></p>
+              <p class="d-block w-100"><%=%"#{c[0].mission}"%></p>
+              <p class="d-block w-100"><%=%"#{c[0].affiliations}"%></p>
+              <p class="d-block w-100"><%=%"#{c[0].location}"%></p>
             </div>
           <%end%>
         </div>
@@ -42,7 +39,7 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
+        </table>
       </div>
-    </table>
   </body>
 </html>

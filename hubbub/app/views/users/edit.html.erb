@@ -1,6 +1,8 @@
 <%# File created 10/13/2019 by Sri Ramya Dandu 
-    Edited 11/15/2019 by Sri Ramya Dandu: Added drop down features  %>
-
+    Edited 11/15/2019 by Sri Ramya Dandu: Added drop down features
+    Edited 11/20/2019 by Sharon Qiu: Aligned content and added margining to fields..%>
+<%= stylesheet_link_tag 'admin_edit_user_info'%>
+<div class="container">
 <h1>Update User Information</h1>
 <% years = (1950..2050).to_a %>
 <%= form_for(@user) do |f| %>
@@ -30,8 +32,9 @@
   <%= f.select :gender, options_for_select(['Male', 'Female', 'Other'], selected_key = f.object.gender)%>
 </div>
 
-
 <%= f.submit "Save changes" %>
+<%= link_to "Go Back", request.referrer %>
 <% end %>
+</div>
 
    

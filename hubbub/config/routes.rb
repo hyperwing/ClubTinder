@@ -12,10 +12,10 @@ Rails.application.routes.draw do
   get 'users/new'
   get 'users/display_stats'
   get 'users/create'
-  get 'users/matched', to: 'users#matched'
-  get 'users/not_matched', to: 'users#not_matched'
+  get 'users/matched/:id', to: 'users#matched'
+  get 'users/not_matched/:id', to: 'users#not_matched'
   post 'users/sign_up', to: 'resources#sign_up'
-  get 'club_matches/update'
+  #get 'club_matches/update'
   get 'interests/new'
   get 'clubs/my_club', to: 'clubs#my_club'
   get 'user_interests/select_user_interests'
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   }
   resources :club_matches, :except => [:show,:update] do
     collection do
-      patch 'update_current', as: :add_current, to: 'club_matches#update_existing_match'
+      patch 'club_matches/update_current/:id', as: :add_current, to: 'club_matches#update_existing_match'
     end
   end
   resources :clubs

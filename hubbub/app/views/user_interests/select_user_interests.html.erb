@@ -20,10 +20,9 @@ Select interests for <%= @cur_u.email %> <br>
 
                 <%# prefills the form %>
                 <% if selected == true %>
-                        <%=interest.name%> <%= check_box_tag name="tag_id[]", value=interest.id, checked = true%> <br>
+                        <%=interest.name%> <%= check_box_tag name="tag_ids[]", value=interest.id, checked = true%> <br>
                 
                 <% else %>
-                        <!-- <%=interest.name%> <%= check_box_tag  name="tag_id[]", value=interest.id, checked = false%> <br> -->
                         <%=interest.name%><input type="checkbox" name="tag_ids[]" value="<%=interest.id %>" /> <br>
                 <% end %>
 

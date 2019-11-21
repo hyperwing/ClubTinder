@@ -6,14 +6,24 @@
    width: 30%;
    
 }
+.left-side{
+  border-right: 3px solid;
+}
+
+.card-dimensioning {
+  float:right;
+}
 
 th,td{
    text-align: center;  
 }
 
-.interests{
+ul.interests{
    text-align: left;
+   overflow:scroll;
+   max-height:120px;
 }
+
 .user_info {
    display: inline;
 }
@@ -21,4 +31,5 @@ th,td{
 .table{
    margin-top: 5rem;
    margin-right: 5rem;
+   width:60%;
 }

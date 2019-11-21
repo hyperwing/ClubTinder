@@ -1,5 +1,26 @@
-#bg-img{
-    background-image: linear-gradient(rgb(129, 230, 243), rgb(235, 74, 227));
+// Edited 11/20/2019 by Sharon Qiu: Added css from application.scss
+.about-hubbub h1.new-session-page-title {
+    font-size: 7rem;
+    font-weight: bold;
+    font-variant: small-caps;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.about-hubbub, .sign-in-form {
+    font-size: 1em;
+    font-weight: bold;
+    font-variant: small-caps;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.about-hubbub {
+    margin-top: 10%;
+}
+
+.sign-in-form {
+    margin-top: 3%;
 }
 
 body {

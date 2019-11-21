@@ -1,6 +1,7 @@
 # Created 11/09/2019 by Sharon Qiu
 # Edited 11/17/2019 by Leah Gillespie
 # Edited 11/17/2019 by Sharon Qiu
+
 # Controller for club matches page
 
 class ClubMatchesController < ApplicationController
@@ -43,36 +44,26 @@ class ClubMatchesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /club_matches/1
-  # PATCH/PUT /club_matches/1.json
+  # Created 11/14/2019 by Sharon Qiu
+  # updates club match
   def update_existing_match
-
-    @current_club_match = ClubMatch.find_by(club_id:params[:club], user_id:current_user)
-    p @current_club_match.matched
+    @current_user = User.find(params[:id])
+    @current_club_match = ClubMatch.find_by(club_id:params[:club], user_id:params[:id])
     if @current_club_match.matched
       if @current_club_match.update(matched: 0)
         @current_club_match.reload
-        redirect_to({:controller => "users", :action => "matched"})
+      else
+        flash[:notice] = "Unable to update matched status."
       end
+      redirect_to request.referrer
     else
       if @current_club_match.update(matched: 1)
         @current_club_match.reload
-        redirect_to({:controller => "users", :action => "not_matched"})
+      else
+        flash[:notice] = "Unable to update matched status."
       end
+      redirect_to request.referrer
     end
-
-
-
-    # respond_to do |format|
-    #   if @club_match.update(club_match_params)
-        
-    #     format.html { redirect_to @club_match, notice: 'Club match was successfully updated.' }
-    #     format.json { render :show, status: :ok, location: @club_match }
-    #   else
-    #     format.html { render :edit }
-    #     format.json { render json: @club_match.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   

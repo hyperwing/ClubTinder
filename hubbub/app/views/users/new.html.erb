@@ -1,29 +1,35 @@
 <%# File created 11/16/2019 by Sri Ramya Dandu 
-    Edited 11/17/2019 by Sri Ramya Dandu: Added form validations %>
-<h2>Create a dummy user</h2>
-<% years = (1950..2050).to_a %>
+    Edited 11/17/2019 by Sri Ramya Dandu: Added form validations
+    Edited 11/20/2019 by Sharon Qiu: aligned content and added margining %>
+<%= stylesheet_link_tag 'admin_edit_user_info'%>
+<div class="container new-user">
+  <div class="card">
+    <h2 class="card-header">Create a new user</h2>
+      <div class="card-body">
+      <% years = (1950..2050).to_a %>
+      <form action = "/users/create">
+        Email: <input type="email" name="email" required> <br><br>
+        First name: <input type="text" name="first_name" required>  <br><br>
+        Last name: <input type="text" name="last_name" required>  <br><br>
 
+        Graduation Year:<br>
+        <input type="text" name="grad_year" required>
+        <br>
+        <br>
 
-<form action = "/users/create">
-  Email: <input type="email" name="email" required> <br><br>
-  First name: <input type="text" name="first_name" required>  <br><br>
-  Last name: <input type="text" name="last_name" required>  <br><br>
+        Gender: 
+        <br>
+        <input type="radio" name="gender" value="Male" checked> Male<br>
+        <input type="radio" name="gender" value="Female"> Female<br>
+        <input type="radio" name="gender" value="Other"> Other  
+        <br>
+        <br>
 
-  Graduation Year:<br>
-  <input type="text" name="grad_year" required>
-  <br>
-  <br>
-
-  Gender: 
-  <br>
-  <input type="radio" name="gender" value="Male" checked> Male<br>
-  <input type="radio" name="gender" value="Female"> Female<br>
-  <input type="radio" name="gender" value="Other"> Other  
-  <br>
-  <br>
-
-  Password: <input type="text" name="password" required>  <br><br>
-  <input type="submit" value="Submit">
-  <br>
-</form> 
-
+        Password: <input type="text" name="password" required>  <br><br>
+        <input type="submit" value="Submit" class="input-button">
+        <br>
+      </form> 
+      <%= button_to "Go Back", request.referrer, :method => :get%>
+      </div>
+  </div>
+</div>

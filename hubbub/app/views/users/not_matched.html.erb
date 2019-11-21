@@ -1,6 +1,14 @@
 <%# File created 11/17/2019 by Sharon Qiu %>
-<%# Edited 11/20/2019 by Sharon Qiu %>
-<h1 class="page-title-selected-matches">REJECTIONS</h1>
+<%# Edited 11/20/2019 by Sharon Qiu: Applied Bootstrap. %>
+<%= stylesheet_link_tag 'show_matches_page'%>
+<div class="row">
+    <div class="col">
+    <h1 class="page-title-selected-matches">REJECTIONS</h1>
+    </div>
+    <div class="col to-rejections">
+    <a href="/users/matched/<%=@user.id%>" class="btn">Matched&#8594;</a>
+    </div>
+</div>
 <hr/>
 <div class="grid-and-clubs-container">
     <%if @not_matched_clubs.count == 0%>
@@ -9,18 +17,29 @@
         <div class="row full-body-match">
             <div class="col-4 list-of-clubs-container">
                 <div class="list-group" id="list-tab" role="tablist">
-                    <%@not_matched_club_names.each do |club_name| %>
-                        <a class="list-group-item list-group-item-action selected-matches-list-group-item" data-toggle="list" href="#<%=club_name.gsub(/\s+/, "")%>" role="tab" aria-controls="<%=club_name%>"><%=club_name%></a>
+                    <%count = 1%>
+                    <%@not_matched_clubs.each do |club| %>
+                        <%if count == 1%>
+                            <a class="list-group-item list-group-item-action selected-matches-list-group-item active show" data-toggle="list" href="#<%=club.name.gsub(/\s+/, "")%>" role="tab" aria-controls="<%=club.name%>"><%=club.name%></a>
+                        <%else%>
+                            <a class="list-group-item list-group-item-action selected-matches-list-group-item" data-toggle="list" href="#<%=club.name.gsub(/\s+/, "")%>" role="tab" aria-controls="<%=club.name%>"><%=club.name%></a>
+                        <%end%>
+                        <%count += 1%>
                     <%end%>
                 </div>
             </div>
             <div class="col-6 club-cards-container">
                 <div class="tab-content" id="nav-tabContent">
+                <%count = 1%>
                 <%@not_matched_clubs.each do |club| %>
-                    <div class="tab-pane" id="<%=club.name.gsub(/\s+/, "")%>" role="tabpanel">
+                    <%if count == 1%>
+                        <div class="tab-pane active show" id="<%=club.name.gsub(/\s+/, "")%>" role="tabpanel">
+                    <%else%>
+                        <div class="tab-pane" id="<%=club.name.gsub(/\s+/, "")%>" role="tabpanel">
+                    <%end%>
                         <div class="row tab-panel">
                             <div class="col-10 list-of-clubs-container">
-                                <img src="<%=club.img%>" class="card-img-top-selected" alt="<%=club.name%>"%>
+                                <img src="<%=club.img%>" class="card-img" alt="<%=club.name%>"%>
                                 <div class="selected-matches-card-body">
                                     <h5 class="selected-matches-card-title"><%= club.name %></h5>
                                     <p class="selected-matches-card-text"><%= club.mission %></p>
@@ -29,11 +48,12 @@
                             <div class="col-2 club-and-match-update">
                                 <a href= "<%= club.link %>" class="btn go-to-club">&#8594;</a>
                                 <div class="match-update">
-                                    <%= link_to '✓',add_current_club_matches_url( :club => club.id), :method => :patch%>
+                                    <%= link_to '✓',add_current_club_matches_url(:club => club.id, :id => @user.id), :data =>{confirm: "Are you sure you'd like to match with this club?"}, :method => :patch%>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <%count += 1%>
                 <%end%>
                 </div>
             </div>
