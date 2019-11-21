@@ -43,6 +43,7 @@ class ClubsController < ApplicationController
   # GET /clubs/1
   # GET /clubs/1.json
   def show
+    redirect_to clubs_my_club_path
   end
 
   # GET /clubs/new
@@ -67,6 +68,8 @@ class ClubsController < ApplicationController
         format.json { render json: @club.errors, status: :unprocessable_entity }
       end
     end
+    current_user.update_attributes(:club_id => @club.id)
+    current_user.save
   end
 
   # PATCH/PUT /clubs/1
@@ -101,6 +104,13 @@ class ClubsController < ApplicationController
     end
   end
 
+  # Created 11/20/2019 by Neel Mansukhani
+  def my_club
+    @club = Club.find(current_user.club_id)
+    @club_match_data = ClubMatch.where(club_id: @club.id).group_by_day(:created_at).count
+    @user_interest_data = UserInterest.left_joins(:interest).where(user_id: @club.users).group(:name).limit(5).order('COUNT(interests.id) DESC').count
+    @gender_data = ClubMatch.left_joins(:user).where(club_id: @club.id).group(:gender).count
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_club

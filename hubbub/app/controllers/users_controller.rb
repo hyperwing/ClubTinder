@@ -214,13 +214,7 @@ class UsersController < ApplicationController
     flash[:success] = "User deleted"
     redirect_to users_url
   end
-  # Created 11/20/2019 by Neel Mansukhani
-  def club
-    @club = Club.find(current_user.club_id)
-    @club_match_data = ClubMatch.where(club_id: @club.id).group_by_day(:created_at).count
-    @user_interest_data = UserInterest.left_joins(:interest).where(user_id: @club.users).group(:name).limit(5).order('COUNT(interests.id) DESC').count
-    @gender_data = ClubMatch.left_joins(:user).where(club_id: @club.id).group(:gender).count
-  end
+
   private
 
   # Created 11/15/2019 by Sri Ramya Dandu

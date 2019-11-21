@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   post 'users/sign_up', to: 'resources#sign_up'
   get 'club_matches/update'
   get 'interests/new'
-  get 'users/my_club', to: 'users#club'
+  get 'clubs/my_club', to: 'clubs#my_club'
   get 'user_interests/select_user_interests'
   get 'user_interests/handle_check_boxes'
   get 'user_interests/update'
@@ -26,7 +26,8 @@ Rails.application.routes.draw do
   get 'users/preferences'
   get 'club_matches/swipe'
   devise_for :users, controllers: {
-    sessions: 'users/sessions'
+    sessions: 'users/sessions',
+    registrations: "users/registrations"
   }
   resources :club_matches, :except => [:show,:update] do
     collection do
@@ -37,7 +38,7 @@ Rails.application.routes.draw do
   resources :users
   devise_scope :user do
     authenticated do
-      root 'clubs#choose'
+      root 'users#matched'
     end
   
     unauthenticated do
