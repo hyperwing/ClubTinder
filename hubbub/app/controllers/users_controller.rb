@@ -51,19 +51,20 @@ class UsersController < ApplicationController
   # Gets the matches
   def matched
     @user = User.find_by(id:params[:id])
-    @matched_clubs = []
-    @club_matches = @user.club_matches.map{|club| club.club_id if club.matched}.uniq.compact
-    @user_clubs = @user.clubs
-    if @user && (@user.role == "user" ||@user.role == "admin")
-      @user_clubs.each do |club|
-        if @club_matches.include? club.id
-          @matched_clubs.push club
-        end
-      end
-    else
-      flash[:notice] = "Attempted access to restricted page. Redirecting..."
-      redirect_to @user
-    end
+    # @matched_clubs = []
+    # @club_matches = @user.club_matches.map{|club| club.club_id if club.matched}.uniq.compact
+    # @user_clubs = @user.clubs
+    # if @user && (@user.role == "user" ||@user.role == "admin")
+    #   @user_clubs.each do |club|
+    #     if @club_matches.include? club.id
+    #       @matched_clubs.push club
+    #     end
+    #   end
+    # else
+    #   flash[:notice] = "Attempted access to restricted page. Redirecting..."
+    #   redirect_to @user
+    # end
+    @matched_clubs = Club.left_joins(:club_matches).where(:club_matches => {matched: 1}).left_joins(:users).where(:club_matches => {user_id: params[:id]}).where(:users => {id: params[:id]})
   end
 
   # Created 11/17/2019 by Sharon Qiu
@@ -71,20 +72,21 @@ class UsersController < ApplicationController
   # Gets the rejections
   def not_matched
     @user = User.find_by(id:params[:id])
-    @not_matched_clubs = []
-    @not_club_matches = @user.club_matches.map{|club| club.club_id if !club.matched}.uniq.compact
-    @user_clubs = @user.clubs
-    if @user && (@user.role == "user" ||@user.role == "admin")
-      @user_clubs.each do |club|
-        if @not_club_matches.include? club.id
-          @not_matched_clubs.push club
-        end
-      end
-    else
-      flash[:notice] = "Attempted access to restricted page. Redirecting..."
-      redirect_to @user
+    # @not_matched_clubs = []
+    # @not_club_matches = @user.club_matches.map{|club| club.club_id if !club.matched}.uniq.compact
+    # @user_clubs = @user.clubs
+    # if @user && (@user.role == "user" ||@user.role == "admin")
+    #   @user_clubs.each do |club|
+    #     if @not_club_matches.include? club.id
+    #       @not_matched_clubs.push club
+    #     end
+    #   end
+    # else
+    #   flash[:notice] = "Attempted access to restricted page. Redirecting..."
+    #   redirect_to @user
+    # end
+    @not_matched_clubs = Club.left_joins(:club_matches).where(:club_matches => {matched: 0}).left_joins(:users).where(:club_matches => {user_id: params[:id]}).where(:users => {id: params[:id]})
     end
-  end
 
   # Created 11/13/2019 by Sri Ramya Dandu
   # Obtains params from stats and parses for correct users 
@@ -169,7 +171,7 @@ class UsersController < ApplicationController
     end
 
     @all_interests = Interest.all
-    @user_interests = UserInterest.where(:user_id== current_user.id)
+    @user_interests = UserInterest.where(:user_id => current_user.id)
     @interests = []
     @all_interests.each do |interest|
       @user_interests.each do |user_interest|

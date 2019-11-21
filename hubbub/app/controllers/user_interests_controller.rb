@@ -6,7 +6,7 @@ class UserInterestsController < ApplicationController
     def select_user_interests
         @interests = Interest.all
         # current user interests
-        @user_interests = UserInterest.where(:user_id== current_user.id)
+        @user_interests = UserInterest.where(:user_id => current_user.id)
         @cur_u = current_user
 
     end
@@ -61,7 +61,7 @@ class UserInterestsController < ApplicationController
                 logger.debug("creating new user_interest")
 
                 # Where user_interests already has an entry for user
-                if (UserInterest.where(:interest_id => i_box.id).where(:user_id => current_user.id)).count ==0
+                if (UserInterest.where(:interest_id => i_box.id).where(:user_id => current_user.id)).count == 0
                 
                     new_interest = UserInterest.new
                     new_interest.user_id = current_user.id
