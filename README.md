@@ -4,7 +4,7 @@ The team created the Web App Hubbub. Hubbub is an application that matches stude
 
 #### Student Access includes the following:
 - Swipe Page: Displays club options that the user might like and gives the user the option to match with these clubs
-- Display matches: Allows the user to see all the clubs they chose to match with
+- Display matches: Allows the user to see all the clubs they chose to match with. User can also change their matches after selection.
 - Interests page: User can change their interests 
 - Explore page: User can search for any club
 
@@ -22,7 +22,7 @@ The team created the Web App Hubbub. Hubbub is an application that matches stude
 * Overall Project Manager:Neel Mansukhani
 * Coding Manager: David Wing
 * Testing Manager: Sri Ramya Dandu
-* Documentation: Sharon Qiu
+* Documentation Manager: Sharon Qiu
 
 ### Contributions
 Please list who did what for each part of the project.
@@ -38,5 +38,6 @@ Leah Gillespie
 Neel Mansukahi 
 
 Sharon Qiu
+1. Set up the Matched and Not Matched routes as well as the controller and model for club matches.
 
 David Wing

@@ -9,6 +9,7 @@
 # File edited 11/18/2019 by Sri Ramya Dandu: Modified titles
 # File edited 11/19/2019 by Sri Ramya Dandu: Explore page
 # File edited 11/20/2019 by Sri Ramya Dandu: Added more data to show controller
+# File edited 11/20/2019 by Sharon Qiu: Fixed query for match/unmatch.
 
 class UsersController < ApplicationController
   
