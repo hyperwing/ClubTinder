@@ -41,3 +41,26 @@ Sharon Qiu
 1. Set up the Matched and Not Matched routes as well as the controller and model for club matches.
 
 David Wing
+
+### Running the program
+To run the program, follow these steps:
+1. Change directory to the hubbub folder using cd hubbub
+2. Migrate the models by typing into console/terminal: "rails db:migrate"
+3. Fill models by typing into console/terminal: "rails db:seed"
+4. Start the server by typing into console/terminal: "rails s"
+5. To access various views:
+    * User
+        1. Around 50 users have been initialized in the seed. To access a regular user, the email initialized is user#@gmail.com where # is a value between 1 and 49. The password is 111111.
+    * Admin
+        1. Log in by using one of the group member's emails. This include:
+            * mansukhani.9@osu.edu
+            * wing.49@osu.edu
+            * gillespie.267@osu.edu
+            * dandu.7@osu.edu
+            * Qiu.374@osu.edu
+        2. Enter the password. It should be 111111.
+    * Club
+### Running the tests
+To run tests, follow these steps:
+1. Change directory to the hubbub folder using cd hubbub
+2. in your console/terminal, type in: "rails test"

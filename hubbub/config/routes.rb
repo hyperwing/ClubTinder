@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   resources :users
   devise_scope :user do
     authenticated do
-      root 'users#matched'
+      root 'clubs#choose'
     end
   
     unauthenticated do
