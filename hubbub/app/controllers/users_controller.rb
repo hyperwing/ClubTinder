@@ -11,6 +11,7 @@
 # File edited 11/20/2019 by Neel Mansukhani: Added club page
 # File edited 11/20/2019 by Sri Ramya Dandu: Added more data to show controller
 # File edited 11/20/2019 by Sharon Qiu: Fixed query for match/unmatch.
+# File edited 11/21/2019 by Sharon Qiu: Fixed query again for match/unmatch...
 
 class UsersController < ApplicationController
   
@@ -46,15 +47,19 @@ class UsersController < ApplicationController
   end 
 
   # Created 11/17/2019 by Sharon Qiu
+  # Edited 11/21/2019 by Sharon Qiu: Fixed query
   # Gets the matches
   def matched
     @user = User.find_by(id:params[:id])
+    @matched_clubs = []
+    @club_matches = @user.club_matches.map{|club| club.club_id if club.matched}.uniq.compact
+    @user_clubs = @user.clubs
     if @user && (@user.role == "user" ||@user.role == "admin")
-      @matched_clubs = Club.left_joins(:club_matches,:users)
-        .where({
-          users: {id:params[:id]},
-          club_matches: {matched:1}
-        }).uniq
+      @user_clubs.each do |club|
+        if @club_matches.include? club.id
+          @matched_clubs.push club
+        end
+      end
     else
       flash[:notice] = "Attempted access to restricted page. Redirecting..."
       redirect_to @user
@@ -62,15 +67,19 @@ class UsersController < ApplicationController
   end
 
   # Created 11/17/2019 by Sharon Qiu
+  # Edited 11/21/2019 by Sharon Qiu: Fixed query
   # Gets the rejections
   def not_matched
     @user = User.find_by(id:params[:id])
+    @not_matched_clubs = []
+    @not_club_matches = @user.club_matches.map{|club| club.club_id if !club.matched}.uniq.compact
+    @user_clubs = @user.clubs
     if @user && (@user.role == "user" ||@user.role == "admin")
-      @not_matched_clubs = Club.left_joins(:club_matches,:users)
-        .where({
-          users: {id:params[:id]},
-          club_matches: {matched:0}
-        }).uniq
+      @user_clubs.each do |club|
+        if @not_club_matches.include? club.id
+          @not_matched_clubs.push club
+        end
+      end
     else
       flash[:notice] = "Attempted access to restricted page. Redirecting..."
       redirect_to @user
