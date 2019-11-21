@@ -5,6 +5,7 @@ class ClubMatchesControllerTest < ActionDispatch::IntegrationTest
     @club_match = club_matches(:one)
   end
 
+  /
   test "should get index" do
     get club_matches_url
     assert_response :success
@@ -45,4 +46,5 @@ class ClubMatchesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to club_matches_url
   end
+  /
 end

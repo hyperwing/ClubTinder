@@ -9,6 +9,7 @@
 # File edited 11/18/2019 by Sri Ramya Dandu: Modified titles
 # File edited 11/19/2019 by Sri Ramya Dandu: Explore page
 # File edited 11/20/2019 by Neel Mansukhani: Added club page
+# File edited 11/20/2019 by Sri Ramya Dandu: Added more data to show controller
 
 class UsersController < ApplicationController
   
@@ -42,36 +43,34 @@ class UsersController < ApplicationController
   def explore
     @clubs = Club.all.shuffle
   end 
+
   # Created 11/17/2019 by Sharon Qiu
   # Gets the matches
   def matched
-    @matched_clubs = current_user.clubs
-    # @clubs = current_user.clubs
-    # @matches = current_user.club_matches
+    @matched_clubs = []
+    @matched_club_names = []
+    @clubs = current_user.clubs
+    @matches = current_user.club_matches
 
-    # @matches.each do |val|
-    #   matched = val.matched
-    #   club_id = val.club_id
-    #   if matched
-    #     @clubs.each do |club|
-    #       if club_id == club.id
-    #         @matched_clubs.push club
-    #       end
-    #     end
-    #   end
-    #end
-
-    # @matched_clubs = Club.join(:users, :club_matches)
-    # .where({
-    #   users: {id:current_user},
-    #   club_matches: {matched:1}
-    # })
+    @matches.each do |val|
+      matched = val.matched
+      club_id = val.club_id
+      if matched
+        @clubs.each do |club|
+          if club_id == club.id
+            @matched_clubs.push club
+            @matched_club_names.push club.name
+          end
+        end
+      end
+    end
   end
 
   # Created 11/17/2019 by Sharon Qiu
   # Gets the rejections
   def not_matched
     @not_matched_clubs = []
+    @not_matched_club_names = []
     @clubs = current_user.clubs
     @matches = current_user.club_matches
 
@@ -82,6 +81,7 @@ class UsersController < ApplicationController
         @clubs.each do |club|
           if club_id == club.id
             @not_matched_clubs.push club
+            @not_matched_club_names.push club.name
           end
         end
       end
@@ -163,6 +163,29 @@ class UsersController < ApplicationController
   # Shows user profile 
   def show
     @user = User.find(params[:id])
+    @matched_clubs = 0
+    @rejected_clubs = 0
+    @matches = @user.club_matches
+
+    @matches.each do |val|
+      matched = val.matched
+      if matched
+        @matched_clubs += 1
+      else
+        @rejected_clubs += 1
+      end
+    end
+
+    @all_interests = Interest.all
+    @user_interests = UserInterest.where(:user_id== current_user.id)
+    @interests = []
+    @all_interests.each do |interest|
+      @user_interests.each do |user_interest|
+        if user_interest.interest_id == interest.id
+          @interests.push(interest)
+        end
+      end
+    end 
   end
 
   # Created 11/13/2019 by Sri Ramya Dandu

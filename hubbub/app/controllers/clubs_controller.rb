@@ -11,6 +11,7 @@ class ClubsController < ApplicationController
     @clubs = Club.all
   end
   # Created 11/16/2019 by Neel Mansukhani
+  # Edited 11/20/2019 by Neel Mansukhani: Accounts for interests
   # GET /clubs/choose
   def choose
     other_users = User.all.where.not id: current_user.id

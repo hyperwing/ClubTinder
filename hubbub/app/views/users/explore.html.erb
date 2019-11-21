@@ -1,6 +1,15 @@
-<%# File created 11/19/2019 by Sri Ramya Dandu %>
+<%# File created 11/19/2019 by Sri Ramya Dandu
+    Edited 11/20/2019 by Sri Ramya Dandu: Added css link 
+    Edited 11/20/2019 by Sri Ramya Dandu: Added loading %>
 
-<h2 class = "explore-page"> EXPLORE </h2>
+<%= stylesheet_link_tag 'explore'%>
+
+<body onload="waitTime()" style="margin:0;">
+
+<div id="loader"></div>
+
+<div style="display:none;" id="explore-body" class="animate-bottom">
+<h2 class = "headings"> EXPLORE </h2>
 
 
 <div class="input-group mb-3 search-bar">
@@ -17,17 +26,29 @@
   <div class="card-columns">
     <% @clubs.each do |club| %>
       <div class="card">
-        <img src=<%= club.img %> class="card-img-top" alt="<%= club.name %>">
+        <img src="<%=club.img%>" class="card-img-top" alt= "<%=club.name%>" %>
         <div class="card-body">
           <h5 class="card-title"><%= club.name %></h5>
           <p class="card-text"><%= club.mission %></p>
-          <a href= <%= club.link %> class="btn btn-primary btn-sm">Learn More</a>
+          <a href <%= club.link %> class="btn btn-primary btn-sm">Learn More</a>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+</div>
+</body>
 
+<script>
+var myVar;
+  function waitTime() {
+    myVar = setTimeout(showPage, 3000);
+  }
 
+  function showPage() {
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("explore-body").style.display = "block";
+  }
+</script>
 
   

@@ -6,7 +6,7 @@ class UserInterestsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user_interest = user_interests(:one)
   end
-
+/
   test "should get index" do
     get user_interests_url
     assert_response :success
@@ -47,4 +47,5 @@ class UserInterestsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to user_interests_url
   end
+  /
 end
