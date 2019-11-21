@@ -54,7 +54,7 @@ class UsersController < ApplicationController
     @matched_clubs = []
     @club_matches = @user.club_matches.map{|club| club.club_id if club.matched}.uniq.compact
     @user_clubs = @user.clubs
-    if @user && (@user.role == "user" ||@user.role == "admin")
+    if (@user == current_user || @user.role == "admin")
       @user_clubs.each do |club|
         if @club_matches.include? club.id
           @matched_clubs.push club
@@ -74,7 +74,7 @@ class UsersController < ApplicationController
     @not_matched_clubs = []
     @not_club_matches = @user.club_matches.map{|club| club.club_id if !club.matched}.uniq.compact
     @user_clubs = @user.clubs
-    if @user && (@user.role == "user" ||@user.role == "admin")
+    if (@user == current_user || @user.role == "admin")
       @user_clubs.each do |club|
         if @not_club_matches.include? club.id
           @not_matched_clubs.push club
