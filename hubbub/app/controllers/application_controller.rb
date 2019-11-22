@@ -2,10 +2,12 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+
   # Created 11/16/2019 by Neel Mansukhani
   # Edited 11/20/2019 by Neel Mansukhani: Accounts for interests
   # GET /clubs/choose
   def choose
+    $slide_num = 0
     other_users = User.all.where.not id: current_user.id
     clubs = Hash.new 0
     other_users.each do |other_user|

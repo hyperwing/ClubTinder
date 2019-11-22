@@ -34,16 +34,17 @@
             </div>
           <%end%>
         </div>
-        <%#= link_to '❰❰', add_new_club_matches_url(:matched => 0, :club_name => c[0].name), :method => :patch, :class => "carousel-control-prev", :role => "button", :slide => "next"%>
-          <a class = "carousel-control-prev" href="#swipeCarousel" role="button" data-slide="next">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <%#@slide_num = 0 %>
+        <div>
+        <%= link_to '❰❰', add_new_club_matches_url(:matched => 0, :club_name => @potential_matches[$slide_num][0].name), :method => :patch, :class => "carousel-control-prev", :role => "button", :slide => "next"%>
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Reject</span>
-          </a>
-        <%#= link_to '❱❱', add_new_club_matches_url(:matched => 1, :club_name => c[0].name), :method => :patch, :class => "carousel-control-next", :role => "button", :slide => "next"%>
-        <a class = "carousel-control-next" href="#swipeCarousel" role="button" data-slide="next">
+        </div>
+        <div>
+        <%= link_to '❱❱', add_new_club_matches_url(:matched => 1, :club_name => @potential_matches[$slide_num][0].name), :method => :patch, :class => "carousel-control-next", :role => "button", :slide => "next"%>
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Match</span>
-        </a>
+        </div>
       </div>
   </body>
 </html>
