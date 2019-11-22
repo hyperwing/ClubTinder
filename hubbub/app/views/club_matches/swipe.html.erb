@@ -12,32 +12,48 @@
   <body>
     <h1>Choose your Clubs</h1>
     <h2>Press the left arrow for "no" and the right arrow for "yes"</h2>
-      <div id="swipeCarousel" class="carousel slide" data-ride="carousel">
+      <div id="swipeCarousel" class="carousel slide" data-ride="carousel" data-interval="false" data-keyboard="false">
         <div class="carousel-inner">
           <%first = true
-            @potential_matches.each do |c|
-            if first
-              active = "carousel-item active"
-              first = false
-             else
-              active = "carousel-item"
-             end
+            if @potential_matches.length > 0
+              if first
+                active = "carousel-item active"
+                first = false
+               else
+                active = "carousel-item"
+               end
             %>
-            <div class="<%= %"#{active}"%>">
-              <p class="d-block w-100"><%=%"#{c[0].name}"%></p>
-              <p class="d-block w-100"><%=%"#{c[0].mission}"%></p>
-              <p class="d-block w-100"><%=%"#{c[0].affiliations}"%></p>
-              <p class="d-block w-100"><%=%"#{c[0].location}"%></p>
+            <div class="carousel-item active">
+              <div class="col-10 list-of-clubs-container">
+                <img src="<%=@potential_matches[0][0].img%>" class="swipe-img" alt="<%=@potential_matches[0][0].name%>"%>
+                <div class="selected-matches-card-body">
+                  <h5 class="selected-matches-card-title"><%= @potential_matches[0][0].name %></h5>
+                  <p class="selected-matches-card-text"><%= @potential_matches[0][0].mission %></p>
+                </div>
+              </div>
             </div>
+            <%if @potential_matches.length > 1 %>
+              <div class="carousel-item">
+                <div class="col-10 list-of-clubs-container">
+                  <img src="<%=@potential_matches[1][0].img%>" class="swipe-img" alt="<%=@potential_matches[1][0].name%>"%>
+                  <div class="selected-matches-card-body">
+                    <h5 class="selected-matches-card-title"><%= @potential_matches[1][0].name %></h5>
+                    <p class="selected-matches-card-text"><%= @potential_matches[1][0].mission %></p>
+                  </div>
+                </div>
+              </div>
+              <%end %>
+            <%else%>
+            <p>Check the "Matched" tab for the clubs you've selected!</p>
           <%end%>
         </div>
         <a class="carousel-control-prev" href="#swipeCarousel" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
+          <span class="sr-only">Reject</span>
         </a>
         <a class="carousel-control-next" href="#swipeCarousel" role="button" data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
+          <span class="sr-only">Match</span>
         </a>
         </table>
       </div>
