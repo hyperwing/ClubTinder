@@ -1,14 +1,14 @@
 <%# Created 10/17/2019 by Leah Gillespie %>
 <%# Created 10/19/2019 by Leah Gillespie: Added bootstrap carousel %>
-<%#<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <script src="swipe_carousel.js"></script>
     <%#<link rel="stylesheet" href=""> %>
     <!-- Required meta tags -->
-    <%#<meta charset="utf-8">
+    <meta charset="utf-8">
     <title>Choose your Clubs</title>
-  </head>%>
+  </head>
     <%= stylesheet_link_tag 'swipe'%>
     <h1>Choose your Clubs</h1>
     <h2>Click the left button to reject a club or the right button to match! Then go to the matched tab to see all your matches!</h2>
@@ -36,7 +36,7 @@
           <%end%>
         </div>
         <%#= link_to '❰❰', add_new_club_matches_url(:matched => 0, :club_name => c[0].name), :method => :patch, :class => "carousel-control-prev", :role => "button", :slide => "next"%>
-          <a class = "carousel-control-prev" href="#swipeCarousel" role="button" data-slide="next">
+          <a class = "carousel-control-prev" href="<%=link_to add_new_club_matches_url(:matched => 0, :club_name => @potential_matches[0][0].name),  :method => :patch%>" role="button" data-slide="next">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Reject</span>
           </a>
@@ -46,13 +46,6 @@
           <span class="sr-only">Match</span>
         </a>
       </div>
-        <%= link_to '❰❰', add_new_club_matches_url(:matched => 0, :club_name => @potential_matches[0][0].name), :method => :patch, :class => "carousel-control-prev", :role => "button", :slide => "prev"%>
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Reject</span>
-      <%= link_to '❱❱', add_new_club_matches_url(:matched => 1, :club_name => @potential_matches[0][0].name), :method => :patch, :class => "carousel-control-next", :role => "button", :slide => "next"%>
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Match</span>
-      </table>
     </div>
     </div>
     </div>
