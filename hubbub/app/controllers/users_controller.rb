@@ -17,6 +17,7 @@
 # Edited 11/21/2019 by Neel Mansukhani: Changed redirect on confirm
 # Edited 11/21/2019 by David Wing: Changed redirect to profile
 # Edited 11/21/2019 by David Wing: fixed bug for no selected interests
+# Edited 11/21/2019 by Neel Mansukhani: Changed root
 
 class UsersController < ApplicationController
   
@@ -259,7 +260,7 @@ class UsersController < ApplicationController
     if current_user.club?
       redirect_to clubs_my_club_path
     else
-      redirect_to choose_clubs_path
+      redirect_to club_matches_swipe_path
     end
   end
   private

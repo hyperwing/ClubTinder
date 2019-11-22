@@ -47,9 +47,8 @@ Rails.application.routes.draw do
   resources :users
   devise_scope :user do
     authenticated do
-      root 'club_matches#swipe'
+      root 'users#root'
     end
-  
     unauthenticated do
       root 'users#explore', as: :unauthenticated_root
     end
