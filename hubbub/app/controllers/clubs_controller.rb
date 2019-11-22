@@ -3,12 +3,16 @@
 require 'csv'
 
 class ClubsController < ApplicationController
-  before_action :set_club, only: [:show, :edit, :update, :destroy]
+  before_action only: [:show, :edit, :update, :destroy]
 
   # GET /clubs
   # GET /clubs.json
   def index
-    @clubs = Club.all
+    if current_user.role == "admin"
+      @clubs = Club.all
+    else
+      redirect_to new_user_session_path
+    end
   end
   # Created 11/16/2019 by Neel Mansukhani
   # Edited 11/20/2019 by Neel Mansukhani: Accounts for interests
@@ -41,9 +45,10 @@ class ClubsController < ApplicationController
     @clubs = clubs.sort_by{ |k, v| v }.reverse
   end
   # GET /clubs/1
-  # GET /clubs/1.json
+  # GET /clubs/1.jsons
   def show
-    redirect_to clubs_my_club_path
+    @club = Club.find(params[:id])
+    # redirect_to clubs_my_club_path
   end
 
   # GET /clubs/new
@@ -111,11 +116,12 @@ class ClubsController < ApplicationController
     @user_interest_data = UserInterest.left_joins(:interest).where(user_id: @club.users).group(:name).limit(5).order('COUNT(interests.id) DESC').count
     @gender_data = ClubMatch.left_joins(:user).where(club_id: @club.id).group(:gender).count
   end
+
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_club
-      @club = Club.find(params[:id])
-    end
+    # def set_club
+    #   @club = Club.find(params[:id])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def club_params
