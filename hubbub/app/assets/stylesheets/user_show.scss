@@ -1,5 +1,6 @@
  /* File Created 11/18/2019 by Sri Ramya Dandu */
 //  Edited 11/21/2019 by David Wing: extended max height of interest cell cause it was really small
+// Edited 11/22/2019 by Neel Mansukhani: Fixed scrollbar issue
  
  /* User show page */
  .show {
@@ -21,8 +22,7 @@ th,td{
 
 ul.interests{
    text-align: left;
-   overflow:scroll;
-   overflow-x:hidden;
+   overflow: auto;
    max-height:30%;
 }
 
