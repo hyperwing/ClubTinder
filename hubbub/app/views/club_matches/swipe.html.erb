@@ -1,43 +1,50 @@
 <%# Created 10/17/2019 by Leah Gillespie %>
 <%# Created 10/19/2019 by Leah Gillespie: Added bootstrap carousel %>
-<%= stylesheet_link_tag 'swipe'%>
-  <h1>Choose your Clubs</h1>
-  <h2>Click the left button to reject a club or the right button to match! Then go to the matched tab to see all your matches!</h2>
-    <div id="swipeCarousel" class="carousel slide" data-ride="carousel" data-interval="false" data-keyboard="false">
-      <div class="container">
-      <div class="carousel-inner">
-        <%first = true
-          if @potential_matches.length > 0
-            if first
-              active = "carousel-item active"
-              first = false
-              else
-              active = "carousel-item"
-              end
-          %>
-          <div class="carousel-item active">
-            <div class="col-10 list-of-clubs-container">
-              <img src="<%=@potential_matches[0][0].img%>" class="swipe-img" alt="<%=@potential_matches[0][0].name%>"%>
-              <div class="selected-matches-card-body">
-                <h5 class="selected-matches-card-title"><%= @potential_matches[0][0].name %></h5>
-                <p class="selected-matches-card-text"><%= @potential_matches[0][0].mission %></p>
-              </div>
-            </div>
-          </div>
-          <%if @potential_matches.length > 1 %>
-            <div class="carousel-item">
+<%#<!doctype html>
+<html lang="en">
+  <head>
+    <script src="swipe_carousel.js"></script>
+    <%#<link rel="stylesheet" href=""> %>
+    <!-- Required meta tags -->
+    <%#<meta charset="utf-8">
+    <title>Choose your Clubs</title>
+  </head>%>
+    <%= stylesheet_link_tag 'swipe'%>
+    <h1>Choose your Clubs</h1>
+    <h2>Click the left button to reject a club or the right button to match! Then go to the matched tab to see all your matches!</h2>
+      <div id="swipeCarousel" class="carousel slide" data-ride="carousel" data-interval="false" data-keyboard="false">
+        <div class="container">
+        <div class="carousel-inner">
+          <%first = true
+            @potential_matches.each do |c|
+              if first
+                active = "carousel-item active"
+                first = false
+               else
+                active = "carousel-item"
+               end
+            %>
+            <div class="<%= %"#{active}"%>">
               <div class="col-10 list-of-clubs-container">
-                <img src="<%=@potential_matches[1][0].img%>" class="swipe-img" alt="<%=@potential_matches[1][0].name%>"%>
+                <img src="<%=c[0].img%>" class="swipe-img" alt="<%=c[0].name%>"%>
                 <div class="selected-matches-card-body">
-                  <h5 class="selected-matches-card-title"><%= @potential_matches[1][0].name %></h5>
-                  <p class="selected-matches-card-text"><%= @potential_matches[1][0].mission %></p>
+                  <h5 class="selected-matches-card-title"><%= c[0].name %></h5>
+                  <p class="selected-matches-card-text"><%= c[0].mission %></p>
                 </div>
               </div>
             </div>
-            <%end %>
-          <%else%>
-          <p>Check the "Matched" tab for the clubs you've selected!</p>
-        <%end%>
+          <%end%>
+        </div>
+        <%#= link_to '❰❰', add_new_club_matches_url(:matched => 0, :club_name => c[0].name), :method => :patch, :class => "carousel-control-prev", :role => "button", :slide => "next"%>
+          <a class = "carousel-control-prev" href="#swipeCarousel" role="button" data-slide="next">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Reject</span>
+          </a>
+        <%#= link_to '❱❱', add_new_club_matches_url(:matched => 1, :club_name => c[0].name), :method => :patch, :class => "carousel-control-next", :role => "button", :slide => "next"%>
+        <a class = "carousel-control-next" href="#swipeCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Match</span>
+        </a>
       </div>
         <%= link_to '❰❰', add_new_club_matches_url(:matched => 0, :club_name => @potential_matches[0][0].name), :method => :patch, :class => "carousel-control-prev", :role => "button", :slide => "prev"%>
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -46,5 +53,6 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Match</span>
       </table>
+    </div>
     </div>
     </div>
