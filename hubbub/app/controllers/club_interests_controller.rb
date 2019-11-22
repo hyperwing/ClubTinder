@@ -1,3 +1,5 @@
+# Created 11/21/2019 by Neel Mansukhani
+
 class ClubInterestsController < ApplicationController
   def select_club_interests
     if current_user.club_id.nil?

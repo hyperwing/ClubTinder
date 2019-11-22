@@ -1,5 +1,6 @@
 # Edited 11/13/2019 by Leah Gillespie
 # Edited 11/20/2019 by Neel Mansukhani: Choose now considers interests for rating.
+# Edited 11/21/2019 by Neel Mansukhani: New club updates club id for user too.
 require 'csv'
 
 class ClubsController < ApplicationController

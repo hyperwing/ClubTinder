@@ -1,3 +1,5 @@
+# Edited 11/21/2019 by Neel Mansukhani: fixed routing
+
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController

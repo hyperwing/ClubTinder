@@ -3,6 +3,7 @@
 # Edited 11/12/2019 by Neel Mansukhani: Fixed root routing.
 # Edited 11/19/2019 by Leah Gillespie: added route to swipe page
 # Edited 11/20/2019 by Neel Mansukhani: Added my_club.
+# Edited 11/21/2019 by Neel Mansukhani: Fixed root routing
 Rails.application.routes.draw do
   
   get 'clubs/choose', to: 'clubs#choose'
