@@ -12,27 +12,32 @@
 
 <div style="display:none;" id="explore-body" class="animate-bottom">
 <h2 class = "headings"> EXPLORE </h2>
-
-
 <div class="input-group mb-3 search-bar">
   <div class="input-group-prepend">
     <span class="input-group-text" id="inputGroup-sizing-default">Search</span>
+    <%= form_tag users_explore_path, :method => :get do %>
+      <%= text_field_tag :search %>
+      <%= submit_tag "Submit" %>
+    <% end %>
+      
   </div>
-  <input type="text" class="form-control" aria-label="Search">
-  <input type="button" value = "&#128269;">
 </div>
 <div class = "explore-cards"> 
   <div class="card-columns">
-    <% @clubs.each do |club| %>
-      <div class="card">
-        <img src="<%=club.img%>" class="card-img-top" alt= "<%=club.name%>" %>
-        <div class="card-body">
-          <h5 class="card-title"><%= club.name %></h5>
-          <p class="card-text"><%= club.mission %></p>
-          <a href="<%=club_url(:id => club.id)%>"  class="btn btn-primary btn-sm">Learn More</a>
+    <%if @clubs.length == 0%>
+      <h4> No results found...Try another search.</h4>
+    <%else%>
+      <% @clubs.each do |club| %>
+        <div class="card">
+          <img src="<%=club.img%>" class="card-img-top" alt= "<%=club.name%>" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= club.name %></h5>
+            <p class="card-text"><%= club.mission %></p>
+            <a href="<%=club_url(:id => club.id)%>"  class="btn btn-primary btn-sm">Learn More</a>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    <%end%>
   </div>
 </div>
 </div>
@@ -51,5 +56,3 @@
     document.getElementById("explore-body").style.display = "block";
   }
 </script>
-
-  

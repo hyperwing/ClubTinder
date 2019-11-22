@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   
   get 'users/index'
   get 'users/stats'
-  get 'users/explore'
+  get 'users/explore'#, defaults: {:search => nil}
   get 'users/new'
   get 'users/display_stats'
   get 'users/create'
