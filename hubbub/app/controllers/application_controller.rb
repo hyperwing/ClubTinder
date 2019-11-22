@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   # Edited 11/20/2019 by Neel Mansukhani: Accounts for interests
   # GET /clubs/choose
   def choose
-    $slide_num = 0
     other_users = User.all.where.not id: current_user.id
     clubs = Hash.new 0
     other_users.each do |other_user|
