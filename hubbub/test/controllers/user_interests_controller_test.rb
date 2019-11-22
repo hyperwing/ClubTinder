@@ -5,18 +5,21 @@ require 'test_helper'
 class UserInterestsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user_interest = user_interests(:one)
+    sign_in users(:user)
+  end
+
+  test "should be able to edit interests" do
+    get  users_select_user_interests_url
+    assert_response :success
+  end
+
+/
+  test "should get new" do
+    get interests_new_url
+    assert_response :success
   end
 /
-  test "should get index" do
-    get user_interests_url
-    assert_response :success
-  end
-
-  test "should get new" do
-    get new_user_interest_url
-    assert_response :success
-  end
-
+/
   test "should create user_interest" do
     assert_difference('UserInterest.count') do
       post user_interests_url, params: { user_interest: {  } }

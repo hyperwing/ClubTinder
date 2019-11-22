@@ -6,6 +6,8 @@
 # Edited 11/20/2019 by Neel Mansukhani: Added my_club.
 # Edited 11/21/2019 by Neel Mansukhani: Fixed root routing
 # Edited 11/21/2019 by David Wing: changed user_interest routes
+# Edited 11/22/2019 by Sri Ramya Dandu: Changed default route
+
 Rails.application.routes.draw do
   
   get 'clubs/choose', to: 'clubs#choose'
@@ -40,7 +42,7 @@ Rails.application.routes.draw do
   resources :users
   devise_scope :user do
     authenticated do
-      root 'users#root'
+      root 'club_matches#swipe'
     end
   
     unauthenticated do

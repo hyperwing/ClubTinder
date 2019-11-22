@@ -1,12 +1,11 @@
 <%# Edited 11/20/2019 by Sharon Qiu: Cleaned up view.
-# Edited 11/21/19 by David Wing: added return button%>
+#Edited 11/21/19 by David Wing: added return button
+#Edited 11/22/19 by Sri Ramya Dandu: removed return button%>
 <%= stylesheet_link_tag 'user_preferences'%>
 <div class="container headings">
     <h4>Choose a setting</h4>
     <a href = "/users/edit" type="button" class="btn btn-primary btn-lg btn-block update-info">Update Personal Information</a>
     <p>or<p>
     <a href = "/users/select_user_interests" type="button" class="btn btn-primary btn-lg btn-block update-info" >Update Interests</a>
-
-    <%= link_to "Cancel", request.referrer %>
 
 </div>
