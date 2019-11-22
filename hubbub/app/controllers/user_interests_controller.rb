@@ -1,5 +1,6 @@
 # Created 11/17/19 by David Wing
 # Edited 11/21/2019 by Neel Mansukhani: Changed redirect on confirm
+# Edited 11/21/2019 by David Wing: Changed redirect to profile
 
 class UserInterestsController < ApplicationController
 
@@ -7,7 +8,7 @@ class UserInterestsController < ApplicationController
     def select_user_interests
         @interests = Interest.all
         # current user interests
-        @user_interests = UserInterest.where(:user_id => current_user.id)
+        @user_interests = UserInterest.where(:user_id => current_user.id);
         @cur_u = current_user
 
     end
@@ -83,7 +84,7 @@ class UserInterestsController < ApplicationController
                 
             end
         end
-        redirect_to root_path
+        redirect_to '/users/'+current_user.id.to_s
     end
 
 end

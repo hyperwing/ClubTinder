@@ -1,19 +1,26 @@
 <%# Edited 11/19/2019 by Neel Mansukhani: Fixed after migrations %>
 <%# Edited 11/20/2019 by Neel Mansukhani: Rearranged forms%>
-<%= form_with(model: club, local: true) do |form| %>
-  <% if club.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(club.errors.count, "error") %> prohibited this club from being saved:</h2>
+<div class="container new-club">
+  <div class="card">
+    <h2 class="card-header">Tell Us About Your Club...</h2>
+    <div class="card-body">
+      <%= form_with(model: club, local: true) do |form| %>
+        <% if club.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(club.errors.count, "error") %> prohibited this club from being saved:</h2>
 
-      <ul>
-      <% club.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+            <ul>
+            <% club.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <%= render 'form_entries', club: club, form: form %>
+        <div class="actions">
+          <%= form.submit %>
+        </div>
       <% end %>
-      </ul>
     </div>
-  <% end %>
-  <%= render 'form_entries', club: club, form: form %>
-  <div class="actions">
-    <%= form.submit %>
   </div>
-<% end %>
+</div>

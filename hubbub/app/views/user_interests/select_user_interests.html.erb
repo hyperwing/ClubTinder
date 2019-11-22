@@ -1,10 +1,17 @@
 <%# # Created 11/11/19 David Wing
 # edited 11/16/19 David Wing
-# edited 11/17/19 David Wing %>
+# edited 11/17/19 David Wing 
+# edited 11/21/19 by David Wing: added bootstrap%>
 
-Select interests for <%= @cur_u.email %> <br>
+<%= stylesheet_link_tag 'interests'%>
 
-<form action = "/user_interests/handle_check_boxes">
+<div class="select_interests">
+
+<div class="greeting">
+        Hi, <b><%= @cur_u.first_name %></b>!<br>
+        Choose some things that you might be interested in<br>
+</div>
+<form action="/user_interests/handle_check_boxes">
 
         <% @interests.each do |interest| %>
                 <% selected= false %>
@@ -20,12 +27,19 @@ Select interests for <%= @cur_u.email %> <br>
 
                 <%# prefills the form %>
                 <% if selected == true %>
-                        <%=interest.name%> <%= check_box_tag name="tag_ids[]", value=interest.id, checked = true%> <br>
-                
+                        <div class="form-check">
+                                <input id="interest1" type="checkbox" name="tag_ids[]" value="<%=interest.id %>" checked="true" class="form-check-input"  /> 
+                                <label class="form-check-label" for="interest1"><%=interest.name%></label><br>
+                        </div>
                 <% else %>
-                        <%=interest.name%><input type="checkbox" name="tag_ids[]" value="<%=interest.id %>" /> <br>
+                        <div class="form-check">
+                                <input id="interest2" type="checkbox" name="tag_ids[]" value="<%=interest.id %>"  class="form-check-input"  />
+                                <label class="form-check-label" for="interest2"><%=interest.name%></label><br>
+                        </div>
                 <% end %>
 
         <% end %>
-        <input type="submit" value="Submit"><br>
+        <br>
+        <input type="submit" class="btn btn-primary mb-2" value="Save"><br>
 </form>
+</div>
