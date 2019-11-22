@@ -22,13 +22,11 @@ ActiveRecord::Schema.define(version: 2019_11_19_161353) do
   end
 
   create_table "club_matches", force: :cascade do |t|
-    t.integer "club_id"
     t.integer "user_id"
-    t.boolean "matched"
+    t.integer "club_id"
+    t.integer "matched"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["club_id"], name: "index_club_matches_on_club_id"
-    t.index ["user_id"], name: "index_club_matches_on_user_id"
   end
 
   create_table "clubs", force: :cascade do |t|
@@ -49,12 +47,10 @@ ActiveRecord::Schema.define(version: 2019_11_19_161353) do
   end
 
   create_table "user_interests", force: :cascade do |t|
-    t.integer "user_id"
     t.integer "interest_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["interest_id"], name: "index_user_interests_on_interest_id"
-    t.index ["user_id"], name: "index_user_interests_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
