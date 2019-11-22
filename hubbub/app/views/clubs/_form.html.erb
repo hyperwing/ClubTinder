@@ -4,7 +4,7 @@
   <div class="card">
     <h2 class="card-header">Tell Us About Your Club...</h2>
     <div class="card-body">
-      <%= form_with(model: club, local: true) do |form| %>
+      <%= form_with(model: club, local: true, url: '/clubs') do |form| %>
         <% if club.errors.any? %>
           <div id="error_explanation">
             <h2><%= pluralize(club.errors.count, "error") %> prohibited this club from being saved:</h2>

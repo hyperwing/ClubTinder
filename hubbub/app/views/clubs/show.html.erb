@@ -1,34 +1,44 @@
-<p id="notice"><%= notice %></p>
+<%# File Created 11/21/2019 by Sharon Qiu %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @club.name %>
-</p>
+<%= stylesheet_link_tag 'club_page'%>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col club-img-and-name">
+      <img src="<%=@club.img%>" class="card-img" alt="<%=@club.name%>">
+      <h3 class="name-of-club"><%=@club.name%></h3>
+    </div>
+    <div class="col club-info">
+      <div class="mission-container">
+        <h5 class="mission-and-link-heading">Our mission...</h5>
+        <p><%=@club.mission%></p>
+      </div>
+      <hr/>
+      <div class="visit-us-link">
+        <h5 class="mission-and-link-heading">Visit Our Website</h5>
+        <a type="button" class="btn btn-secondary btn-lg btn-block link-btn" href="<%=@club.link%>">OSU page</a>
+      </div>
+    </div>
+    <div class="col commenting">
+      <h1 class="headings"> Leave some feedback </h1>
+      <div id="disqus_thread"></div>
+        <script>
 
-<p>
-  <strong>Mission:</strong>
-  <%= @club.mission %>
-</p>
-
-<p>
-  <strong>Affiliations:</strong>
-  <%= @club.affiliations %>
-</p>
-
-<p>
-  <strong>Link:</strong>
-  <%= @club.link %>
-</p>
-
-<p>
-  <strong>Image URL:</strong>
-  <%= @club.img %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @club.location %>
-</p>
-
-<%= link_to 'Edit', edit_club_path(@club) %> |
-<%= link_to 'Back', clubs_path %>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://clubs-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+    </div>
+  </div>
+</div>

@@ -4,12 +4,16 @@
 require 'csv'
 
 class ClubsController < ApplicationController
-  before_action :set_club, only: [:show, :edit, :update, :destroy]
+  before_action only: [:show, :edit, :update, :destroy]
 
   # GET /clubs
   # GET /clubs.json
   def index
-    @clubs = Club.all
+    if current_user.role == "admin"
+      @clubs = Club.all
+    else
+      redirect_to new_user_session_path
+    end
   end
   # Created 11/16/2019 by Neel Mansukhani
   # Edited 11/20/2019 by Neel Mansukhani: Accounts for interests
@@ -41,10 +45,19 @@ class ClubsController < ApplicationController
     end
     @clubs = clubs.sort_by{ |k, v| v }.reverse
   end
+
   # GET /clubs/1
-  # GET /clubs/1.json
+  # GET /clubs/1.jsons
   def show
-    redirect_to club_interests_select_club_interests_path
+    #redirect_to club_interests_select_club_interests_urls
+    # if params[:id] == "new"
+    #   redirect_to club_interests_select_club_interests_url
+    # else
+    if current_user.role == "1"
+      redirect_to clubs_my_club_path
+    else
+      @club = Club.find(params[:id])
+    end
   end
 
   # GET /clubs/new
@@ -62,7 +75,7 @@ class ClubsController < ApplicationController
     @club = Club.new(club_params)
     respond_to do |format|
       if @club.save
-        format.html { redirect_to @club, notice: 'Club was successfully created.' }
+        format.html { redirect_to club_interests_select_club_interests_path, notice: 'Club was successfully created.' }
         format.json { render :show, status: :created, location: @club }
       else
         format.html { render :new }
@@ -121,11 +134,12 @@ class ClubsController < ApplicationController
       
     end
   end
+
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_club
-      @club = Club.find(params[:id])
-    end
+    # def set_club
+    #   @club = Club.find(params[:id])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def club_params

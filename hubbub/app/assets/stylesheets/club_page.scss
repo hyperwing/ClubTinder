@@ -1,0 +1,31 @@
+// Created 11/21/2019 by Sharon Qiu
+// CSS for club page
+.club-img-and-name{
+    display: grid;
+    align-content: center;
+    border-right: 3px double;
+}
+
+.club-info{
+    display: grid;
+    align-content: center;
+}
+
+.name-of-club, .mission-and-link-heading{
+    padding:2%;
+    text-align: center;
+    margin-top: 25px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-variant: small-caps;
+    letter-spacing: 3px;
+}
+
+.link-btn{
+    color: white;
+}
+
+hr {
+    border: 3px double;
+    margin: 20% 0% 5% 0%;
+}
