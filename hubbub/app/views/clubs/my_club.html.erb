@@ -1,4 +1,5 @@
-<%# File Created 11/20/2019 by Neel Mansukhani %>
+<%# File Created 11/20/2019 by Neel Mansukhani 
+Edited 11/21/2019 by David Wing: added condition for matches%>
 
 
 <%= stylesheet_link_tag 'stats'%>
@@ -6,15 +7,40 @@
 <% if @club_has_matches %>
     <h1> My Club </h1>
 
-    <%= line_chart @club_match_data %>
-    <%= bar_chart @user_interest_data %>
-    <%= pie_chart @gender_data %>
-    <table>
+
+    <table class="table col-md-3">
+            <thead class="thead-dark">
+              <tr>
+                  <th scope="col">Membership</th>
+                  <th scope="col">Club Interests</th>
+                  <th scope="col">Gender Breakdown</th>
+                  <th scope="col">Ranking</th>
+        
+              </tr>
+           </thead>
+           <tbody>
+              <tr>
+                  <td><%= line_chart @club_match_data %></td>
+                  <td>
+                      HEKAJSDHJSAdhjkl
+                    <% @club_interests.each do |interest| %>
+                        <%= interest.name %> <br>
+                    <% end %>
+                    sjkdhkjasdhj
+                </td>
+                  <td><%= pie_chart User.group(:gender).count %></td>
+        
+                  <td><%= bar_chart @match_data %></td>
+        
+              </tr>
+            </tbody>
+        
         <tr>  
             Club name: <%= @club.name %>
         </tr>
         <% @club.users.each do |user| %>
             <tr>
+
                 <td> <%= user.first_name %></td>
                 <td> <%= user.last_name %></td>
                 <td> <%= user.email %></td>
@@ -23,6 +49,7 @@
             </tr>
         <% end %>
     </table>
+
 
 <% else %>
 
