@@ -49,7 +49,7 @@ class ClubMatchesController < ApplicationController
   def update_existing_match
     @current_user = User.find(params[:id])
     @current_club_match = ClubMatch.find_by(club_id:params[:club], user_id:params[:id])
-    if @current_club_match.matched == 1
+    if @current_club_match.matched == 1 || @current_club_match.matched == true
       if @current_club_match.update(matched: 0)
         @current_club_match.reload
       else
