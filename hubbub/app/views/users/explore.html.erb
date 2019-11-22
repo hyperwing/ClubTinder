@@ -21,9 +21,6 @@
   <input type="text" class="form-control" aria-label="Search">
   <input type="button" value = "&#128269;">
 </div>
-
-
-
 <div class = "explore-cards"> 
   <div class="card-columns">
     <% @clubs.each do |club| %>
@@ -32,7 +29,7 @@
         <div class="card-body">
           <h5 class="card-title"><%= club.name %></h5>
           <p class="card-text"><%= club.mission %></p>
-          <a href = "<%= club.link %>" class="btn btn-primary btn-sm">Learn More</a>
+          <a href="<%=club_url(:id => club.id)%>"  class="btn btn-primary btn-sm">Learn More</a>
         </div>
       </div>
     <% end %>
