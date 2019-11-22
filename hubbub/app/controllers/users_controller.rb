@@ -106,10 +106,10 @@ class UsersController < ApplicationController
   # Edited 11/22/2019 by Sharon Qiu: added search query.
   # Shuffles all clubs for club view
   def explore
-    if params[:search].empty?
+    if params[:search].nil? || params[:search].empty?
       @clubs = Club.all.shuffle
     else
-      @clubs = Club.where("lower(name) LIKE lower(?)", "% #{params[:search]} %")
+      @clubs = Club.where("lower(name) LIKE lower(?)", "%#{params[:search]}%")
     end
   end 
 

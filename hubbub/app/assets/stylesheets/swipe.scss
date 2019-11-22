@@ -2,3 +2,11 @@
  * File Created 11/19/2019 by Leah Gillespie
  */
 
+.carousel-inner{
+    background:lightgrey;
+}
+
+.carousel-item.active{
+    display:grid;
+    justify-content: center;
+}

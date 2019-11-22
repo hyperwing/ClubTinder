@@ -4,8 +4,6 @@
     Edited 11/21/2019 by Sri Ramya Dandu: Fixed hrefs %>
 
 <%= stylesheet_link_tag 'explore'%>
-
-
 <body style="margin:0;">
 
 <div id="loader"></div>
@@ -14,19 +12,18 @@
 <h2 class = "headings"> EXPLORE </h2>
 <div class="input-group mb-3 search-bar">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="inputGroup-sizing-default">Search</span>
-    <%= form_tag users_explore_path, :method => :get do %>
+    <%= form_tag users_explore_path, :method => :get do%>
       <%= text_field_tag :search %>
-      <%= submit_tag "Submit" %>
+      <%= submit_tag "Get searching!" %>
     <% end %>
-      
   </div>
 </div>
 <div class = "explore-cards"> 
+  <%if @clubs.length == 0%>
+      <h4> No results found...</h4><br/>
+      <h4> Maybe you'll find what you're looking for if you search again!</h4>
+  <%else%>
   <div class="card-columns">
-    <%if @clubs.length == 0%>
-      <h4> No results found...Try another search.</h4>
-    <%else%>
       <% @clubs.each do |club| %>
         <div class="card">
           <img src="<%=club.img%>" class="card-img-top" alt= "<%=club.name%>" %>
@@ -37,7 +34,7 @@
           </div>
         </div>
       <% end %>
-    <%end%>
+  <%end%>
   </div>
 </div>
 </div>
