@@ -5,7 +5,6 @@
 # Edited 11/20/2019 by Neel Mansukhani: Added my_club.
 Rails.application.routes.draw do
   
-  get 'clubs/choose', to: 'clubs#choose'
   get 'users/index'
   get 'users/stats'
   get 'users/explore'
@@ -31,10 +30,16 @@ Rails.application.routes.draw do
   }
   resources :club_matches, :except => [:show,:update] do
     collection do
-      patch 'club_matches/update_current/:id', as: :add_current, to: 'club_matches#update_existing_match'
+      patch 'update_current/:id', as: :add_current, to: 'club_matches#update_existing_match'
     end
   end
-  resources :clubs
+  resources :clubs do
+    collection do
+      get 'index', to: 'clubs#index'
+      get 'choose', to: 'clubs#choose'
+      get ':id', to: 'clubs#show'
+    end
+  end
   resources :users
   devise_scope :user do
     authenticated do

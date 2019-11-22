@@ -51,15 +51,12 @@ class UsersController < ApplicationController
   # Gets the matches
   def matched
     @user = User.find_by(id:params[:id])
-    @matched_clubs = []
-    @club_matches = @user.club_matches.map{|club| club.club_id if club.matched}.uniq.compact
-    @user_clubs = @user.clubs
-    if (@user == current_user || @user.role == "admin")
-      @user_clubs.each do |club|
-        if @club_matches.include? club.id
-          @matched_clubs.push club
-        end
-      end
+    if @user == current_user || @user.role == "admin"
+      @matched_clubs = Club.left_joins(:club_matches)
+      .where(:club_matches => {matched: 1})
+      .left_joins(:users)
+      .where(:club_matches => {user_id: params[:id]})
+      .where(:users => {id: params[:id]})
     else
       flash[:notice] = "Attempted access to restricted page. Redirecting..."
       redirect_to @user
@@ -71,15 +68,12 @@ class UsersController < ApplicationController
   # Gets the rejections
   def not_matched
     @user = User.find_by(id:params[:id])
-    @not_matched_clubs = []
-    @not_club_matches = @user.club_matches.map{|club| club.club_id if !club.matched}.uniq.compact
-    @user_clubs = @user.clubs
-    if (@user == current_user || @user.role == "admin")
-      @user_clubs.each do |club|
-        if @not_club_matches.include? club.id
-          @not_matched_clubs.push club
-        end
-      end
+    if @user == current_user || @user.role == "admin"
+      @not_matched_clubs = Club.left_joins(:club_matches)
+      .where(:club_matches => {matched: 0})
+      .left_joins(:users)
+      .where(:club_matches => {user_id: params[:id]})
+      .where(:users => {id: params[:id]})
     else
       flash[:notice] = "Attempted access to restricted page. Redirecting..."
       redirect_to @user
