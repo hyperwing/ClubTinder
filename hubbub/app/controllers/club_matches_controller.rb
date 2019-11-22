@@ -49,21 +49,20 @@ class ClubMatchesController < ApplicationController
   def update_existing_match
     @current_user = User.find(params[:id])
     @current_club_match = ClubMatch.find_by(club_id:params[:club], user_id:params[:id])
-    if @current_club_match.matched
+    if @current_club_match.matched == 1 || @current_club_match.matched
       if @current_club_match.update(matched: 0)
         @current_club_match.reload
       else
         flash[:notice] = "Unable to update matched status."
       end
-      redirect_to request.referrer
     else
       if @current_club_match.update(matched: 1)
         @current_club_match.reload
       else
         flash[:notice] = "Unable to update matched status."
       end
-      redirect_to request.referrer
     end
+    redirect_to request.referrer
   end
 
   
