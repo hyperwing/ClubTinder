@@ -38,21 +38,26 @@
                 <tr>
                     <th scope="col" colspan="2">User Info</th>
                 </tr>
-                <tr>
-                    <th scope="col">Matched Clubs</th>
-                    <td> <a href = "/users/matched/<%= @user.id %>" > <%= @matched_clubs %></a> </td>
-                </tr>
-                <tr>
-                  <th scope="col">Rejected Clubs </th>
-                  <td> <a href = "/users/not_matched/<%= @user.id %>" > <%= @rejected_clubs %> </a></td>
-                </tr>
-                <tr>
+                <% if !current_user.club? %>
+                  <tr>
+                      <th scope="col">Matched Clubs</th>
+                      <td> <a href = "/users/matched/<%= @user.id %>" > <%= @matched_clubs %></a> </td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Rejected Clubs </th>
+                    <td> <a href = "/users/not_matched/<%= @user.id %>" > <%= @rejected_clubs %> </a></td>
+                  </tr>
+                  <tr>
+                <% end %>
                   <th scope="col" class = "align-middle">Interests</th>
                   <td> 
                     <ul class = "interests">
                       <% @interests.each do |interest|%> 
                         <li><%= interest.name %> </li>
                       <% end %>
+                      <% if @interests.length == 0 %>
+                        <li>No Interests</li>
+                      <% end%>
                     </ul>
                   </td>
                 </tr>

@@ -1,6 +1,7 @@
 # Edited 11/13/2019 by Leah Gillespie
 # Edited 11/20/2019 by Neel Mansukhani: Choose now considers interests for rating.
 # Edited 11/21/2019 by Neel Mansukhani: New club updates club id for user too.
+# Edited 11/21/2019 by Neel Mansukhani: Fixed destroy
 require 'csv'
 
 class ClubsController < ApplicationController
@@ -103,7 +104,7 @@ class ClubsController < ApplicationController
   # DELETE /clubs/1
   # DELETE /clubs/1.json
   def destroy
-    @club.destroy
+    Club.find_by(id: params[:id]).destroy
     respond_to do |format|
       format.html { redirect_to clubs_url, notice: 'Club was successfully destroyed.' }
       format.json { head :no_content }
@@ -128,6 +129,8 @@ class ClubsController < ApplicationController
       @club_match_data = ClubMatch.where(club_id: @club.id).group_by_day(:created_at).count
       @user_interest_data = UserInterest.left_joins(:interest).where(user_id: @club.users).group(:name).limit(5).order('COUNT(interests.id) DESC').count
       @gender_data = ClubMatch.left_joins(:user).where(club_id: @club.id).group(:gender).count
+
+      @club_interests = ClubInterest.left_joins(:interest).where(club_id: current_user.club_id)
 
       @club_has_matches = ClubMatch.where(club_id: @club.id).count >0
     end

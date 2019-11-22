@@ -4,11 +4,12 @@ class ClubInterestsController < ApplicationController
   def select_club_interests
     if current_user.club_id.nil?
       redirect_to new_club_path
+    else
+      @interests = Interest.all
+      @club_interests = ClubInterest.where(:club_id => current_user.club_id)
+      @cur_u = current_user
+      @club = Club.find_by :id => current_user.club_id
     end
-    @interests = Interest.all
-    @club_interests = ClubInterest.where(:club_id => current_user.club_id)
-    @cur_u = current_user
-    @club = Club.find_by :id => current_user.club_id
 
   end
 
