@@ -3,7 +3,8 @@
     Edited 11/16/2019 by Sri Ramya Dandu: Added routes to view 
     Edited 11/18/2019 by Sri Ramya Dandu: Added Bootstrap
     Edited 11/20/2019 by Sri Ramya Dandu: Added table info
-    Edited 11/21/2019 by David Wing: Updated edit routing to preference page%>
+    Edited 11/21/2019 by David Wing: Updated edit routing to preference page
+    Edited 11/21/2019 by Sri Ramya Dandu: Added links%>
 
 
 <%= stylesheet_link_tag 'user_show'%>
@@ -35,11 +36,11 @@
                 </tr>
                 <tr>
                     <th scope="col">Matched Clubs</th>
-                    <td> <a href = "/matched" > <%= @matched_clubs %></a> </td>
+                    <td> <a href = "/users/matched/<%= @user.id %>" > <%= @matched_clubs %></a> </td>
                 </tr>
                 <tr>
                   <th scope="col">Rejected Clubs </th>
-                  <td> <%= @rejected_clubs %> </td>
+                  <td> <a href = "/users/not_matched/<%= @user.id %>" > <%= @rejected_clubs %> </a></td>
                 </tr>
                 <tr>
                   <th scope="col" class = "align-middle">Interests</th>
