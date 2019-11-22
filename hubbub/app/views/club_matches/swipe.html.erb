@@ -63,7 +63,11 @@
         <%#<span class="carousel-control-next-icon" aria-hidden="true"></span>%>
         <%#<span class="sr-only">Match ❱❱</span>%>
       </div>
-        </div>
-      </div>
-  </body>
-</html>
+    </div>
+    </div>
+    </div>
+    <script>
+        $('#swipeCarousel').on('slid.bs.carousel', function (e) {
+        $('#myCarousel').carousel('next') 
+      })
+    </script>
