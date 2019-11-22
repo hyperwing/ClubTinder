@@ -1,6 +1,7 @@
 # Created 11/09/2019 by Sharon Qiu
 # Edited 11/17/2019 by Leah Gillespie
 # Edited 11/17/2019 by Sharon Qiu
+# Edited 11/21/2019 by Neel Mansukhani: bug fix
 
 # Controller for club matches page
 

@@ -3,6 +3,7 @@
 # Edited 11/12/2019 by Neel Mansukhani: Fixed root routing.
 # Edited 11/19/2019 by Leah Gillespie: added route to swipe page
 # Edited 11/20/2019 by Neel Mansukhani: Added my_club.
+# Edited 11/21/2019 by Neel Mansukhani: Fixed root routing
 Rails.application.routes.draw do
   
   get 'clubs/choose', to: 'clubs#choose'
@@ -19,7 +20,9 @@ Rails.application.routes.draw do
   get 'interests/new'
   get 'clubs/my_club', to: 'clubs#my_club'
   get 'user_interests/select_user_interests'
+  get 'club_interests/select_club_interests'
   get 'user_interests/handle_check_boxes'
+  get 'club_interests/handle_check_boxes'
   get 'user_interests/update'
   # get 'user_interests/create'
   # get 'user_interests/destroy'
@@ -38,7 +41,7 @@ Rails.application.routes.draw do
   resources :users
   devise_scope :user do
     authenticated do
-      root 'clubs#choose'
+      root 'users#root'
     end
   
     unauthenticated do

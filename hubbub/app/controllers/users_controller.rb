@@ -12,6 +12,7 @@
 # File edited 11/20/2019 by Sri Ramya Dandu: Added more data to show controller
 # File edited 11/20/2019 by Sharon Qiu: Fixed query for match/unmatch.
 # File edited 11/21/2019 by Sharon Qiu: Fixed query again for match/unmatch...
+# File Edited 11/21/2019 by Neel Mansukhani: Fixed query again again
 
 class UsersController < ApplicationController
   
@@ -209,6 +210,13 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def root
+    if current_user.club?
+      redirect_to clubs_my_club_path
+    else
+      redirect_to clubs_choose_path
+    end
+  end
   private
 
   # Created 11/15/2019 by Sri Ramya Dandu
