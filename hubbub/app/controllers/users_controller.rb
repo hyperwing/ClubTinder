@@ -107,7 +107,7 @@ class UsersController < ApplicationController
   # Shuffles all clubs for club view
   def explore
     if params[:search].nil? || params[:search].empty?
-      @clubs = Club.all.shuffle
+      @clubs = Club.all.shuffle.sample(500)
     else
       @clubs = Club.where("lower(name) LIKE lower(?)", "%#{params[:search]}%")
     end
