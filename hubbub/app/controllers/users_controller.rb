@@ -12,6 +12,11 @@
 # File edited 11/20/2019 by Sri Ramya Dandu: Added more data to show controller
 # File edited 11/20/2019 by Sharon Qiu: Fixed query for match/unmatch.
 # File edited 11/21/2019 by Sharon Qiu: Fixed query again for match/unmatch...
+# File edited 11/21/2019 by Sri Ramya Dandu: Fixed show query and admin functions
+# File Edited 11/21/2019 by Neel Mansukhani: Fixed query again again
+# Edited 11/21/2019 by Neel Mansukhani: Changed redirect on confirm
+# Edited 11/21/2019 by David Wing: Changed redirect to profile
+# Edited 11/21/2019 by David Wing: fixed bug for no selected interests
 
 class UsersController < ApplicationController
   
@@ -22,11 +27,67 @@ class UsersController < ApplicationController
     @user = current_user
     if @user&& @user.role == "admin"
       @title = "All Registered Users"
-      @users = User.where(role: "user")
+      @users = User.all
       @total = User.all.length
     else
       redirect_to new_user_session_path
     end 
+  end
+
+  # Created 11/17/19 by David Wing
+  def select_user_interests
+    @interests = Interest.all
+    # current user interests
+    @user_interests = UserInterest.where(:user_id => current_user.id);
+    @cur_u = current_user
+
+  end
+
+  # Created 11/17/19 by David Wing
+  # Edited 11/21/2019 by David Wing
+  def handle_check_boxes
+
+    @cur_u = current_user
+
+    tag_ids = params[:tag_ids]
+    logger.debug("tag_ids: " +tag_ids.to_s)
+
+    @interests = Interest.all
+    # if box checked, add to model, else destroy from model
+    @interests.each do |i_box|
+        # Set the interest information from form to instance variable
+        @interest_info = i_box.id
+
+        logger.debug("handling " +i_box.name.to_s)
+        logger.debug("tag_ids: " +tag_ids.to_s)
+
+        if (!tag_ids.nil?) && (tag_ids.include? i_box.id.to_s)
+
+            logger.debug("creating new user_interest")
+
+            # Where user_interests already has an entry for user
+            if (UserInterest.where(:interest_id => i_box.id).where(:user_id => current_user.id)).count == 0
+            
+                new_interest = UserInterest.new
+                new_interest.user_id = current_user.id
+                new_interest.interest_id = i_box.id
+        
+                if new_interest.save
+                    logger.debug("saved successfully")  
+                else    
+                    logger.debug("failed to save")  
+                end
+            end
+
+        else
+            logger.debug("deleting user_interest")
+
+            UserInterest.where(:user_id => current_user.id)
+                .where(:interest_id =>i_box.id).destroy_all
+            
+        end
+    end
+    redirect_to '/users/'+current_user.id.to_s
   end
 
   # Created 11/13/2019 by Sri Ramya Dandu
@@ -110,7 +171,7 @@ class UsersController < ApplicationController
           @title = @title + ' graduating in ' +  @valuesArray[x]
         end
       }   
-      @users = @users.where(role: "user")
+
       @total = @users.length
     else
       redirect_to new_user_session_path
@@ -128,6 +189,7 @@ class UsersController < ApplicationController
   end
 
   # Created 11/16/2019 by Sri Ramya Dandu
+  # Edited 11/21/2019 by Sri Ramya Dandu: Added validations and redirection
   # Allows admin to create dummy user
   def create
 
@@ -135,9 +197,13 @@ class UsersController < ApplicationController
       @user = User.new(new_user_params)
 
       if @user.save
+        @interests = []
+        @matched_clubs = 0;
+        @rejected_clubs = 0;
         render :show
       else
-        render :new
+        flash[:alert] = "User with email #{params[:email]} already exists!"
+        redirect_to users_new_url
       end
     else
       redirect_to new_user_session_path
@@ -146,32 +212,15 @@ class UsersController < ApplicationController
   end 
   
   # Created 11/13/2019 by Sri Ramya Dandu
+  # Edited 11/21/2019 by Sri Ramya Dandu: Replaced loops with queries 
   # Shows user profile 
   def show
     @user = User.find(params[:id])
-    @matched_clubs = 0
-    @rejected_clubs = 0
     @matches = @user.club_matches
+    @matched_clubs = @matches.where(matched: "1").length
+    @rejected_clubs = @matches.where(matched: "0").length
+    @interests = Interest.joins(:user_interests).where(:user_interests => {user_id: current_user.id}).uniq
 
-    @matches.each do |val|
-      matched = val.matched
-      if matched
-        @matched_clubs += 1
-      else
-        @rejected_clubs += 1
-      end
-    end
-
-    @all_interests = Interest.all
-    @user_interests = UserInterest.where(:user_id== current_user.id)
-    @interests = []
-    @all_interests.each do |interest|
-      @user_interests.each do |user_interest|
-        if (user_interest.interest_id == interest.id) && !(@interests.include? interest)
-          @interests.push(interest)
-        end
-      end
-    end 
   end
 
   # Created 11/13/2019 by Sri Ramya Dandu
@@ -201,6 +250,13 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def root
+    if current_user.club?
+      redirect_to clubs_my_club_path
+    else
+      redirect_to choose_clubs_path
+    end
+  end
   private
 
   # Created 11/15/2019 by Sri Ramya Dandu

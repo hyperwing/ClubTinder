@@ -2,7 +2,10 @@
 # Edited 11/10/2019 by Neel Mansukhani: Added default route to sign up page.
 # Edited 11/12/2019 by Neel Mansukhani: Fixed root routing.
 # Edited 11/19/2019 by Leah Gillespie: added route to swipe page
+# Edited 11/19/2019 by David Wing: added user_interest routes
 # Edited 11/20/2019 by Neel Mansukhani: Added my_club.
+# Edited 11/21/2019 by Neel Mansukhani: Fixed root routing
+# Edited 11/21/2019 by David Wing: changed user_interest routes
 Rails.application.routes.draw do
   
   get 'users/index'
@@ -14,14 +17,12 @@ Rails.application.routes.draw do
   get 'users/matched/:id', to: 'users#matched'
   get 'users/not_matched/:id', to: 'users#not_matched'
   post 'users/sign_up', to: 'resources#sign_up'
-  #get 'club_matches/update'
   get 'interests/new'
   get 'clubs/my_club', to: 'clubs#my_club'
-  get 'user_interests/select_user_interests'
-  get 'user_interests/handle_check_boxes'
-  get 'user_interests/update'
-  # get 'user_interests/create'
-  # get 'user_interests/destroy'
+  get 'users/select_user_interests'
+  get 'users/handle_check_boxes'
+  get 'club_interests/select_club_interests'
+  get 'club_interests/handle_check_boxes'
   get 'users/preferences'
   get 'club_matches/swipe'
   devise_for :users, controllers: {
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
   resources :clubs do
     collection do
       get 'index', to: 'clubs#index'
+      get 'new', to: 'clubs#new'
       get 'choose', to: 'clubs#choose'
       get ':id', to: 'clubs#show'
     end
@@ -43,11 +45,11 @@ Rails.application.routes.draw do
   resources :users
   devise_scope :user do
     authenticated do
-      root 'clubs#choose'
+      root 'users#root'
     end
   
     unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
+      root 'users#explore', as: :unauthenticated_root
     end
   end
   

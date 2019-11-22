@@ -1,6 +1,7 @@
 # Created 11/09/2019 by Sharon Qiu
 # Edited 11/17/2019 by Leah Gillespie
 # Edited 11/17/2019 by Sharon Qiu
+# Edited 11/21/2019 by Neel Mansukhani: bug fix
 
 # Controller for club matches page
 
@@ -49,7 +50,7 @@ class ClubMatchesController < ApplicationController
   def update_existing_match
     @current_user = User.find(params[:id])
     @current_club_match = ClubMatch.find_by(club_id:params[:club], user_id:params[:id])
-    if @current_club_match.matched == 1 || @current_club_match.matched
+    if @current_club_match.matched == 1 || @current_club_match.matched == true
       if @current_club_match.update(matched: 0)
         @current_club_match.reload
       else

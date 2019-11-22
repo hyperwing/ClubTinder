@@ -1,6 +1,7 @@
 <%# File created 11/19/2019 by Sri Ramya Dandu
     Edited 11/20/2019 by Sri Ramya Dandu: Added css link 
-    Edited 11/20/2019 by Sri Ramya Dandu: Added loading %>
+    Edited 11/20/2019 by Sri Ramya Dandu: Added loading 
+    Edited 11/21/2019 by Sri Ramya Dandu: Fixed hrefs %>
 
 <%= stylesheet_link_tag 'explore'%>
 
@@ -20,9 +21,6 @@
   <input type="text" class="form-control" aria-label="Search">
   <input type="button" value = "&#128269;">
 </div>
-
-
-
 <div class = "explore-cards"> 
   <div class="card-columns">
     <% @clubs.each do |club| %>
@@ -44,7 +42,7 @@
 
 
   function waitTime() {
-    setTimeout(showPage, 1500);
+    setTimeout(showPage, 4000);
   }
   waitTime();
 
