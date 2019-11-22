@@ -152,14 +152,16 @@ class UsersController < ApplicationController
   # Created 11/13/2019 by Sri Ramya Dandu
   # Obtains params from stats and parses for correct users 
   # Edited 11/15/2019 by Sri Ramya Dandu: Parsing functionality
+  # Edited 11/21/2019 by David Wing: graph data
+  # Edited 11/22/2019 by David Wing: updated graph data
   def display_stats
     
     if current_user && current_user.role == "admin"
       @valuesArray = params.values[0,(params.values).length-2]
       @keysArray = params.keys[0,(params.keys).length-2]
       @match_data = ClubMatch.joins(:club).where(:matched=>1).order('COUNT(club_matches.club_id)DESC').limit(5)
-      @user_interest_data = UserInterest.joins(:interest)
-      @club_interest_data = ClubInterest.joins(:interest)
+      @user_interest_data = UserInterest.joins(:interest).order('COUNT(user_interests.interest_id)DESC').limit(7)
+      @club_interest_data = ClubInterest.joins(:interest).order('COUNT(club_interests.interest_id)DESC').limit(7)
     
       if @valuesArray[0] != "All" 
         @users = User.where("#{@keysArray[0]}": params["#{@keysArray[0]}".to_sym])
