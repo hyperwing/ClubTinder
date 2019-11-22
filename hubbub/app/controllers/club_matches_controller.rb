@@ -71,7 +71,7 @@ class ClubMatchesController < ApplicationController
     @current_club = Club.find_by name: params[:club_name]
     newest_match = ClubMatch.create user_id: current_user.id, club_id: @current_club.id, matched: params[:matched]
     newest_match.save
-    # redirect_to request.referrer
+    #redirect_to request.referrer
   end
   
   # DELETE /club_matches/1
