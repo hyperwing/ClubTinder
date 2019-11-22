@@ -1,6 +1,7 @@
 # Created 11/17/19 by David Wing
 # Edited 11/21/2019 by Neel Mansukhani: Changed redirect on confirm
 # Edited 11/21/2019 by David Wing: Changed redirect to profile
+# Edited 11/21/2019 by David Wing: fixed bug for no selected interests
 
 class UserInterestsController < ApplicationController
 
@@ -49,6 +50,7 @@ class UserInterestsController < ApplicationController
         tag_ids = params[:tag_ids]
         logger.debug("tag_ids: " +tag_ids.to_s)
 
+
         @interests = Interest.all
         # if box checked, add to model, else destroy from model
         @interests.each do |i_box|
@@ -58,7 +60,7 @@ class UserInterestsController < ApplicationController
             logger.debug("handling " +i_box.name.to_s)
             logger.debug("tag_ids: " +tag_ids.to_s)
 
-            if tag_ids.include? i_box.id.to_s
+            if (!tag_ids.nil?) && (tag_ids.include? i_box.id.to_s)
 
                 logger.debug("creating new user_interest")
 

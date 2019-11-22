@@ -1,4 +1,5 @@
  /* File Created 11/18/2019 by Sri Ramya Dandu */
+//  Edited 11/21/2019 by David Wing: extended max height of interest cell cause it was really small
  
  /* User show page */
  .show {
@@ -21,7 +22,7 @@ th,td{
 ul.interests{
    text-align: left;
    overflow:scroll;
-   max-height:120px;
+   max-height:30%;
 }
 
 .user_info {
