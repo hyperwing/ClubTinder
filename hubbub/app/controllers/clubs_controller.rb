@@ -43,7 +43,7 @@ class ClubsController < ApplicationController
   # GET /clubs/1
   # GET /clubs/1.json
   def show
-    redirect_to clubs_my_club_path
+    redirect_to club_interests_select_club_interests_path
   end
 
   # GET /clubs/new
@@ -106,10 +106,14 @@ class ClubsController < ApplicationController
 
   # Created 11/20/2019 by Neel Mansukhani
   def my_club
-    @club = Club.find(current_user.club_id)
-    @club_match_data = ClubMatch.where(club_id: @club.id).group_by_day(:created_at).count
-    @user_interest_data = UserInterest.left_joins(:interest).where(user_id: @club.users).group(:name).limit(5).order('COUNT(interests.id) DESC').count
-    @gender_data = ClubMatch.left_joins(:user).where(club_id: @club.id).group(:gender).count
+    if current_user.club_id.nil?
+      redirect_to new_club_path
+    else
+      @club = Club.find(current_user.club_id)
+      @club_match_data = ClubMatch.where(club_id: @club.id).group_by_day(:created_at).count
+      @user_interest_data = UserInterest.left_joins(:interest).where(user_id: @club.users).group(:name).limit(5).order('COUNT(interests.id) DESC').count
+      @gender_data = ClubMatch.left_joins(:user).where(club_id: @club.id).group(:gender).count
+    end
   end
   private
     # Use callbacks to share common setup or constraints between actions.

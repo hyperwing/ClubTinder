@@ -82,7 +82,7 @@ class UserInterestsController < ApplicationController
                 
             end
         end
-        render "users/preferences"
+        redirect_to root_path
     end
 
 end
