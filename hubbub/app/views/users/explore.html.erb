@@ -1,6 +1,7 @@
 <%# File created 11/19/2019 by Sri Ramya Dandu
     Edited 11/20/2019 by Sri Ramya Dandu: Added css link 
-    Edited 11/20/2019 by Sri Ramya Dandu: Added loading %>
+    Edited 11/20/2019 by Sri Ramya Dandu: Added loading 
+    Edited 11/21/2019 by Sri Ramya Dandu: Fixed hrefs %>
 
 <%= stylesheet_link_tag 'explore'%>
 
@@ -31,7 +32,7 @@
         <div class="card-body">
           <h5 class="card-title"><%= club.name %></h5>
           <p class="card-text"><%= club.mission %></p>
-          <a href <%= club.link %> class="btn btn-primary btn-sm">Learn More</a>
+          <a href = "<%= club.link %>" class="btn btn-primary btn-sm">Learn More</a>
         </div>
       </div>
     <% end %>
@@ -44,7 +45,7 @@
 
 
   function waitTime() {
-    setTimeout(showPage, 1500);
+    setTimeout(showPage, 4000);
   }
   waitTime();
 

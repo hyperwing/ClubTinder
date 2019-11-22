@@ -1,4 +1,5 @@
-<%# File created 11/17/2019 by Sharon Qiu %>
+<%# File created 11/17/2019 by Sharon Qiu 
+    Edited 11/21/2019 by Sri Ramya Dandu: Check for admin or user %>
 <%# Edited 11/20/2019 by Sharon Qiu: Applied Bootstrap.%>
 <%= stylesheet_link_tag 'show_matches_page'%>
 <div class="row">
@@ -45,18 +46,21 @@
                                     <p class="selected-matches-card-text"><%= club.mission %></p>
                                 </div>
                             </div>
+                            <% if @user.id == current_user.id%>
                             <div class="col-2 club-and-match-update">
                                 <a href= "<%= club.link %>" class="btn go-to-club">&#8594;</a>
                                 <div class="match-update">
                                     <%= link_to 'X',add_current_club_matches_url(:club => club.id, :id => @user.id), :data =>{confirm: "Are you sure you'd like to unmatch this club?"}, :method => :patch%>
                                 </div>
                             </div>
+                            <%end%>
                         </div>
                     </div>
                     <%count += 1%>
                 <%end%>
                 </div>
             </div>
+        </div>
     </div>
     <%end%>
 </div>

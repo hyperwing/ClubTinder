@@ -60,7 +60,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(resource)
     if(resource.club?)
       new_club_path
-    else 
+    else
       user_interests_select_user_interests_path
     end
   end

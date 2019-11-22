@@ -12,6 +12,7 @@
 # File edited 11/20/2019 by Sri Ramya Dandu: Added more data to show controller
 # File edited 11/20/2019 by Sharon Qiu: Fixed query for match/unmatch.
 # File edited 11/21/2019 by Sharon Qiu: Fixed query again for match/unmatch...
+# File edited 11/21/2019 by Sri Ramya Dandu: Fixed show query and admin functions
 # File Edited 11/21/2019 by Neel Mansukhani: Fixed query again again
 # Edited 11/21/2019 by Neel Mansukhani: Changed redirect on confirm
 # Edited 11/21/2019 by David Wing: Changed redirect to profile
@@ -26,7 +27,7 @@ class UsersController < ApplicationController
     @user = current_user
     if @user&& @user.role == "admin"
       @title = "All Registered Users"
-      @users = User.where(role: "user")
+      @users = User.all
       @total = User.all.length
     else
       redirect_to new_user_session_path
@@ -178,7 +179,7 @@ class UsersController < ApplicationController
           @title = @title + ' graduating in ' +  @valuesArray[x]
         end
       }   
-      @users = @users.where(role: "user")
+
       @total = @users.length
     else
       redirect_to new_user_session_path
@@ -196,6 +197,7 @@ class UsersController < ApplicationController
   end
 
   # Created 11/16/2019 by Sri Ramya Dandu
+  # Edited 11/21/2019 by Sri Ramya Dandu: Added validations and redirection
   # Allows admin to create dummy user
   def create
 
@@ -203,43 +205,31 @@ class UsersController < ApplicationController
       @user = User.new(new_user_params)
 
       if @user.save
+        @interests = []
+        @matched_clubs = 0;
+        @rejected_clubs = 0;
         render :show
       else
-        render :new
+        flash[:alert] = "User with email #{params[:email]} already exists!"
+        redirect_to users_new_url
       end
     else
+      
       redirect_to new_user_session_path
     end 
 
   end 
   
   # Created 11/13/2019 by Sri Ramya Dandu
+  # Edited 11/21/2019 by Sri Ramya Dandu: Replaced loops with queries 
   # Shows user profile 
   def show
     @user = User.find(params[:id])
-    @matched_clubs = 0
-    @rejected_clubs = 0
     @matches = @user.club_matches
+    @matched_clubs = @matches.where(matched: "1").length
+    @rejected_clubs = @matches.where(matched: "0").length
+    @interests = Interest.joins(:user_interests).where(:user_interests => {user_id: current_user.id}).uniq
 
-    @matches.each do |val|
-      matched = val.matched
-      if matched
-        @matched_clubs += 1
-      else
-        @rejected_clubs += 1
-      end
-    end
-
-    @all_interests = Interest.all
-    @user_interests = UserInterest.where(:user_id => current_user.id)
-    @interests = []
-    @all_interests.each do |interest|
-      @user_interests.each do |user_interest|
-        if (user_interest.interest_id == interest.id) && !(@interests.include? interest)
-          @interests.push(interest)
-        end
-      end
-    end 
   end
 
   # Created 11/13/2019 by Sri Ramya Dandu

@@ -72,8 +72,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
   
   test "should not save post without first and last name" do
-    post = User.new(email:"sri@yahoo.com")
-    assert_not post.save
+    user = User.new(email:"sri@yahoo.com")
+    assert_not user.save
   end
 
 
@@ -93,8 +93,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "admin can create dummy user" do
+  test "redirect admin to same page when params for input are not correct or incomplete" do
     get users_create_url
-    assert_response :success
+    assert_response :redirect
   end
 end
