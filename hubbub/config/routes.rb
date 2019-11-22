@@ -2,8 +2,10 @@
 # Edited 11/10/2019 by Neel Mansukhani: Added default route to sign up page.
 # Edited 11/12/2019 by Neel Mansukhani: Fixed root routing.
 # Edited 11/19/2019 by Leah Gillespie: added route to swipe page
+# Edited 11/19/2019 by David Wing: added user_interest routes
 # Edited 11/20/2019 by Neel Mansukhani: Added my_club.
 # Edited 11/21/2019 by Neel Mansukhani: Fixed root routing
+# Edited 11/21/2019 by David Wing: changed user_interest routes
 Rails.application.routes.draw do
   
   get 'clubs/choose', to: 'clubs#choose'
@@ -19,13 +21,10 @@ Rails.application.routes.draw do
   #get 'club_matches/update'
   get 'interests/new'
   get 'clubs/my_club', to: 'clubs#my_club'
-  get 'user_interests/select_user_interests'
+  get 'users/select_user_interests'
+  get 'users/handle_check_boxes'
   get 'club_interests/select_club_interests'
-  get 'user_interests/handle_check_boxes'
   get 'club_interests/handle_check_boxes'
-  get 'user_interests/update'
-  # get 'user_interests/create'
-  # get 'user_interests/destroy'
   get 'users/preferences'
   get 'club_matches/swipe'
   devise_for :users, controllers: {

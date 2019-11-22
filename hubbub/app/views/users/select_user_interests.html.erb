@@ -11,7 +11,7 @@
         Hi, <b><%= @cur_u.first_name %></b>!<br>
         Choose some things that you might be interested in<br>
 </div>
-<form action="/user_interests/handle_check_boxes">
+<form action="/users/handle_check_boxes">
 
         <% @interests.each do |interest| %>
                 <% selected= false %>
