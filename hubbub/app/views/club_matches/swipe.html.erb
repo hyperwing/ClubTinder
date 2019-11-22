@@ -47,14 +47,12 @@
             <p>Check the "Matched" tab for the clubs you've selected!</p>
           <%end%>
         </div>
-        <a class="carousel-control-prev" href="#swipeCarousel" role="button" data-slide="prev">
+          <%= link_to 'Reject', add_new_club_matches_url(:matched => 0, :club_name => @potential_matches[0][0].name), :method => :patch, :class => "carousel-control-prev", :role => "button", :slide => "prev"%>
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Reject</span>
-        </a>
-        <a class="carousel-control-next" href="#swipeCarousel" role="button" data-slide="next">
+        <%= link_to 'Match', add_new_club_matches_url(:matched => 1, :club_name => @potential_matches[0][0].name), :method => :patch, :class => "carousel-control-next", :role => "button", :slide => "next"%>
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Match</span>
-        </a>
         </table>
       </div>
   </body>

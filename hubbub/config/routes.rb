@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   resources :club_matches, :except => [:show,:update] do
     collection do
       patch 'club_matches/update_current/:id', as: :add_current, to: 'club_matches#update_existing_match'
+      patch 'add_new/:matched', :add_new, to: 'club_matches#add_new_match'
     end
   end
   resources :clubs
