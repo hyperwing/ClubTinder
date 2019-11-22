@@ -1,3 +1,5 @@
+# Edited 11/21/2019 by Neel Mansukhani: fixed routing
+
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
@@ -59,8 +61,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if(resource.club?)
       new_club_path
     else 
-      # TODO: Replace with adding interests path
-      users_matched_path
+      user_interests_select_user_interests_path
     end
   end
   # def after_inactive_sign_up_path_for(resource)

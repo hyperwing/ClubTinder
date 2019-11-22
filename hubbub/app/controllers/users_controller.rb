@@ -13,6 +13,7 @@
 # File edited 11/20/2019 by Sharon Qiu: Fixed query for match/unmatch.
 # File edited 11/21/2019 by Sharon Qiu: Fixed query again for match/unmatch...
 # File edited 11/21/2019 by Sri Ramya Dandu: Fixed show query and admin functions
+# File Edited 11/21/2019 by Neel Mansukhani: Fixed query again again
 
 class UsersController < ApplicationController
   
@@ -137,6 +138,7 @@ class UsersController < ApplicationController
   end
 
   # Created 11/16/2019 by Sri Ramya Dandu
+  # Edited 11/21/2019 by Sri Ramya Dandu: Added validations and redirection
   # Allows admin to create dummy user
   def create
 
@@ -144,11 +146,16 @@ class UsersController < ApplicationController
       @user = User.new(new_user_params)
 
       if @user.save
+        @interests = []
+        @matched_clubs = 0;
+        @rejected_clubs = 0;
         render :show
       else
-        render :new
+        flash[:alert] = "User with email #{params[:email]} already exists!"
+        redirect_to users_new_url
       end
     else
+      
       redirect_to new_user_session_path
     end 
 
@@ -193,6 +200,13 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def root
+    if current_user.club?
+      redirect_to clubs_my_club_path
+    else
+      redirect_to clubs_choose_path
+    end
+  end
   private
 
   # Created 11/15/2019 by Sri Ramya Dandu

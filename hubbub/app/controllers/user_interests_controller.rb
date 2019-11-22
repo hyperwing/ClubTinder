@@ -1,4 +1,5 @@
 # Created 11/17/19 by David Wing
+# Edited 11/21/2019 by Neel Mansukhani: Changed redirect on confirm
 
 class UserInterestsController < ApplicationController
 
@@ -82,7 +83,7 @@ class UserInterestsController < ApplicationController
                 
             end
         end
-        render "users/preferences"
+        redirect_to root_path
     end
 
 end

@@ -15,18 +15,17 @@ class ClubsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create club" do
-    assert_difference('Club.count') do
-      post clubs_url, params: { club: { affiliations: @club.affiliations, link: @club.link, location: @club.location, mission: @club.mission, name: @club.name } }
-    end
+  # test "should create club" do
+  #   assert_difference('Club.count') do
+  #     post clubs_url, params: { club: { affiliations: @club.affiliations, link: @club.link, location: @club.location, mission: @club.mission, name: @club.name } }
+  #   end
 
-    assert_redirected_to club_url(Club.last)
-  end
+  # end
 
-  test "should show club" do
-    get club_url(@club)
-    assert_response :success
-  end
+  # test "should show club" do
+  #   get club_url(@club)
+  #   assert_response :success
+  # end
 
   test "should get edit" do
     get edit_club_url(@club)

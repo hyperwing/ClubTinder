@@ -1,40 +1,45 @@
 <%# File created 10/13/2019 by Sri Ramya Dandu 
     Edited 11/15/2019 by Sri Ramya Dandu: Added drop down features
-    Edited 11/20/2019 by Sharon Qiu: Aligned content and added margining to fields..%>
+    Edited 11/20/2019 by Sharon Qiu: Aligned content and added margining to fields..
+    Edited 11/21/2019 by Sri Ramya Dandu: Added bootstrap %>
+
 <%= stylesheet_link_tag 'admin_edit_user_info'%>
-<div class="container">
-<h1>Update User Information</h1>
-<% years = (1950..2050).to_a %>
-<%= form_for(@user) do |f| %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container new-user">
+  <div class="card">
+    <h2 class="card-header">Update User Information</h2>
+      <div class="card-body">
+        <% years = (1950..2050).to_a %>
+        <%= form_for(@user) do |f| %>
+          <div class="field">
+            <%= f.label :email %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+
+          <div class="field ">
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name, autocomplete: "first-name" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :last_name %>
+            <%= f.text_field :last_name, autocomplete: "last-name" %>
+          </div>
+
+          <div class="field">
+          <%= f.label "Graduation Year" %>
+          <%= f.select :grad_year, options_for_select(years, selected_key = f.object.grad_year)%>
+        </div>
+
+        <div class="field">
+          <%= f.label :gender%>
+          <%= f.select :gender, options_for_select(['Male', 'Female', 'Other'], selected_key = f.object.gender)%>
+        </div>
+
+        <%= f.submit "Save changes", class:"btn btn-primary btn-sm" %>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autocomplete: "first-name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autocomplete: "last-name" %>
-  </div>
-
-  <div class="field">
-  <%= f.label :grad_year %><br />
-  <%= f.select :grad_year, options_for_select(years, selected_key = f.object.grad_year)%>
-</div>
-
-<div class="field">
-  <%= f.label :gender%><br />
-  <%= f.select :gender, options_for_select(['Male', 'Female', 'Other'], selected_key = f.object.gender)%>
-</div>
-
-<%= f.submit "Save changes" %>
-<%= link_to "Go Back", request.referrer %>
-<% end %>
-</div>
 
    
