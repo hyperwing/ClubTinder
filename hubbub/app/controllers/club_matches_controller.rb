@@ -56,15 +56,14 @@ class ClubMatchesController < ApplicationController
       else
         flash[:notice] = "Unable to update matched status."
       end
-      redirect_to request.referrer
     else
       if @current_club_match.update(matched: 1)
         @current_club_match.reload
       else
         flash[:notice] = "Unable to update matched status."
       end
-      redirect_to request.referrer
     end
+    redirect_to request.referrer
   end
 
   # Created 11/22/2019 by Leah Gillespie

@@ -17,6 +17,7 @@
 # Edited 11/21/2019 by Neel Mansukhani: Changed redirect on confirm
 # Edited 11/21/2019 by David Wing: Changed redirect to profile
 # Edited 11/21/2019 by David Wing: fixed bug for no selected interests
+# Edited 11/21/2019 by Neel Mansukhani: Changed root
 
 class UsersController < ApplicationController
   
@@ -112,20 +113,16 @@ class UsersController < ApplicationController
   # Gets the matches
   def matched
     @user = User.find_by(id:params[:id])
-    # @matched_clubs = []
-    # @club_matches = @user.club_matches.map{|club| club.club_id if club.matched}.uniq.compact
-    # @user_clubs = @user.clubs
-    # if @user && (@user.role == "user" ||@user.role == "admin")
-    #   @user_clubs.each do |club|
-    #     if @club_matches.include? club.id
-    #       @matched_clubs.push club
-    #     end
-    #   end
-    # else
-    #   flash[:notice] = "Attempted access to restricted page. Redirecting..."
-    #   redirect_to @user
-    # end
-    @matched_clubs = Club.left_joins(:club_matches).where(:club_matches => {matched: 1}).left_joins(:users).where(:club_matches => {user_id: params[:id]}).where(:users => {id: params[:id]})
+    if @user == current_user || @user.role == "admin"
+      @matched_clubs = Club.left_joins(:club_matches)
+      .where(:club_matches => {matched: 1})
+      .left_joins(:users)
+      .where(:club_matches => {user_id: params[:id]})
+      .where(:users => {id: params[:id]})
+    else
+      flash[:notice] = "Attempted access to restricted page. Redirecting..."
+      redirect_to @user
+    end
   end
 
   # Created 11/17/2019 by Sharon Qiu
@@ -133,21 +130,17 @@ class UsersController < ApplicationController
   # Gets the rejections
   def not_matched
     @user = User.find_by(id:params[:id])
-    # @not_matched_clubs = []
-    # @not_club_matches = @user.club_matches.map{|club| club.club_id if !club.matched}.uniq.compact
-    # @user_clubs = @user.clubs
-    # if @user && (@user.role == "user" ||@user.role == "admin")
-    #   @user_clubs.each do |club|
-    #     if @not_club_matches.include? club.id
-    #       @not_matched_clubs.push club
-    #     end
-    #   end
-    # else
-    #   flash[:notice] = "Attempted access to restricted page. Redirecting..."
-    #   redirect_to @user
-    # end
-    @not_matched_clubs = Club.left_joins(:club_matches).where(:club_matches => {matched: 0}).left_joins(:users).where(:club_matches => {user_id: params[:id]}).where(:users => {id: params[:id]})
+    if @user == current_user || @user.role == "admin"
+      @not_matched_clubs = Club.left_joins(:club_matches)
+      .where(:club_matches => {matched: 0})
+      .left_joins(:users)
+      .where(:club_matches => {user_id: params[:id]})
+      .where(:users => {id: params[:id]})
+    else
+      flash[:notice] = "Attempted access to restricted page. Redirecting..."
+      redirect_to @user
     end
+  end
 
   # Created 11/13/2019 by Sri Ramya Dandu
   # Obtains params from stats and parses for correct users 
@@ -219,7 +212,6 @@ class UsersController < ApplicationController
         redirect_to users_new_url
       end
     else
-      
       redirect_to new_user_session_path
     end 
 
@@ -268,7 +260,7 @@ class UsersController < ApplicationController
     if current_user.club?
       redirect_to clubs_my_club_path
     else
-      redirect_to clubs_choose_path
+      redirect_to club_matches_swipe_path
     end
   end
   private

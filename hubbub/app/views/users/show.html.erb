@@ -4,7 +4,9 @@
     Edited 11/18/2019 by Sri Ramya Dandu: Added Bootstrap
     Edited 11/20/2019 by Sri Ramya Dandu: Added table info
     Edited 11/21/2019 by David Wing: Updated edit routing to preference page
-    Edited 11/21/2019 by Sri Ramya Dandu: Added links%>
+    Edited 11/21/2019 by Sri Ramya Dandu: Added links
+    Edited 11/22/2019 by Neel Mansukhani: Clubs can't edit users
+    %>
 
 
 <%= stylesheet_link_tag 'user_show'%>
@@ -23,7 +25,9 @@
             <h5 class = "user_info"> Email: </h5> <%= @user.email %> <br/>  <br/>
             <h5 class = "user_info"> Graduation Year: </h5> <%= @user.grad_year %> <br/>  <br/>
             <h5 class = "user_info"> Gender: </h5> <%= @user.gender %> <br/>  <br/>
-          <a href = "/users/preferences"> Edit Info </a>
+          <% if !current_user.club? %>
+            <a href = "/users/preferences"> Edit Info </a>
+          <% end %>
             </div>
           </div>
         </div>
@@ -34,21 +38,26 @@
                 <tr>
                     <th scope="col" colspan="2">User Info</th>
                 </tr>
-                <tr>
-                    <th scope="col">Matched Clubs</th>
-                    <td> <a href = "/users/matched/<%= @user.id %>" > <%= @matched_clubs %></a> </td>
-                </tr>
-                <tr>
-                  <th scope="col">Rejected Clubs </th>
-                  <td> <a href = "/users/not_matched/<%= @user.id %>" > <%= @rejected_clubs %> </a></td>
-                </tr>
-                <tr>
+                <% if !current_user.club? %>
+                  <tr>
+                      <th scope="col">Matched Clubs</th>
+                      <td> <a href = "/users/matched/<%= @user.id %>" > <%= @matched_clubs %></a> </td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Rejected Clubs </th>
+                    <td> <a href = "/users/not_matched/<%= @user.id %>" > <%= @rejected_clubs %> </a></td>
+                  </tr>
+                  <tr>
+                <% end %>
                   <th scope="col" class = "align-middle">Interests</th>
                   <td> 
                     <ul class = "interests">
                       <% @interests.each do |interest|%> 
                         <li><%= interest.name %> </li>
                       <% end %>
+                      <% if @interests.length == 0 %>
+                        <li>No Interests</li>
+                      <% end%>
                     </ul>
                   </td>
                 </tr>

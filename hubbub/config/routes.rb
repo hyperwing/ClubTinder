@@ -9,8 +9,7 @@
 # Edited 11/22/2019 by Sri Ramya Dandu: Changed default route
 
 Rails.application.routes.draw do
-  
-  get 'clubs/choose', to: 'clubs#choose'
+
   get 'users/index'
   get 'users/stats'
   get 'users/explore'
@@ -20,7 +19,6 @@ Rails.application.routes.draw do
   get 'users/matched/:id', to: 'users#matched'
   get 'users/not_matched/:id', to: 'users#not_matched'
   post 'users/sign_up', to: 'resources#sign_up'
-  #get 'club_matches/update'
   get 'interests/new'
   get 'clubs/my_club', to: 'clubs#my_club'
   get 'users/select_user_interests'
@@ -35,17 +33,23 @@ Rails.application.routes.draw do
   }
   resources :club_matches, :except => [:show,:update] do
     collection do
-      patch 'club_matches/update_current/:id', as: :add_current, to: 'club_matches#update_existing_match'
       patch 'add_new/:matched', :add_new, to: 'club_matches#add_new_match'
+      patch 'update_current/:id', as: :add_current, to: 'club_matches#update_existing_match'
     end
   end
-  resources :clubs
+  resources :clubs do
+    collection do
+      get 'index', to: 'clubs#index'
+      get 'new', to: 'clubs#new'
+      get 'choose', to: 'clubs#choose'
+      get ':id', to: 'clubs#show'
+    end
+  end
   resources :users
   devise_scope :user do
     authenticated do
-      root 'club_matches#swipe'
+      root 'users#root'
     end
-  
     unauthenticated do
       root 'users#explore', as: :unauthenticated_root
     end
