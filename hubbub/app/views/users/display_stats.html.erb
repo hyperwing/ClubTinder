@@ -2,12 +2,33 @@
     Edited 11/18/2019 by Sri Ramya Dandu: Changed display 
     Edited 11/18/2019 by Sri Ramya Dandu: Added Bootstrap 
     Edited 11/19/2019 by Sri Ramya Dandu: Added more bootstrap 
-    Edited 11/20/2019 by Sri Ramya Dandu: Link to CSS %>
+    Edited 11/20/2019 by Sri Ramya Dandu: Link to CSS 
+    Edited 11/21/2019 by David Wing: added charts %>
 
     <%= stylesheet_link_tag 'stats'%>
 <div class = "stats-display">
 <h1> <%= @title %> </h1>
 <p> Total Users: <%= @total %> </p>
+
+<table class="table table-nonfluid table-striped">
+    <thead class="thead-dark">
+      <tr>
+          <th scope="col">Gender Breakdown</th>
+          <th scope="col">Most Popular Clubs by Matches</th>
+          <th scope="col">Popular Interests</th>
+
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+          <td><%= pie_chart @users.group(:gender).count %></td>
+          <td><%= bar_chart @match_data.group(:name).count %></td>
+          <td><%= pie_chart @user_interest_data.group(:name).count %></td>
+      </tr>
+    </tbody>
+</table>
+
+
 <table class="table table-nonfluid table-striped">
   <thead class="thead-dark">
     <tr>
@@ -38,7 +59,7 @@
         end
     %>
     <tr>
-      <td> <%= user.first_name %></td>
+      <td> <%= user.first_name %> </td>
       <td> <%= user.last_name %></td>
       <td> <%= user.email %></td>
 

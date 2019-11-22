@@ -157,6 +157,8 @@ class UsersController < ApplicationController
     if current_user && current_user.role == "admin"
       @valuesArray = params.values[0,(params.values).length-2]
       @keysArray = params.keys[0,(params.keys).length-2]
+      @match_data = ClubMatch.joins(:club).where(:matched=>1).order('COUNT(club_matches.club_id)DESC').limit(5)
+      @user_interest_data = UserInterest.joins(:interest)
     
       if @valuesArray[0] != "All" 
         @users = User.where("#{@keysArray[0]}": params["#{@keysArray[0]}".to_sym])
