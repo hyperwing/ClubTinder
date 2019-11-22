@@ -103,17 +103,10 @@ class ClubsController < ApplicationController
       @club_interests = ClubInterest.left_joins(:interest).where(club_id: current_user.club_id)
 
       @club_has_matches = ClubMatch.where(club_id: @club.id).count >0
-    
-      
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    # def set_club
-    #   @club = Club.find(params[:id])
-    # end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def club_params
       params.require(:club).permit(:name, :string, :mission, :string, :affiliations, :string, :link, :string, :img, :string, :location, :string, :other, :string)

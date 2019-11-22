@@ -9,10 +9,11 @@
     <meta charset="utf-8">
     <title>Choose your Clubs</title>
   </head>
-  <>
+    <%= stylesheet_link_tag 'swipe'%>
     <h1>Choose your Clubs</h1>
     <h2>Click the left button to reject a club or the right button to match! Then go to the matched tab to see all your matches!</h2>
       <div id="swipeCarousel" class="carousel slide" data-ride="carousel" data-interval="false" data-keyboard="false">
+        <div class="container">
         <div class="carousel-inner">
           <%first = true
             @potential_matches.each do |c|
@@ -36,8 +37,11 @@
         </div>
         <%#@slide_num = 0 %>
         <div>
-        <%= link_to '❰❰', add_new_club_matches_url(:matched => 0, :club_name => @potential_matches[$slide_num][0].name), :method => :patch, :class => "carousel-control-prev", :role => "button", :slide => "next"%>
+        <%#= link_to '❰❰', add_new_club_matches_url(:matched => 0, :club_name => @potential_matches[$slide_num][0].name), :method => :patch, :class => "carousel-control-prev", :role => "button", :slide => "next"%>
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <%#= link_to '❰❰', add_new_club_matches_url(:matched => 0, :club_name => c[0].name), :method => :patch, :class => "carousel-control-prev", :role => "button", :slide => "next"%>
+          <a class = "carousel-control-prev" href="<%=link_to add_new_club_matches_url(:matched => 0, :club_name => @potential_matches[0][0].name),  :method => :patch%>" role="button" data-slide="next">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Reject</span>
         </div>
         <div>
@@ -46,5 +50,6 @@
           <span class="sr-only">Match</span>
         </div>
       </div>
-  </body>
-</html>
+    </div>
+    </div>
+    </div>
