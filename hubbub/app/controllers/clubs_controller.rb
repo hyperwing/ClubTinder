@@ -1,6 +1,7 @@
 # Edited 11/13/2019 by Leah Gillespie
 # Edited 11/20/2019 by Neel Mansukhani: Choose now considers interests for rating.
 # Edited 11/21/2019 by Neel Mansukhani: New club updates club id for user too.
+# Edited 11/21/2019 by Neel Mansukhani: Fixed destroy
 require 'csv'
 
 class ClubsController < ApplicationController
@@ -103,7 +104,7 @@ class ClubsController < ApplicationController
   # DELETE /clubs/1
   # DELETE /clubs/1.json
   def destroy
-    @club.destroy
+    Club.find_by(id: params[:id]).destroy
     respond_to do |format|
       format.html { redirect_to clubs_url, notice: 'Club was successfully destroyed.' }
       format.json { head :no_content }
