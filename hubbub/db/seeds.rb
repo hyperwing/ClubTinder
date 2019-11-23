@@ -19,7 +19,6 @@ ClubMatch.destroy_all
 Interest.destroy_all
 ClubInterest.destroy_all
 UserInterest.destroy_all
-UserPosition.destroy_all
 
 interestsArr = ["Awareness/Activism", "Academic/College", "Cultural/Ethnic", "Community Service/Service Learning", "Creative and Performing Arts", "Goverance Organization", "Honoraries/Honor Societies", "Media", "Performing Arts", "Religious/Spiritual", "Social Fraternities/Sororities","Sports and Recreation","Service","Special Interest","Technology"]
 interestsArr.each do |interestOption|
@@ -48,6 +47,11 @@ User.create({:email => "wing.49@osu.edu", :role => 2, :password => "111111", :pa
 User.create({:email => "gillespie.267@osu.edu", :role => 2, :password => "111111", :password_confirmation => "111111" , :first_name => "Leah", :last_name => "Gillespie", :grad_year => "2021", :gender => "Female"}).save
 User.create({:email => "dandu.7@osu.edu", :role => 2, :password => "111111", :password_confirmation => "111111" , :first_name => "Sri Ramya", :last_name => "Dandu", :grad_year => "2021", :gender => "Female"}).save
 User.create({:email => "qiu.374@osu.edu", :role => 2, :password => "111111", :password_confirmation => "111111" , :first_name => "Sharon", :last_name => "Qiu", :grad_year => "2021", :gender => "Female"}).save
+
+user_club = Club.create({:name => "Test Club", :mission => "To demonstrate a club", :link => "www.google.com", :location => "Columbus"})
+user_club.save
+club_user = User.create({:email => "club.1@osu.edu", :role => 1, :password => "111111", :password_confirmation => "111111" , :first_name => "Club", :last_name => "Cluberson", :grad_year => "2021", :gender => "Female", :club_id => user_club.id})
+club_user.save
 50.times do |i|
   name = "User" + (i+1).to_s
   email = name + "@gmail.com"
@@ -61,8 +65,11 @@ end
   if user.clubs.include? club
     next
   else
-    ClubMatch.create({:user_id => user.id,:club_id => club.id,:matched => 1}).save
+    ClubMatch.create({:user_id => user.id,:club_id => club.id,:matched => 1, :created_at => "2019-11-#{rand(11..21).to_s} 05:05:36.258482"}).save
   end
+end
+25.times do
+  ClubMatch.create({:user_id => User.order("RANDOM()").limit(1)[0].id, :club_id => user_club.id, :matched => 1, :created_at => "2019-11-#{rand(11..21).to_s} 05:05:36.258482"})
 end
 User.all.each do |user|
   3.times do
