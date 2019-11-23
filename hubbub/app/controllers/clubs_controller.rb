@@ -2,6 +2,7 @@
 # Edited 11/20/2019 by Neel Mansukhani: Choose now considers interests for rating.
 # Edited 11/21/2019 by Neel Mansukhani: New club updates club id for user too.
 # Edited 11/21/2019 by Neel Mansukhani: Fixed destroy
+# Edited 11/22/2019 by David Wing: added model references for club stats
 require 'csv'
 
 class ClubsController < ApplicationController
@@ -24,10 +25,10 @@ class ClubsController < ApplicationController
     # if params[:id] == "new"
     #   redirect_to club_interests_select_club_interests_url
     # else
-    if current_user.role == "1"
-      redirect_to clubs_my_club_path
-    else
+    if current_user.nil? || current_user.role != "1"
       @club = Club.find(params[:id])
+    else
+      redirect_to clubs_my_club_path
     end
   end
 
