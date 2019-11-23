@@ -1,15 +1,17 @@
 <%# Created 10/17/2019 by Leah Gillespie %>
 <%# Edited 10/19/2019 by Leah Gillespie: Added bootstrap carousel 
 <%# Edited 10/22/2019 by Sharon Qiu: added js and ajax script %>
+<%# Edited 10/22/2019 by Sharon Qiu: left right swipey swipe %>
 <%= stylesheet_link_tag 'swipe'%>
 <h1 class ="headings">Choose your Clubs</h1>
 <h2 class = "content">Click the left button to reject a club or the right button to match! <br/> Go to the matched tab to see all your matches!</h2>
   <br/>
-  <div id="swipeCarousel" class="carousel slide" data-ride="carousel" data-interval="false" data-keyboard="false">
+  <div id="swipeCarousel" class="carousel slide" data-interval="false" data-keyboard="false">
     <div class="container">
+    <%count = 0%>
     <div class="carousel-inner">
       <%first = true
-        @potential_matches.each do |c|
+        @potential_matches.each_with_index do |c,i|
           if first
             active = "carousel-item active"
             first = false
@@ -17,7 +19,7 @@
             active = "carousel-item"
             end
         %>
-        <div class=" <%= %"#{active}"%>">
+        <div class="<%=%"#{active}"%>" value="<%=i%>">
           <div class="list-of-clubs-container">
             <img src="<%=c[0].img%>" class="swipe-img" alt="<%=c[0].name%>"%>
           </div>
@@ -31,17 +33,16 @@
           </div>
 
         </div>
+        <%count+=1%>
+        <%break if count==12%>
       <%end%>
     </div>
-    
-    <a class = "carousel-control-prev pointer" href="#swipeCarousel" role="button" data-slide="next">
+    <a class = "carousel-control-prev pointer" href="#swipeCarousel" role="button" >
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Reject</span>
       ❰❰ REJECT
     </a>
-
-    
-    <a class = "carousel-control-next pointer"  href="#swipeCarousel" role="button" data-slide="next">
+    <a class = "carousel-control-next pointer"  href="#swipeCarousel" role="button">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Match</span>
       MATCH ❱❱
@@ -51,13 +52,62 @@
 </div>
 </div>
 <script>
-    // calls the method without interfering with swipe
-    $('#swipeCarousel').click(function (e) {
-      var name = $(".carousel-item.active h5").text()
+    var name;
+    //swipey swipey left transition
+    $('.carousel-control-prev').on('click', function(e){
+      e.preventDefault();
+      name = $(".carousel-item.active h5").text();
+      var currentIndex = parseInt($(".carousel-item.active").attr("value"));
+      var currentSlide = $("div[value=\""+String(currentIndex)+"\"]");
+      var wantedIndex = currentIndex + 1;
+      var wantedSlide = $("div[value=\""+String(wantedIndex)+"\"]");
+      currentSlide.parent().prepend(wantedSlide);
+      $('#swipeCarousel').carousel('prev');
+      currentSlide.attr("class", "carousel-item")
+      wantedSlide.attr("class", "carousel-item active")
+      setTimeout(function (e){
+        $("div[value=\""+String(currentIndex)+"\"]").remove();
+      },1000)
+      if (wantedSlide.val() == undefined){
+        $(".carousel-inner").html('<h4 class="finished-matches">Match limit reached.</h4></br><h4 class="finished-matches">Be sure to check out your matches!</h4>');
+        $(this).remove();
+        $('.carousel-control-next').remove();
+      }
+      });
+
+    //swipey swipey right transition
+    $('.carousel-control-next').on('click', function(e){
+      e.preventDefault();
+      name = $(".carousel-item.active h5").text();
+      var currentIndex = parseInt($(".carousel-item.active").attr("value"));
+      var currentSlide = $("div[value=\""+String(currentIndex)+"\"]");
+      var wantedIndex = currentIndex + 1;
+      var wantedSlide = $("div[value=\""+String(wantedIndex)+"\"]");
+      $('#swipeCarousel').carousel('next');
+      currentSlide.attr("class", "carousel-item")
+      wantedSlide.attr("class", "carousel-item active")
+      setTimeout(function (e){
+        $("div[value=\""+String(currentIndex)+"\"]").remove();
+      },1000)
+      if (wantedSlide.val() == undefined){
+        $(".carousel-inner").html('<h4 class="finished-matches">Match limit reached.</h4></br><h4 class="finished-matches">Be sure to check out your matches!</h4>');
+        $(this).remove();
+        $('.carousel-control-prev').remove();
+      }
+      });
+
+    //to send ajax request
+    $('#swipeCarousel').on('click', function (e) {
+      var currentIndex = parseInt($(".carousel-item.active").attr("value"));
+      var currentSlide = $("div[value=\""+String(currentIndex)+"\"]");
+      var wantedIndex = currentIndex + 1;
+      var wantedSlide = $("div[value=\""+String(wantedIndex)+"\"]");
+
       var pWidth = $(this).innerWidth();
       var x = e.pageX;
+      
+      //swipe left
       if(pWidth*.2 > x){
-          $('#myCarousel').carousel('next')
           $.ajax({
             url: "/club_matches/add_new",
             type: "POST",
@@ -65,7 +115,9 @@
               matched:0,
               club_name:name
             },
+            success: function(data) {}
           });
+      //right swipe
       }else if (pWidth*.8 < x){
         $.ajax({
           url: "/club_matches/add_new",
@@ -74,6 +126,7 @@
             matched:1,
             club_name:name
           },
+          success: function(data) {}
         });
       }
     })
