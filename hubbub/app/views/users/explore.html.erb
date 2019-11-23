@@ -1,9 +1,9 @@
 <%# File created 11/19/2019 by Sri Ramya Dandu
     Edited 11/20/2019 by Sri Ramya Dandu: Added css link 
     Edited 11/20/2019 by Sri Ramya Dandu: Added loading 
-    Edited 11/21/2019 by Sri Ramya Dandu: Fixed hrefs 
-    Edited 11/22/2019 by Sharon Qiu: Search 
-    Edited 11/22/2019 by Sri Ramya Dandu: Bootstrap buttons %>
+    Edited 11/21/2019 by Sri Ramya Dandu: Fixed hrefs
+    Edited 11/22/2019 by Leah Gillespie: added interest form
+%>
 
 <%= stylesheet_link_tag 'explore'%>
 <body style="margin:0;">
@@ -19,6 +19,21 @@
       <%= submit_tag "Get searching!", class: "btn btn-dark btn-sm" %>
     <% end %>
   </div>
+</div>
+  <div class="explore-interests-form">
+  <form action="/users/handle_explore_interests">
+
+  <% @interests.each do |interest| %>
+    <% selected= false %>
+    <%# prefills the form %>
+      <div class="form-check">
+        <input id="interest2" type="checkbox" name="tag_ids[]" value="<%=interest.id %>"  class="form-check-input"  />
+        <label class="form-check-label" for="interest2"><%=interest.name%></label><br>
+      </div>
+  <% end %>
+  <br>
+  <input type="submit" class="btn btn-primary mb-2" value="Save"><br>
+  </form>
 </div>
 <div class = "explore-cards"> 
   <%if @clubs.length == 0%>

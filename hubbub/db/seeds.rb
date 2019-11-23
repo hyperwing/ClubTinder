@@ -19,6 +19,7 @@ ClubMatch.destroy_all
 Interest.destroy_all
 ClubInterest.destroy_all
 UserInterest.destroy_all
+UserPosition.destroy_all
 
 interestsArr = ["Awareness/Activism", "Academic/College", "Cultural/Ethnic", "Community Service/Service Learning", "Creative and Performing Arts", "Goverance Organization", "Honoraries/Honor Societies", "Media", "Performing Arts", "Religious/Spiritual", "Social Fraternities/Sororities","Sports and Recreation","Service","Special Interest","Technology"]
 interestsArr.each do |interestOption|
