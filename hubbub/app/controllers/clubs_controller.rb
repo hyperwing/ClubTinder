@@ -100,7 +100,8 @@ class ClubsController < ApplicationController
       @user_interest_data = UserInterest.left_joins(:interest).where(user_id: @club.users).group(:name).limit(5).order('COUNT(interests.id) DESC').count
       @gender_data = ClubMatch.left_joins(:user).where(club_id: @club.id).group(:gender).count
 
-      @club_interests = ClubInterest.left_joins(:interest).where(club_id: current_user.club_id)
+      # c_i = ClubInterest.where("club_id==:cid", cid:current_user.club_id)
+      @club_interests = Interest.joins(:club_interests).where("club_id==:cid", cid:current_user.club_id)
 
       @club_has_matches = ClubMatch.where(club_id: @club.id).count >0
     end
