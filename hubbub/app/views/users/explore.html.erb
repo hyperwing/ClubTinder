@@ -20,21 +20,21 @@
     <% end %>
   </div>
 </div>
-  <div class="explore-interests-form">
-  <form action="/users/handle_explore_interests">
+<!--  <div class="explore-interests-form">-->
+<!--  <form action="/users/handle_explore_interests">-->
 
-  <% @interests.each do |interest| %>
-    <% selected= false %>
+  <%# @interests.each do |interest| %>
+    <%# selected= false %>
     <%# prefills the form %>
-      <div class="form-check">
-        <input id="interest2" type="checkbox" name="tag_ids[]" value="<%=interest.id %>"  class="form-check-input"  />
-        <label class="form-check-label" for="interest2"><%=interest.name%></label><br>
-      </div>
-  <% end %>
-  <br>
-  <input type="submit" class="btn btn-dark btn-sm" value="Filter"><br>
-  </form>
-</div>
+<!--      <div class="form-check">-->
+<!--        <input id="interest2" type="checkbox" name="tag_ids[]" value="<%#=interest.id %>"  class="form-check-input"  />-->
+<!--        <label class="form-check-label" for="interest2"><%#=interest.name%></label><br>-->
+<!--      </div>-->
+  <%# end %>
+<!--  <br>-->
+<!--  <input type="submit" class="btn btn-dark btn-sm" value="Filter"><br>-->
+<!--  </form>-->
+<!--</div>-->
 <div class = "explore-cards"> 
   <%if @clubs.length == 0%>
       <h4> No results found...</h4><br/>
