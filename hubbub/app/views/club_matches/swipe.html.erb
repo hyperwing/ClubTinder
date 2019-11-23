@@ -45,13 +45,28 @@
         <a class = "carousel-control-prev pointer" href="#swipeCarousel" role="button" data-slide="next"> 
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Reject</span>
-          ❰❰
+          
+
+          <button onclick= "
+            <% @club =  Club.first %>
+            <% newest_match = ClubMatch.create user_id: current_user.id, club_id: @club.id, matched: 0 %>
+            alert('<%= newest_match.user_id %>');
+   
+                  
+          " > ❰❰ </button>
+
           </a>
         <%#= link_to '❱❱', add_new_club_matches_url(:matched => 1, :club_name => c[0].name), :method => :patch, :class => "carousel-control-next", :role => "button", :slide => "next"%>
-        <a class = "carousel-control-next pointer" href="#swipeCarousel" role="button" data-slide="next">
+        <a class = "carousel-control-next pointer"  href="#swipeCarousel" role="button" data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Match</span>
-          ❱❱
+          <button onclick= "
+            <% @club =  Club.third %>
+            <% newest_match = ClubMatch.create user_id: current_user.id, club_id: @club.id, matched: 1 %>
+            alert('<%= newest_match.user_id %>');
+   
+                  
+          " > ❱❱ </button>
         </a>
 
         <%#@slide_num = 0 %>
@@ -66,8 +81,4 @@
     </div>
     </div>
     </div>
-    <script>
-        $('#swipeCarousel').on('slid.bs.carousel', function (e) {
-        $('#myCarousel').carousel('next') 
-      })
-    </script>
+  
