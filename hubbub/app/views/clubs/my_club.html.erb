@@ -11,7 +11,7 @@ Edited 11/21/2019 by David Wing: added condition for matches%>
     <table class="table col-md-3">
             <thead class="thead-dark">
               <tr>
-                  <th scope="col">Membership</th>
+                  <th scope="col">Matches</th>
                   <th scope="col">Club Interests</th>
                   <th scope="col">Gender Breakdown</th>
                   <th scope="col">Ranking</th>
@@ -22,11 +22,13 @@ Edited 11/21/2019 by David Wing: added condition for matches%>
               <tr>
                   <td><%= line_chart @club_match_data %></td>
                   <td>
-
+                    
+                    
                     <% @club_interests.each do |interest| %>
                         <%= interest.name %> <br>
 
-                    <% end %>
+                    <% end %> 
+                    
                 </td>
                   <td><%= pie_chart User.group(:gender).count %></td>
         
@@ -39,7 +41,7 @@ Edited 11/21/2019 by David Wing: added condition for matches%>
                         <th scope="col">Users</th>
                     </tr>
             </thead>
-        <% @club.users.each do |user| %>
+        <% @users_x.each do |user| %>
             <tr>
 
                 <td> <%= user.first_name %></td>

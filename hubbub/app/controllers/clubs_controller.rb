@@ -96,13 +96,15 @@ class ClubsController < ApplicationController
     else
 
       @club = Club.find(current_user.club_id)
-      @club_match_data = ClubMatch.where(club_id: @club.id).group_by_day(:created_at).count
+
+      @club_match_data = ClubMatch.where(:matched=> 1).where(club_id: @club.id).group_by_day(:created_at).count
       @user_interest_data = UserInterest.left_joins(:interest).where(user_id: @club.users).group(:name).limit(5).order('COUNT(interests.id) DESC').count
-      @gender_data = ClubMatch.left_joins(:user).where(club_id: @club.id).group(:gender).count
+      @gender_data = ClubMatch.left_joins(:user).where(club_id: @club.id).where(:matched=> 1).group(:gender).count
 
-      # c_i = ClubInterest.where("club_id==:cid", cid:current_user.club_id)
+      logger.debug("xxxxxxxxxxxxxxxxxxxxxx")
+      @users_x = User.left_joins(:club_matches).where("\"club_matches\".club_id=:cid AND \"club_matches\".matched=1", cid:@club.id)
+
       @club_interests = Interest.joins(:club_interests).where("club_id==:cid", cid:current_user.club_id)
-
       @club_has_matches = ClubMatch.where(club_id: @club.id).count >0
     end
   end
