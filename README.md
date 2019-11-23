@@ -34,6 +34,10 @@ Sri Ramya Dandu
 3. Stats display views and controller for Admins
 
 Leah Gillespie
+1. Set up filtering on interests on the explore page (model, controller, and view work)
+2. Set up the view and bootstrap carousel for the swipe page, and adjusted matched results for the user (model, view, controller)
+3. Created club_interests model, added parsed data in seed
+4. Added parsed data to clubs model in seed
 
 Neel Mansukahi 
 
