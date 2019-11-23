@@ -1,7 +1,9 @@
 <%# File created 11/19/2019 by Sri Ramya Dandu
     Edited 11/20/2019 by Sri Ramya Dandu: Added css link 
     Edited 11/20/2019 by Sri Ramya Dandu: Added loading 
-    Edited 11/21/2019 by Sri Ramya Dandu: Fixed hrefs %>
+    Edited 11/21/2019 by Sri Ramya Dandu: Fixed hrefs 
+    Edited 11/22/2019 by Sharon Qiu: Search 
+    Edited 11/22/2019 by Sri Ramya Dandu: Bootstrap buttons %>
 
 <%= stylesheet_link_tag 'explore'%>
 <body style="margin:0;">
@@ -10,11 +12,11 @@
 
 <div style="display:none;" id="explore-body" class="animate-bottom">
 <h2 class = "headings"> EXPLORE </h2>
-<div class="input-group mb-3 search-bar">
-  <div class="input-group-prepend">
-    <%= form_tag users_explore_path, :method => :get do%>
-      <%= text_field_tag :search %>
-      <%= submit_tag "Get searching!" %>
+<div class="input-group mb-3 search-bar form-group">
+  <div class="input-group-prepend ">
+    <%= form_tag users_explore_path, class: "form-check-inline", :method => :get do%>
+     <input class = "form-control" type="text" name="search" id="search" />
+      <%= submit_tag "Get searching!", class: "btn btn-dark btn-sm" %>
     <% end %>
   </div>
 </div>
