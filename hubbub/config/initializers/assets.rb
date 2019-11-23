@@ -26,3 +26,6 @@ Rails.application.config.assets.precompile += %w( club_page.scss )
 Rails.application.config.assets.precompile += %w( new_club.scss )
 Rails.application.config.assets.precompile += %w( interests.scss )
 Rails.application.config.assets.precompile += %w( swipe.scss )
+Rails.application.config.assets.precompile += %w( home.scss )
+
+

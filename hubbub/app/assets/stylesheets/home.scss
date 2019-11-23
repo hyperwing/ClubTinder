@@ -1,0 +1,45 @@
+// File Created 11/22/2019 by Neel Mansukhani
+.swipe-img {
+    width: 100%;
+}
+
+.blue {
+    filter: brightness(50%);
+}
+
+.header0 {
+    font-family: "Roboto";
+    line-height: 100%;
+    position: absolute;
+    bottom: 15%;
+    left: 7%;
+    color: white;
+    font-size: 60px;
+
+  }
+.header1 {
+position: absolute;
+bottom: 30%;
+left: 16px;
+color: white;
+font-size: 40px;
+
+}
+.header2 {
+position: absolute;
+bottom: 30%;
+left: 16px;
+color: white;
+font-size: 40px;
+
+}
+.carousel {
+    margin-bottom: 20px;
+}
+.sub-header {
+    line-height: 100%;
+    font-size: 30px;
+}
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    vertical-align: center;
+}

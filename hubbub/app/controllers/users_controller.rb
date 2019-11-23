@@ -22,6 +22,10 @@
 class UsersController < ApplicationController
   
   include Devise::Controllers::Helpers 
+
+  def home
+    @images = ["random_people.jpg", "using_phones.jpg", "naeem.jpg"]
+  end
   # Created 11/12/2019 by Sri Ramya Dandu
   # Shows list of all users in the database
   def index
@@ -42,6 +46,24 @@ class UsersController < ApplicationController
     @user_interests = UserInterest.where(:user_id => current_user.id);
     @cur_u = current_user
 
+  end
+
+  # Created 11/22/2019 by Leah Gillespie
+  def handle_explore_interests
+    @explore_interest_ids = []
+    tag_ids = params[:tag_ids]
+    @interests = Interest.all
+    @interests.each do |i_box|
+      # Set the interest information from form to instance variable
+      @interest_info = i_box.id
+
+      if (!tag_ids.nil?) && (tag_ids.include? i_box.id.to_s)
+        @explore_interest_ids.push i_box.id
+      else
+        @explore_interest_ids.delete i_box.id
+      end
+    end
+    redirect_to users_explore_path
   end
 
   # Created 11/17/19 by David Wing
@@ -98,20 +120,31 @@ class UsersController < ApplicationController
       @clubs = Club.all
     else
       redirect_to new_user_session_path
-    end 
-    
+    end
+
   end
 
   # Created 11/19/2019 by Sri Ramya Dandu
   # Edited 11/22/2019 by Sharon Qiu: added search query.
+  # Edited 11/22/2019 by Leah Gillespie: added interest filtering
   # Shuffles all clubs for club view
   def explore
-    if params[:search].nil? || params[:search].empty?
+    @relevant_club_ids = []
+    @club_interests = ClubInterest.where(interest_id: @explore_interest_ids)
+    @club_interests.each do |ci|
+      @relevant_club_ids.push ci.id
+    end
+    if (params[:search].nil? || params[:search].empty?) && @relevant_club_ids.length ==0
       @clubs = Club.all.shuffle.sample(500)
+    elsif !(params[:search].nil? || params[:search].empty?) && @relevant_club_ids != 0
+      @clubs = Club.where("lower(name) LIKE lower(?)", "%#{params[:search]}%") & Club.where(club_id: @relevant_club_ids)
+    elsif (params[:search].nil? || params[:search].empty?) && @relevant_club_ids != 0
+      @clubs = Club.where(club_id: @relevant_club_ids)
     else
       @clubs = Club.where("lower(name) LIKE lower(?)", "%#{params[:search]}%")
     end
-  end 
+    @interests = Interest.all
+  end
 
   # Created 11/17/2019 by Sharon Qiu
   # Edited 11/21/2019 by Sharon Qiu: Fixed query
@@ -218,7 +251,7 @@ class UsersController < ApplicationController
       end
     else
       redirect_to new_user_session_path
-    end 
+    end
 
   end 
   

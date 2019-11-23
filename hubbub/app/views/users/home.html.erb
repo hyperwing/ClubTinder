@@ -1,0 +1,63 @@
+<%= stylesheet_link_tag 'home' %>
+
+<div id="swipeCarousel" class="carousel slide" data-ride="carousel" data-interval="false" data-keyboard="false">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="list-of-clubs-container">
+                <%= image_tag(@images[0], :alt => "Not Available", :class => "swipe-img blue") %>
+                <span class="header0">
+                    Welcome to<br />
+                    Hubbub.
+                    <div class="sub-header">
+                        Hubbub was built as a platform<br />
+                        to connect you with clubs <br />
+                        at YOUR school
+                    </div>
+                </span>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="list-of-clubs-container">
+                <%= image_tag(@images[1], :alt => "Not Available", :class => "swipe-img") %>
+                <span class="header1">
+                    Welcome to Hubbub.
+                    <div class="sub-header">
+                        Hubbub was built as a platform<br />
+                        to help YOU join clubs at your school.
+                    </div>
+                </span>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="list-of-clubs-container">
+                <%= image_tag(@images[2], :alt => "Not Available", :class => "swipe-img") %>
+                <span class="header2">
+                    Welcome to Hubbub.
+                    <div class="sub-header">
+                        Hubbub was built as a platform<br />
+                        to connect you with clubs at YOUR school
+                    </div>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<a class="carousel-control-prev" href="#swipeCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+</a>
+<a class="carousel-control-next" href="#swipeCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+</a>
+
+<div class="jumbotron p-3 p-md-5 bg-light">
+        <div class="col-md-6 px-0">
+          <h1 class="display-4">Match with clubs with our state of the art matching algorithm</h1>
+          <p class="lead my-4">We'll be sure to find you clubs that you will love.</p>
+          <p class="lead mb-1">Find new hobbies you didn't think you would even like!</p>
+        </div>
+</div>
+<script>
+    $('#swipeCarousel').carousel({
+    interval: 2000
+});
+</script>
