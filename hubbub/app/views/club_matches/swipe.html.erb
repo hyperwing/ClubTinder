@@ -33,16 +33,18 @@
         </div>
       <%end%>
     </div>
-    <%#= link_to '❰❰', add_new_club_matches_url(:matched => 0, :club_name => c[0].name), :method => :patch, :class => "carousel-control-prev", :role => "button", :slide => "next"%>
-    <a class = "carousel-control-prev" href="#swipeCarousel" role="button" data-slide="next">
+    
+    <a class = "carousel-control-prev pointer" href="#swipeCarousel" role="button" data-slide="next">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Match</span>
+      <span class="sr-only">Reject</span>
+      ❰❰ REJECT
     </a>
 
-    <%#= link_to '❱❱', add_new_club_matches_url(:matched => 1, :club_name => c[0].name), :method => :patch, :class => "carousel-control-next", :role => "button", :slide => "next"%>
+    
     <a class = "carousel-control-next pointer"  href="#swipeCarousel" role="button" data-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Match</span>
+      MATCH ❱❱
       </a>
   </div>
 </div>
@@ -63,9 +65,6 @@
               matched:0,
               club_name:name
             },
-            success: function(data) {
-              alert("success");
-            }
           });
       }else if (pWidth*.8 < x){
         $.ajax({
@@ -75,9 +74,6 @@
             matched:1,
             club_name:name
           },
-          success: function(data) {
-            alert("success");
-          }
         });
       }
     })
