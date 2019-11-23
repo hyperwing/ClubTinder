@@ -100,6 +100,7 @@ class ClubsController < ApplicationController
       @club_match_data = ClubMatch.where(:matched=> 1).where(club_id: @club.id).group_by_day(:created_at).count
       @user_interest_data = UserInterest.left_joins(:interest).where(user_id: @club.users).group(:name).limit(5).order('COUNT(interests.id) DESC').count
       @gender_data = ClubMatch.left_joins(:user).where(club_id: @club.id).where(:matched=> 1).group(:gender).count
+      @match_data = ClubMatch.joins(:club).where(:matched=>1).order('COUNT(club_matches.club_id)DESC').limit(5)
 
       logger.debug("xxxxxxxxxxxxxxxxxxxxxx")
       @users_x = User.left_joins(:club_matches).where("\"club_matches\".club_id=:cid AND \"club_matches\".matched=1", cid:@club.id)
