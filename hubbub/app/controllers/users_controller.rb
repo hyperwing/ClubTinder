@@ -134,10 +134,14 @@ class UsersController < ApplicationController
     @club_interests.each do |ci|
       @relevant_club_ids.push ci.id
     end
-    if params[:search].nil? || params[:search].empty?
+    if (params[:search].nil? || params[:search].empty?) && @relevant_club_ids.length ==0
       @clubs = Club.all.shuffle.sample(500)
+    elsif !(params[:search].nil? || params[:search].empty?) && @relevant_club_ids != 0
+      @clubs = Club.where("lower(name) LIKE lower(?)", "%#{params[:search]}%") & Club.where(club_id: @relevant_club_ids)
+    elsif (params[:search].nil? || params[:search].empty?) && @relevant_club_ids != 0
+      @clubs = Club.where(club_id: @relevant_club_ids)
     else
-      @clubs = Club.where("lower(name) LIKE lower(?)", "%#{params[:search]}%", club_id: @relevant_club_ids)
+      @clubs = Club.where("lower(name) LIKE lower(?)", "%#{params[:search]}%")
     end
     @interests = Interest.all
   end
