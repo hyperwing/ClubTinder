@@ -2,6 +2,7 @@
 # Edited 11/20/2019 by Neel Mansukhani: Choose now considers interests for rating.
 # Edited 11/21/2019 by Neel Mansukhani: New club updates club id for user too.
 # Edited 11/21/2019 by Neel Mansukhani: Fixed destroy
+# Edited 11/22/2019 by David Wing: added model references for club stats
 require 'csv'
 
 class ClubsController < ApplicationController
