@@ -16,36 +16,6 @@ class ClubsController < ApplicationController
       redirect_to new_user_session_path
     end
   end
-  # Created 11/16/2019 by Neel Mansukhani
-  # Edited 11/20/2019 by Neel Mansukhani: Accounts for interests
-  # GET /clubs/choose
-  def choose
-    other_users = User.all.where.not id: current_user.id
-    clubs = Hash.new 0
-    other_users.each do |other_user|
-      other_user_clubs = Club.left_joins(:club_matches,:users).where(:users=> {id:other_user.id},:club_matches=>{matched:1})
-      current_user_clubs = Club.left_joins(:club_matches,:users).where(:users=> {id:current_user.id},:club_matches=>{matched:1})
-     
-      common_clubs = other_user_clubs & current_user_clubs
-      weight = (common_clubs.length.to_f * 100/ other_user_clubs.length)
-      other_user_clubs.each do |club|
-        if !common_clubs.include?(club)&& !current_user_clubs.include?(club)
-          clubs[club] += weight
-        end
-      end
-    end
-    
-    clubs.each do |club, v|
-      common_interest_count = (current_user.interests & club.interests).length
-      if clubs[club] >= 1
-        clubs[club] = clubs[club] + ((5 * common_interest_count)/clubs[club]) + (rand(-14..14)/7)
-      else
-        clubs[club] = clubs[club] + (10 * common_interest_count) + (rand(-14..14).to_f/7)
-      end 
-      clubs[club] = clubs[club].round(2)
-    end
-    @clubs = clubs.sort_by{ |k, v| v }.reverse
-  end
 
   # GET /clubs/1
   # GET /clubs/1.jsons
@@ -126,22 +96,21 @@ class ClubsController < ApplicationController
     else
 
       @club = Club.find(current_user.club_id)
-      @club_match_data = ClubMatch.where(club_id: @club.id).group_by_day(:created_at).count
-      @user_interest_data = UserInterest.left_joins(:interest).where(user_id: @club.users).group(:name).limit(5).order('COUNT(interests.id) DESC').count
-      @gender_data = ClubMatch.left_joins(:user).where(club_id: @club.id).group(:gender).count
 
+      @club_match_data = ClubMatch.where(:matched=> 1).where(club_id: @club.id).group_by_day(:created_at).count
+      @user_interest_data = UserInterest.left_joins(:interest).where(user_id: @club.users).group(:name).limit(5).order('COUNT(interests.id) DESC').count
+      @gender_data = ClubMatch.left_joins(:user).where(club_id: @club.id).where(:matched=> 1).group(:gender).count
+      @match_data = ClubMatch.joins(:club).where(:matched=>1).order('COUNT(club_matches.club_id)DESC').limit(5)
+
+      logger.debug("xxxxxxxxxxxxxxxxxxxxxx")
+      @users_x = User.left_joins(:club_matches).where("\"club_matches\".club_id=:cid AND \"club_matches\".matched=1", cid:@club.id)
+
+      @club_interests = Interest.joins(:club_interests).where("club_id==:cid", cid:current_user.club_id)
       @club_has_matches = ClubMatch.where(club_id: @club.id).count >0
-    
-      
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    # def set_club
-    #   @club = Club.find(params[:id])
-    # end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def club_params
       params.require(:club).permit(:name, :string, :mission, :string, :affiliations, :string, :link, :string, :img, :string, :location, :string, :other, :string)

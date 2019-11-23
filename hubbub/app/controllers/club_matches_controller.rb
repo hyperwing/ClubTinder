@@ -6,7 +6,7 @@
 # Controller for club matches page
 
 class ClubMatchesController < ApplicationController
-
+  protect_from_forgery :except => [:add_new_match]
   before_action :set_club_match, only: [:show, :edit, :update, :destroy]
 
   # GET /club_matches
@@ -66,6 +66,14 @@ class ClubMatchesController < ApplicationController
     redirect_to request.referrer
   end
 
+  # Created 11/22/2019 by Leah Gillespie
+  def add_new_match
+    @current_club = Club.find_by name: params[:club_name]
+    newest_match = ClubMatch.create user_id: current_user.id, club_id: @current_club.id, matched: params[:matched]
+    newest_match.save
+    # @slide_num = @slide_num + 1
+    #render "club_matches/swipe"
+  end
   
   # DELETE /club_matches/1
   # DELETE /club_matches/1.json
@@ -79,6 +87,7 @@ class ClubMatchesController < ApplicationController
 
   def swipe
     @potential_matches =[]
+    @slide_num = 0
     clubs_by_weight = choose
     clubs_by_weight.each do |curr_club|
       c = Club.where name: curr_club[0].name

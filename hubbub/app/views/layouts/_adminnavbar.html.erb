@@ -6,30 +6,31 @@
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
 </button>
-<a class="navbar-brand" href="#">Hubbub</a>
+<a class="navbar-brand" href="/club_matches/swipe">Hubbub</a> ADMIN MODE
 
 <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
   <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
     <li class="nav-item ">
       <a class="nav-link" href = "/users/<%= current_user.id %>">Profile<span class="sr-only">(current)</span></a>
     </li>
-    <li class="nav-item ">
-      <a class="nav-link" href = "/users/edit"> Settings <span class="sr-only">(current)</span></a>
-    </li>
+ 
     <li class="nav-item">
-      <a class="nav-link" href="/users/index">All Users</a>
+      <a class="nav-link" href="/users/index">Users</a>
      </li>
     <li class="nav-item">
       <a class="nav-link" href="/users/stats">User Stats</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="<%=clubs_url%>">All Clubs</a>
+      <a class="nav-link" href="<%=clubs_url%>">Clubs</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href = "/users/matched/<%=current_user.id%>">Matched</a>
     </li>
     <li class="nav-item">
     <a class="nav-link" href="/users/explore">Explore</a>
+  </li>
+  <li>
+      <a class="nav-link"> Welcome, <%= current_user.first_name %>!</a>
   </li>
   </ul>
   <ul class="navbar-nav  mt-2 mt-lg-0" style="list-style-type:none">

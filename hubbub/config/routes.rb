@@ -9,7 +9,7 @@
 # Edited 11/22/2019 by Sri Ramya Dandu: Changed default route
 
 Rails.application.routes.draw do
-  
+
   get 'users/index'
   get 'users/stats'
   get 'users/explore'
@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   }
   resources :club_matches, :except => [:show,:update] do
     collection do
+      post 'add_new/:matched', :add_new, to: 'club_matches#add_new_match'
       patch 'update_current/:id', as: :add_current, to: 'club_matches#update_existing_match'
     end
   end

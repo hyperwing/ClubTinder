@@ -1,3 +1,41 @@
 /*
  * File Created 11/19/2019 by Leah Gillespie
  */
+
+.carousel-inner{
+
+}
+
+.carousel-item.active{
+    display:flex;
+    justify-content: center;
+}
+
+.content{
+    text-align: center;
+    font-size: 20px;
+}
+
+.pointer, .pointer:hover{
+    color: black;
+    font-size: 30px;
+}
+
+.swipe-img{
+    width: 400px;
+    height: 400px;
+}
+
+.list-of-clubs-container{
+    display:flex;
+    justify-content: center;
+}
+
+.card-header{
+    text-align: center;
+    font-weight: bold;
+}
+
+.card{
+    margin-left: 10px;
+}

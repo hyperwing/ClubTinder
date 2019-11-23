@@ -19,7 +19,13 @@
   padding-right: 100px;
 }
 
+.search-bar{
+  justify-content: center;
+}
 
+#search{
+  border:1px black solid;
+}
 #loader {
   position: absolute;
   left: 50%;
