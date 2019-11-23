@@ -47,8 +47,8 @@ class ClubInterestsController < ApplicationController
             # Where user_interests already has an entry for user
             if (ClubInterest.where(:interest_id => i_box.id).where(:club_id => current_user.club_id)).count == 0
             
-                new_interest = UserInterest.new
-                new_interest.user_id = current_user.id
+                new_interest = ClubInterest.new
+                new_interest.club_id = current_user.club_id
                 new_interest.interest_id = i_box.id
         
                 if new_interest.save
