@@ -5,18 +5,21 @@ The team created the Web App Hubbub. Hubbub is an application that matches stude
 #### Student Access includes the following:
 - Swipe Page: Displays club options that the user might like and gives the user the option to match with these clubs
 - Display matches: Allows the user to see all the clubs they chose to match with. User can also change their matches after selection.
-- Interests page: User can change their interests 
+- Interests page: User can change their interests to determine what clubs they are shown
+- Edit User page: User can change basic info about themselves
 - Explore page: User can search for any club
 
 #### Admin Access includes the following:
 - Can view all the clubs in the database and have acess to modify their info
 - Can view all the users in the database and have access to modify their info
+- Can see stats for clubs
+- Can see stats for users
 - Can create dummy user accounts 
 - Can view user stats
 
 #### Club access includes the following:
 - Edit their data 
-- See user stats
+- See stats about their club
 
 ### Roles
 * Overall Project Manager:Neel Mansukhani
@@ -41,6 +44,11 @@ Sharon Qiu
 1. Set up the Matched and Not Matched routes as well as the controller and model for club matches.
 
 David Wing
+1. Implemented user_interest table
+2. Implemented stat graphs for clubs and users
+3. routing for profile editing
+4. Controller code for user_interests handling
+5. Controller code for club_interests handling
 
 ### Running the program
 To run the program, follow these steps:
