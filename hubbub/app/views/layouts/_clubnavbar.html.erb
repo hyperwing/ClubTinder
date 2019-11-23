@@ -5,7 +5,7 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">Hubbub</a>
+  <a class="navbar-brand" href="/users/explore">Hubbub</a>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -17,6 +17,9 @@
       </li>
       <li class="nav-item">
           <a class="nav-link" href="/club_interests/select_club_interests">Edit Club Interest</a>
+      </li>
+      <li>
+          <a class="nav-link"> Welcome, <%= current_user.first_name %>!</a>
       </li>
     </ul>
     <ul class="navbar-nav  mt-2 mt-lg-0" style="list-style-type:none">
