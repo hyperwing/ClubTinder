@@ -15,11 +15,12 @@ The team created the Web App Hubbub. Hubbub is an application that matches stude
 - Can view user stats
 
 #### Club access includes the following:
-- Edit their data 
-- See user stats
+- Edit their interests
+- See their users
+- See various statistics and graphs regarding theur users.
 
 ### Roles
-* Overall Project Manager:Neel Mansukhani
+* Overall Project Manager: Neel Mansukhani
 * Coding Manager: David Wing
 * Testing Manager: Sri Ramya Dandu
 * Documentation Manager: Sharon Qiu
@@ -36,6 +37,10 @@ Sri Ramya Dandu
 Leah Gillespie
 
 Neel Mansukahi 
+1. Set up admin and club privileges for users.
+2. Created collaborative filtering algorithm for the matches display order.
+3. Created and routed all club role related pages (including controllers)
+4. Created home page
 
 Sharon Qiu
 1. Set up the Matched and Not Matched routes as well as the controller and model for club matches.
@@ -45,10 +50,11 @@ David Wing
 ### Running the program
 To run the program, follow these steps:
 1. Change directory to the hubbub folder using cd hubbub
-2. Migrate the models by typing into console/terminal: "rails db:migrate"
-3. Fill models by typing into console/terminal: "rails db:seed"
-4. Start the server by typing into console/terminal: "rails s"
-5. To access various views:
+2. Run "bundle install"
+3. Migrate the models by typing into console/terminal: "rails db:migrate"
+4. Fill models by typing into console/terminal: "rails db:seed". Note: this will take a while
+5. Start the server by typing into console/terminal: "rails s"
+6. To access various views:
     * User
         1. Around 50 users have been initialized in the seed. To access a regular user, the email initialized is user#@gmail.com where # is a value between 1 and 49. The password is 111111.
     * Admin
@@ -60,6 +66,7 @@ To run the program, follow these steps:
             * Qiu.374@osu.edu
         2. Enter the password. It should be 111111.
     * Club
+        1. Login as club.1@osu.edu, the password should be 111111.
 ### Running the tests
 To run tests, follow these steps:
 1. Change directory to the hubbub folder using cd hubbub
