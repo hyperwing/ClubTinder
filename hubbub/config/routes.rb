@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get 'users/new'
   get 'users/display_stats'
   get 'users/create'
+  get 'user_positions/create'
+  get 'user_positions/new'
   get 'users/matched/:id', to: 'users#matched'
   get 'users/not_matched/:id', to: 'users#not_matched'
   post 'users/sign_up', to: 'resources#sign_up'
@@ -27,6 +29,7 @@ Rails.application.routes.draw do
   get 'club_interests/handle_check_boxes'
   get 'users/preferences'
   get 'club_matches/swipe'
+  get 'users/handle_explore_interests/:tag_id', to: 'users#handle_explore_interests'
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: "users/registrations"
