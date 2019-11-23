@@ -62,6 +62,10 @@ Sharon Qiu
 6. Club profile views
 
 David Wing
+1. Interests models and controller
+2. View anc controller for updating interests
+3. Stats graphs display for users
+4. Tests
 
 
 ### Frameworks Used
