@@ -59,6 +59,7 @@ Sharon Qiu
 3. Worked on views for forms
 4. Search functionality and controller 
 5. Tests
+6. Club profile views
 
 David Wing
 
