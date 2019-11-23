@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   get 'club_interests/handle_check_boxes'
   get 'users/preferences'
   get 'club_matches/swipe'
+  get 'users/home', to: 'users#home'
+  get 'users/explore', to: 'users#explore'
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: "users/registrations"
@@ -50,7 +52,7 @@ Rails.application.routes.draw do
       root 'users#root'
     end
     unauthenticated do
-      root 'users#explore', as: :unauthenticated_root
+      root 'users#home', as: :unauthenticated_root
     end
   end
   

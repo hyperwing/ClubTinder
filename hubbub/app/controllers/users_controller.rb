@@ -22,6 +22,10 @@
 class UsersController < ApplicationController
   
   include Devise::Controllers::Helpers 
+
+  def home
+    @images = ["random_people.jpg", "using_phones.jpg", "naeem.jpg"]
+  end
   # Created 11/12/2019 by Sri Ramya Dandu
   # Shows list of all users in the database
   def index
