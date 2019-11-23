@@ -1,5 +1,6 @@
 <%# Created 10/17/2019 by Leah Gillespie %>
-<%# Created 10/19/2019 by Leah Gillespie: Added bootstrap carousel %>
+<%# Edited 10/19/2019 by Leah Gillespie: Added bootstrap carousel 
+<%# Edited 10/22/2019 by Sharon Qiu: added js and ajax script %>
 
     <%= stylesheet_link_tag 'swipe'%>
     <h1>Choose your Clubs</h1>
@@ -28,24 +29,51 @@
           <%end%>
         </div>
         <%#= link_to '❰❰', add_new_club_matches_url(:matched => 0, :club_name => c[0].name), :method => :patch, :class => "carousel-control-prev", :role => "button", :slide => "next"%>
-        
-            <%=link_to add_new_club_matches_url(:matched => 0, :club_name => @potential_matches[0][0].name), :method => :post, :class => "carousel-control-prev", :role =>"button", :slide => "next", :href => "#swipeCarousel", remote: true do %>
-            ❰❰
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Reject</span>
-            <%end%>
-            
-          
+        <a class = "carousel-control-prev" href="#swipeCarousel" role="button" data-slide="next">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Match</span>
+        </a>
+    
         <%#= link_to '❱❱', add_new_club_matches_url(:matched => 1, :club_name => c[0].name), :method => :patch, :class => "carousel-control-next", :role => "button", :slide => "next"%>
         <a class = "carousel-control-next" href="#swipeCarousel" role="button" data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Match</span>
+          </a>
       </div>
     </div>
     </div>
     </div>
     <script>
-        $('#swipeCarousel').on('slid.bs.carousel', function (e) {
-        $('#myCarousel').carousel('next') 
-      })
+        // calls the method without interfering with swipe
+        $('#swipeCarousel').click(function (e) {
+          var name = $(".carousel-item.active h5").text()
+          var pWidth = $(this).innerWidth();
+          var x = e.pageX;
+          if(pWidth*.4 > x){
+              $('#myCarousel').carousel('next')
+              $.ajax({
+                url: "/club_matches/add_new",
+                type: "POST",
+                data: {
+                  matched:0,
+                  club_name:name
+                },
+                success: function(data) {
+                  alert("success");
+                }
+              });
+          }else if (pWidth*.8 < x){
+            $.ajax({
+              url: "/club_matches/add_new",
+              type: "POST",
+              data: {
+                matched:1,
+                club_name:name
+              },
+              success: function(data) {
+                alert("success");
+              }
+            });
+          }
+        })
     </script>

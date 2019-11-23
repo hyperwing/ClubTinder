@@ -6,7 +6,7 @@
 # Controller for club matches page
 
 class ClubMatchesController < ApplicationController
-
+  protect_from_forgery :except => [:add_new_match]
   before_action :set_club_match, only: [:show, :edit, :update, :destroy]
 
   # GET /club_matches
@@ -71,7 +71,7 @@ class ClubMatchesController < ApplicationController
     @current_club = Club.find_by name: params[:club_name]
     newest_match = ClubMatch.create user_id: current_user.id, club_id: @current_club.id, matched: params[:matched]
     newest_match.save
-    @slide_num = @slide_num + 1
+    # @slide_num = @slide_num + 1
     #render "club_matches/swipe"
   end
   
