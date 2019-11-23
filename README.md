@@ -55,6 +55,10 @@ Neel Mansukahi
 
 Sharon Qiu
 1. Set up the Matched and Not Matched routes as well as the controller and model for club matches.
+2. Parsed club data from OSU clubs page
+3. Worked on views for forms
+4. Search functionality and controller 
+5. Tests
 
 David Wing
 
