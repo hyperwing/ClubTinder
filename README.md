@@ -16,6 +16,8 @@ The team created the Web App Hubbub. Hubbub is an application that matches stude
 - Have all user functionality 
 - Can view all the clubs in the database and have acess to modify their info
 - Can view all the users in the database and have access to modify their info
+- Can see stats for clubs
+- Can see stats for users
 - Can view user details aboute interests and matches without modifying 
 - Can create dummy user accounts 
 - Can view user stats
@@ -67,11 +69,12 @@ Sharon Qiu
 6. Club profile views
 
 David Wing
-1. Interests models and controller
-2. View anc controller for updating interests
-3. Stats graphs display for users
-4. Tests
-
+1. Implemented user_interest table
+2. Implemented stat graphs for clubs and users
+3. routing for profile editing
+4. Controller code for user_interests handling
+5. Controller code for club_interests handling
+6. Controller/model tests
 
 ### Frameworks Used
 1. Devise
