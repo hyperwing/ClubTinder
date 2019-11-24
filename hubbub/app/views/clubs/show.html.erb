@@ -1,11 +1,19 @@
-<%# File Created 11/21/2019 by Sharon Qiu %>
+<%# File Created 11/21/2019 by Sharon Qiu
+    Edited 11/23/2019 by Sri Ramya Dandu: Matched info %>
 
 <%= stylesheet_link_tag 'club_page'%>
 <div class="container-fluid">
   <div class="row">
     <div class="col club-img-and-name">
       <img src="<%=@club.img%>" class="card-img" alt="<%=@club.name%>">
-      <h3 class="name-of-club"><%=@club.name%></h3>
+      <h3 id = "name" class="name-of-club"><%=@club.name%></h3>
+      <% if current_user.club_matches.find_by(club_id: @club.id, matched: 0) %>
+        <p class= "notification"> You rejected this club! </p>
+      <% elsif current_user.club_matches.find_by(club_id: @club.id, matched: 1)%>
+        <p class= "notification"> You matched with this club! </p>
+      <%else %> 
+        <button name = "<%= current_user.id%>" class = "btn btn-dark", id = "matchButton"> Match Me </button></a> 
+      <%end %>  
     </div>
     <div class="col club-info">
       <div class="mission-container">
@@ -42,3 +50,26 @@
     </div>
   </div>
 </div>
+
+<script>
+document.getElementById("matchButton").onclick = function(){
+
+  $.ajax({
+    url: "/club_matches/add_new",
+    type: "POST",
+    data: {
+      matched:1,
+      club_name: document.getElementById("name").firstChild.data
+    },
+    success: function(data) {
+      location.href='/users/matched/' + document.getElementById("matchButton").name;
+    }
+  }); 
+  
+  
+
+};
+
+
+
+</script>
