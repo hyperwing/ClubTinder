@@ -10,7 +10,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "user should not save without any attributes" do
     user = User.new
-    assert_not user.save
+    assert_not user.valid?
   end
 
   test "user should not save without email" do
@@ -20,7 +20,7 @@ class UserTest < ActiveSupport::TestCase
     user.gender = "Female"
     user.grad_year= "2021"
     user.role = "user"
-    assert_not user.save
+    assert_not user.valid?
   end
 
   test "user should not save without first name" do
@@ -30,7 +30,7 @@ class UserTest < ActiveSupport::TestCase
     user.gender = "Female"
     user.grad_year= "2021"
     user.role = "user"
-    assert_not user.save
+    assert_not user.valid?
   end
 
   test "user should not save without last name" do
@@ -40,15 +40,15 @@ class UserTest < ActiveSupport::TestCase
     user.gender = "Female"
     user.grad_year= "2021"
     user.role = "user"
-    assert_not user.save
+    assert_not user.valid?
   end
 
   test "user should save with all required attributes filled in" do
-    assert @user.save
+    assert @user.valid?
   end
 
   test "admin should save with all required attributes filled in" do
-    assert @admin.save
+    assert @admin.valid?
   end
 
 end
