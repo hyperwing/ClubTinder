@@ -72,7 +72,7 @@
         <ul class="list-group">
           <% @matched_clubs.each do |club| %>
           
-          <a href=" <%= club.link %> class="list-group-item-action"><%=club.name%></a>
+          <a href = "/clubs/<%= club.id %>" class="list-group-item-action"><%=club.name%></a>
           <% end %>
         </ul>
       </div>

@@ -7,13 +7,15 @@
     <div class="col club-img-and-name">
       <img src="<%=@club.img%>" class="card-img" alt="<%=@club.name%>">
       <h3 id = "name" class="name-of-club"><%=@club.name%></h3>
-      <% if current_user.club_matches.find_by(club_id: @club.id, matched: 0) %>
-        <p class= "notification"> You rejected this club! </p>
-      <% elsif current_user.club_matches.find_by(club_id: @club.id, matched: 1)%>
-        <p class= "notification"> You matched with this club! </p>
-      <%else %> 
-        <button name = "<%= current_user.id%>" class = "btn btn-dark", id = "matchButton"> Match Me </button></a> 
-      <%end %>  
+      <% if current_user && !current_user.club? %>
+        <% if current_user.club_matches.find_by(club_id: @club.id, matched: 0) %>
+          <p class= "notification"> You rejected this club! </p>
+        <% elsif current_user.club_matches.find_by(club_id: @club.id, matched: 1)%>
+          <p class= "notification"> You matched with this club! </p>
+        <%else %> 
+          <button name = "<%= current_user.id%>" class = "btn btn-dark", id = "matchButton"> Match Me </button></a> 
+        <%end %>  
+      <% end %>
     </div>
     <div class="col club-info">
       <div class="mission-container">
