@@ -1,6 +1,10 @@
 # Created 11/21/2019 by Neel Mansukhani
+# Edited 11/26/2019 by Neel Mansukhani: Added documentation
 
 class ClubInterestsController < ApplicationController
+
+  # Created 11/21/2019 by Neel Mansukhani
+  # Shows all interests
   def select_club_interests
     if current_user.club_id.nil?
       redirect_to new_club_path
@@ -13,6 +17,8 @@ class ClubInterestsController < ApplicationController
 
   end
 
+  # Created 11/21/2019 by Neel Mansukhani
+  # Creates a club interests.
   def create
     @clubInterest = ClubInterest.new(club_params)
     respond_to do |format|
@@ -26,23 +32,18 @@ class ClubInterestsController < ApplicationController
     end
   end
 
+  # Created 11/21/2019 by Neel Mansukhani
+  # Fills checkboxes based on club interests.
   def handle_check_boxes
 
     tag_ids = params[:tag_ids]
-    logger.debug("tag_ids: " +tag_ids.to_s)
-
     @interests = Interest.all
     # if box checked, add to model, else destroy from model
     @interests.each do |i_box|
         # Set the interest information from form to instance variable
         @interest_info = i_box.id
 
-        logger.debug("handling " +i_box.name.to_s)
-        logger.debug("tag_ids: " +tag_ids.to_s)
-
         if tag_ids.include? i_box.id.to_s
-
-            logger.debug("creating new user_interest")
 
             # Where user_interests already has an entry for user
             if (ClubInterest.where(:interest_id => i_box.id).where(:club_id => current_user.club_id)).count == 0
@@ -50,17 +51,10 @@ class ClubInterestsController < ApplicationController
                 new_interest = ClubInterest.new
                 new_interest.club_id = current_user.club_id
                 new_interest.interest_id = i_box.id
-        
-                if new_interest.save
-                    logger.debug("saved successfully")  
-                else    
-                    logger.debug("failed to save")  
-                end
+      
             end
 
         else
-            logger.debug("deleting user_interest")
-
             ClubInterest.where(:club_id => current_user.club_id)
                 .where(:interest_id =>i_box.id).destroy_all
             

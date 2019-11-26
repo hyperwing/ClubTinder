@@ -309,7 +309,7 @@ div.tab-content {
     display: grid;
 }
 
-.new-user .field, .new-user .actions {
+.new-user .field,.new-user .actions {
     margin: 1% 1% 3% 0%;
 }
 
@@ -325,6 +325,15 @@ div.tab-content {
     width: 60%;
 }
 
+.new-user .form-inline {
+    margin: auto;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    width: 60%;
+}
+
+
 .new-user .alert{
     font-size: 20px;
     font-weight: bold;
@@ -334,6 +343,7 @@ div.tab-content {
 .new-user .field {
     text-align: center;
 }
+
 
 // Edited 11/20/2019 by Sharon Qiu: Added css from application.scss
 .about-hubbub h1.new-session-page-title {
