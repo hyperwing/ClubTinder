@@ -5,7 +5,7 @@
     Edited 11/20/2019 by Sri Ramya Dandu: Link to CSS 
     Edited 11/21/2019 by David Wing: added charts %>
 
-    <%= stylesheet_link_tag 'stats'%>
+    <%= stylesheet_link_tag 'admin'%>
 <div class = "stats-display">
 <h1> <%= @title %> </h1>
 <p> Total Users: <%= @total %> </p>
@@ -72,7 +72,7 @@
         <ul class="list-group">
           <% @matched_clubs.each do |club| %>
           
-          <a href=" <%= club.link %> class="list-group-item-action"><%=club.name%></a>
+          <a href = "/clubs/<%= club.id %>" class="list-group-item-action"><%=club.name%></a>
           <% end %>
         </ul>
       </div>

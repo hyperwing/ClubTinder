@@ -1,0 +1,135 @@
+// File created 11/26/2019 by Sri Ramya Dandu
+
+// Created 11/20/2019 by Sharon qiu
+// CSS for matched/unmatched
+
+hr {
+    border: 3px solid;
+    margin: 0;
+}
+
+#list-tab{
+    overflow-x: auto;
+}
+.to-rejections {
+    text-align: right;
+    margin-right: 5%;
+    font-size: 1rem;
+    font-weight: bold;
+    font-variant: small-caps;
+    letter-spacing: 3px;
+}
+
+div.grid-and-clubs-container {
+    max-height: 50%;
+}
+
+div.row.full-body-match {
+    max-height: 50%;
+
+}
+
+h1.page-title-selected-matches {
+    font-size: 3rem;
+    font-weight: bold;
+    font-variant: small-caps;
+    letter-spacing: 3px;
+    text-align: left;
+    margin-left: 5%;
+}
+
+div.tab-pane.active.show {
+    margin-left: 10%;
+    height: auto;
+    width: auto;
+}
+
+div.club-match-and-update {
+    display: grid;
+    vertical-align: center;
+}
+
+a.go-to-club {
+    font-size: 30px;
+    justify-content: center;
+    display: grid;
+    margin-bottom:20%;
+}
+
+.empty-matches {
+    text-align: center;
+}
+
+div.match-update {
+    font-size: 30px;
+    justify-content: center;
+    display: grid;
+    margin-top: 20%;
+}
+
+div.row.tab-panel {
+    margin-left: -10%;
+    margin-right: -30%;
+}
+
+.club-cards-container {
+    height: 50%;
+    margin-top: 2%;
+}
+
+div.col-2.club-and-match-update {
+    display: grid;
+    align-content: center;
+}
+
+button.btn.btn-arrow-right.goto-website-button {
+    float: right;
+    margin: 0% 3% 10% 0%;
+}
+
+.list-group {
+    max-height: 600px;
+    overflow: scroll;
+    margin-bottom: 10px;
+}
+
+.card-img {
+    height: 85%;
+    width:85%;
+    margin-bottom:3%;
+}
+div.tab-content {
+    max-height: 60%;
+}
+
+.list-group .list-group-item {
+    width: 100%;
+}
+
+// Created 11/20/2019 by Sharon Qiu
+// CSS for user_preferences
+
+.settings{
+    text-align: center;
+}
+.update-info{
+    align-content: center;
+    background-color:grey;
+    color: black;
+    margin:5% 0% 5% 0%;
+}
+
+// Created 11/21/2019 by David Wing
+// File Edited 11/21/2019 by Neel Mansukhani: Gloabla file for user and club interests.
+.select_interests{
+    margin-left:5%;
+}
+
+.form-check{
+    margin-left: 1%;
+
+}
+
+.greeting{
+    padding-bottom: 1%;
+}
