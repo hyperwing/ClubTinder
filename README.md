@@ -105,6 +105,21 @@ To run the program, follow these steps:
         2. Enter the password. It should be 111111.
     * Club
         1. Login as club.1@osu.edu, the password should be 111111.
+        
+### Testing
+#### Testing Models 
+1. Via Rails Console to populate and observe models
+2. Create Users in fixtures and wrote tests in test/models directory
+3. Database Testing: Observing how data is being changed and models are being populated as a result of user input
+
+#### Testing Routes 
+1. Whitebox Testing via localhost
+2. Controller Testing in tests/controllers
+
+#### Integration Testing
+1. Blackbox Testing via localhost
+2. Controller Testing in tests/controllers
+
 ### Running the tests
 To run tests, follow these steps:
 1. Change directory to the hubbub folder using cd hubbub
