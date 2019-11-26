@@ -1,3 +1,5 @@
+// File created 11/26/2019 by Sri Ramya Dandu
+
 // Created 11/20/2019 by Sharon qiu
 // CSS for matched/unmatched
 
@@ -96,4 +98,32 @@ div.tab-content {
 
 .list-group .list-group-item {
     width: 100%;
+}
+
+// Created 11/20/2019 by Sharon Qiu
+// CSS for user_preferences
+
+.settings{
+    text-align: center;
+}
+.update-info{
+    align-content: center;
+    background-color:grey;
+    color: black;
+    margin:5% 0% 5% 0%;
+}
+
+// Created 11/21/2019 by David Wing
+// File Edited 11/21/2019 by Neel Mansukhani: Gloabla file for user and club interests.
+.select_interests{
+    margin-left:5%;
+}
+
+.form-check{
+    margin-left: 1%;
+
+}
+
+.greeting{
+    padding-bottom: 1%;
 }
