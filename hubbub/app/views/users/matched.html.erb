@@ -48,9 +48,9 @@
                             </div>
                             <% if @user.id == current_user.id%>
                             <div class="col-2 club-and-match-update">
-                                <a href="<%=club_url(:id => club.id)%>" class="btn go-to-club">&#8594;</a>
+                                <a href="<%=club_url(:id => club.id)%>" class="btn go-to-club">CLUB INFO&#8594;</a>
                                 <div class="match-update">
-                                    <%= link_to 'X',add_current_club_matches_url(:club => club.id, :id => @user.id), :data =>{confirm: "Are you sure you'd like to unmatch this club?"}, :method => :patch%>
+                                    <%= link_to 'REJECT X',add_current_club_matches_url(:club => club.id, :id => @user.id), :data =>{confirm: "Are you sure you'd like to unmatch this club?"}, :method => :patch%>
                                 </div>
                             </div>
                             <%end%>

@@ -16,10 +16,10 @@ class ClubMatchesControllerTest < ActionDispatch::IntegrationTest
   #   assert_response :success
   # end
 
-  # # test "should create club_match" do
-  # #   assert_difference('ClubMatch.count') do
-  # #     post club_matches_url, params: { club_match: {club_id:@club_match.club_id, user_id:@club_match.user_id, matched:@club_match.matched} }
-  # #   end
+  # test "should create club_match" do
+  #   assert_difference('ClubMatch.count') do
+  #     post club_matches_url, params: { club_match: {club_id:@club_match.club_id, user_id:@club_match.user_id, matched:@club_match.matched} }
+  #   end
 
   # #   assert_redirected_to club_match_url(ClubMatch.last)
   # # end

@@ -6,6 +6,9 @@ hr {
     margin: 0;
 }
 
+#list-tab{
+    overflow-x: auto;
+}
 .to-rejections {
     text-align: right;
     margin-right: 5%;
@@ -48,6 +51,7 @@ a.go-to-club {
     font-size: 30px;
     justify-content: center;
     display: grid;
+    margin-bottom:20%;
 }
 
 .empty-matches {
@@ -58,6 +62,7 @@ div.match-update {
     font-size: 30px;
     justify-content: center;
     display: grid;
+    margin-top: 20%;
 }
 
 div.row.tab-panel {
@@ -77,6 +82,7 @@ div.col-2.club-and-match-update {
 
 button.btn.btn-arrow-right.goto-website-button {
     float: right;
+    margin: 0% 3% 10% 0%;
 }
 
 .list-group {
