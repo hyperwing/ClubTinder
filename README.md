@@ -38,28 +38,28 @@ The team created the Web App Hubbub. Hubbub is an application that matches stude
 All the folders detailing the application are within the hubbub folder:
 
 1. App folder: Code is primarily written in this folder:
-* Assests folder contains the stylesheets for the web app
-- There are 3 primary style sheets: User, Club, and Admin (One for each role)
+   * Assests folder contains the stylesheets for the web app
+      - There are 3 primary style sheets: User, Club, and Admin (One for each role)
 
-* Controllers folder contains all the controller code for the application
-- controllers/users contains the devise controllers that the team specifically modified 
-- Contains controller files for each model and overall application
+   * Controllers folder contains all the controller code for the application
+      - controllers/users contains the devise controllers that the team specifically modified 
+      - Contains controller files for each model and overall application
 
-* Models folder contains all the models for the web app and the association details
+   * Models folder contains all the models for the web app and the association details
 
-* Views folder contains all the html erb files for the application
-- views/devise contains the view provided by devise that were modified by the team
-- views/layouts contains the partials applied to all pages
-- contains folders named after each model that contain views related to that model
+   * Views folder contains all the html erb files for the application
+      - views/devise contains the view provided by devise that were modified by the team
+      - views/layouts contains the partials applied to all pages
+      - contains folders named after each model that contain views related to that model
 
 2. Config folder details the routes, database, and intializations of configurations
 
 3. db folder contains all the migrations and data for the seed
 
 4. Test folder contains tests written for the web app
-* Controller folder contains tests relfecting routes 
-* Fixture folder specifies data for each model that can be used in various tests
-* Model folder contains tests reflecting the model and validations 
+   * Controller folder contains tests relfecting routes 
+   * Fixture folder specifies data for each model that can be used in various tests
+   * Model folder contains tests reflecting the model and validations 
 
 ### Frameworks Used
 1. Devise
