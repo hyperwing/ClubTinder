@@ -1,12 +1,13 @@
 <%# File Created 11/19/2019 by Sri Ramya Dandu %>
-<%# Edited 11/20/2019 by Sharon Qiu %>
+<%# Edited 11/20/2019 by Sharon Qiu%>
+<%# Edited 11/26/2019 by Leah Gillespie%>
  
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top ">
 
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
 </button>
-<a class="navbar-brand" href="/club_matches/swipe">Hubbub</a> ADMIN MODE
+  <a class="navbar-brand" href="/club_matches/swipe">Hubbub</a> <span class="navbar-text">ADMIN MODE </span>
 
 <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
   <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -32,9 +33,7 @@
     <li class="nav-item">
     <a class="nav-link" href="/users/explore">Explore</a>
   </li>
-  <li>
-      <a class="nav-link"> Welcome, <%= current_user.first_name %>!</a>
-  </li>
+  <li class="navbar-text">Welcome, <%= current_user.first_name %>!</li>
   </ul>
   <ul class="navbar-nav  mt-2 mt-lg-0" style="list-style-type:none">
       <li class="nav-item">
