@@ -7,7 +7,7 @@ The team created the Web App Hubbub. Hubbub is an application that matches stude
 - Explore page: Browse or search for clubs  
 - Club info page: Club details
 - Login/Sign-up
-- Forgot Password: Recieve an email to reset your password 
+- Forgot Password: Receive an email to reset your password 
 
 #### Student Access includes the following:
 - Profile: Displays user info and matched info 
@@ -21,7 +21,7 @@ The team created the Web App Hubbub. Hubbub is an application that matches stude
 
 #### Admin Access includes the following:
 - Have all user functionality 
-- Can view all the clubs in the database and have acess to modify their info
+- Can view all the clubs in the database and have access to modify their info
 - Can view all the users in the database and have access to modify their info
 - Can see stats for clubs
 - Can see stats for users
@@ -38,7 +38,7 @@ The team created the Web App Hubbub. Hubbub is an application that matches stude
 All the folders detailing the application are within the hubbub folder:
 
 1. App folder: Code is primarily written in this folder:
-   * Assests folder contains the stylesheets for the web app
+   * Assets folder contains the stylesheets for the web app
       - There are 3 primary style sheets: User, Club, and Admin (One for each role)
 
    * Controllers folder contains all the controller code for the application
@@ -52,12 +52,12 @@ All the folders detailing the application are within the hubbub folder:
       - views/layouts contains the partials applied to all pages
       - contains folders named after each model that contain views related to that model
 
-2. Config folder details the routes, database, and intializations of configurations
+2. Config folder details the routes, database, and initializations of configurations
 
 3. db folder contains all the migrations and data for the seed
 
 4. Test folder contains tests written for the web app
-   * Controller folder contains tests relfecting routes 
+   * Controller folder contains tests reflecting routes 
    * Fixture folder specifies data for each model that can be used in various tests
    * Model folder contains tests reflecting the model and validations 
 
@@ -77,7 +77,7 @@ Team Name: Error 403: Sleep Forbidden
 Members:
 1. Sri Ramya Dandu
 2. Leah Gillespie
-3. Neel Mansukani 
+3. Neel Mansukahni 
 4. Sharon Qiu
 5. David Wing 
 
@@ -107,7 +107,7 @@ Leah Gillespie
 3. Created club_interests model, added parsed data in seed
 4. Added parsed data to clubs model in seed
 
-Neel Mansukani 
+Neel Mansukahni 
 1. Set up admin and club privileges for users model.
 2. Created collaborative filtering algorithm for the matches display order.
 3. Created and routed all club role related pages (including controllers)
@@ -172,7 +172,7 @@ To run tests, follow these steps:
 2. In your console/terminal, type in: "rails test"
 
 ### Testing contributions
-All team members tested via localhost to ensure that routing worked and that user interacions were being reflected within the view.
+All team members tested via localhost to ensure that routing worked and that user interactions were being reflected within the view.
 
 Sharon Qiu:
 1. White box testing for add_current_club_match route (to see if it switches from matched to unmatched pages)
