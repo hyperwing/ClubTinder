@@ -109,3 +109,8 @@ To run the program, follow these steps:
 To run tests, follow these steps:
 1. Change directory to the hubbub folder using cd hubbub
 2. in your console/terminal, type in: "rails test"
+
+### Testing contributions
+Sharon Qiu:
+1. White box testing for add_current_club_match route (to see if it switches from matched to unmatched pages)
+2. Model tests for club_match model
