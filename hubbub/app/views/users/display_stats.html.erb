@@ -10,28 +10,15 @@
 <h1> <%= @title %> </h1>
 <p> Total Users: <%= @total %> </p>
 
-<table class="table col-md-3">
-    <thead class="thead-dark">
-      <tr>
-          <th scope="col">Popular Interests by User</th>
-          <th scope="col">Popular Interests by Club</th>
-          <th scope="col">Gender Breakdown</th>
-          <th scope="col">Most Popular Clubs by Matches</th>
+<%= bar_chart @match_data.group(:name).count, title:"Most Popular Clubs by Matches", xtitle:"Match Count", ytitle:"Club Name" %>
+<br>
+<%= pie_chart @users.group(:gender).count, title:"Gender Breakdown" %>
+<br>
+<%= pie_chart @user_interest_data.group(:name).count, title:"Popular Interests by User" %>
+<br>
+<%= pie_chart @club_interest_data.group(:name).count, title:"Popular Interests by Club" %>
 
-      </tr>
-   </thead>
-   <tbody>
-      <tr>
-          <td><%= pie_chart @user_interest_data.group(:name).count %></td>
-          <td><%= pie_chart @club_interest_data.group(:name).count %></td>
-          <td><%= pie_chart @users.group(:gender).count %></td>
-
-          <td><%= bar_chart @match_data.group(:name).count %></td>
-
-      </tr>
-    </tbody>
-</table>
-
+<br>
 
 <table class="table table-nonfluid table-striped">
   <thead class="thead-dark">
