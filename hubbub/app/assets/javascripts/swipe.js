@@ -2,7 +2,7 @@
 // Code was originally in the swipe view in a script tag, moved here for greater accessibility
 var name;
 //swipey swipey left transition
-$('.carousel-control-prev').on('click', function(e){
+$('.carousel-control-next').on('click', function(e){
     e.preventDefault();
     name = $(".carousel-item.active h5").text();
     var currentIndex = parseInt($(".carousel-item.active").attr("value"));
@@ -24,7 +24,7 @@ $('.carousel-control-prev').on('click', function(e){
 });
 
 //swipey swipey right transition
-$('.carousel-control-next').on('click', function(e){
+$('.carousel-control-prev').on('click', function(e){
     e.preventDefault();
     name = $(".carousel-item.active h5").text();
     var currentIndex = parseInt($(".carousel-item.active").attr("value"));

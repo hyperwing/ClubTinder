@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   
   include Devise::Controllers::Helpers 
 
+  # Controller for the home/landing page
   def home
     @images = ["random_people.jpg", "using_phones.jpg", "naeem.jpg"]
   end
@@ -43,6 +44,7 @@ class UsersController < ApplicationController
   end
 
   # Created 11/17/19 by David Wing
+  # Allows user to select their interests
   def select_user_interests
     @interests = Interest.all
     # current user interests
@@ -52,6 +54,7 @@ class UsersController < ApplicationController
   end
 
   # Created 11/22/2019 by Leah Gillespie
+  # Stores selected user interests to database.
   def handle_explore_interests
     @explore_interest_ids = []
     tag_ids = params[:tag_ids]
@@ -71,6 +74,7 @@ class UsersController < ApplicationController
 
   # Created 11/17/19 by David Wing
   # Edited 11/21/2019 by David Wing
+  # Handles when user interests check boxes are selected.
   def handle_check_boxes
 
     @cur_u = current_user
@@ -295,6 +299,8 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  # Created 11/15/2019 by Neel Mansukhani
+  # directs authenticated users on sign in
   def root
     if current_user.club?
       redirect_to clubs_my_club_path
