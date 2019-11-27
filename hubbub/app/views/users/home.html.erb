@@ -1,3 +1,7 @@
+<%# File Created 11/23/2019 by Neel Mansukhani
+    File Edited 11/26/2019 by Neel Mansukhani
+%>
+
 <%= stylesheet_link_tag 'welcome' %>
 <div class="bg-light">
 <div id="mainCarousel" class="carousel slide" data-ride="carousel" data-interval="false" data-keyboard="false">
@@ -6,8 +10,10 @@
             <div class="list-of-clubs-container">
                 <%= image_tag(@images[0], :alt => "Not Available", :class => "swipe-img blue") %>
                 <span class="header0">
-                    Welcome to<br />
-                    Hubbub.
+                    <span class="header">
+                        Welcome to<br />
+                        Hubbub.
+                    </span>
                     <div class="sub-header">
                         Hubbub was built as a platform<br />
                         to connect you with clubs <br />
@@ -20,7 +26,9 @@
             <div class="list-of-clubs-container">
                 <%= image_tag(@images[1], :alt => "Not Available", :class => "swipe-img dark") %>
                 <span class="header1">
-                    Connect.
+                    <span class="header">
+                        Connect.
+                    </span>
                     <div class="sub-header">
                         We provide an intuitive experience<br />
                         for connecting with clubs.
@@ -32,7 +40,9 @@
             <div class="list-of-clubs-container">
                 <%= image_tag(@images[2], :alt => "Not Available", :class => "swipe-img dark") %>
                 <span class="header2">
-                    Naeem Shareef
+                    <span class="header">
+                        Naeem Shareef
+                    </span>
                     <div class="sub-header">
                         "I'd give this project 100%"
                     </div>

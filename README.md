@@ -112,7 +112,7 @@ Leah Gillespie
 
 Neel Mansukahni 
 1. Set up admin and club privileges for users model.
-2. Created collaborative filtering algorithm for the matches display order.
+2. Created collaborative filtering algorithm for the matches display order(controller).
 3. Created and routed all club role related pages (including controllers)
 4. Created home page
 5. Created most model associations.
