@@ -173,7 +173,8 @@ To run the program, follow these steps:
 ### Running the tests
 To run tests, follow these steps:
 1. Change directory to the hubbub folder using "cd hubbub" if you haven't done so already.
-2. In your console/terminal, type in: "rails test"
+2. You may need to enter the following in terminal: "rails db:migrate RAILS_ENV=test". 
+3. In your console/terminal, type in: "rails test"
 
 ### Testing contributions
 All team members tested via localhost to ensure that routing worked and that user interactions were being reflected within the view.
