@@ -1,24 +1,23 @@
-<%# File Created 11/20/2019 by Sri Ramya Dandu %>
-
+<%# File Created 11/20/2019 by Sri Ramya Dandu
+    Edited 11/26/2019 by Neel Mansukhani: Fixed links %>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top ">
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">Hubbub</a>
+  <%= link_to "Hubbub", unauthenticated_root_path, class: "navbar-brand" %>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item">
-        <a class="nav-link" href="/users/explore">Explore</a>
+        <%= link_to "Explore", users_explore_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-      <a class="nav-link" href = "/users/sign_up">Sign Up<span class="sr-only">(current)</span></a>
+        <%= link_to "Sign Up", users_sign_up_path, class: "nav-link" %>
     </li>
     </ul>
     <ul class="navbar-nav  mt-2 mt-lg-0" style="list-style-type:none">
         <li class="nav-item">
-          
             <%= link_to('Login', user_session_path, class: "nav-link") %>   
         </li>
      </ul>

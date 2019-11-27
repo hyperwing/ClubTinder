@@ -1,0 +1,225 @@
+
+// File created 11/20/2019 by Sri Ramya Dandu
+// File edited 11/26/2019 by Neel Mansukhani: Moved home page css here.
+
+@import "bootstrap";
+ 
+.explore-cards .card-columns {
+ @include media-breakpoint-only(lg) {
+   column-count: 4;
+ }
+ @include media-breakpoint-only(xl) {
+   column-count: 5;
+ }
+}
+
+.explore-cards,.search-bar{
+  margin: 50px;
+}
+
+.search-bar{
+ padding-right: 100px;
+}
+
+.search-bar{
+ justify-content: center;
+}
+
+#search{
+ border:1px black solid;
+}
+#loader {
+ position: absolute;
+ left: 50%;
+ top: 50%;
+ z-index: 1;
+ width: 150px;
+ height: 150px;
+ margin: -75px 0 0 -75px;
+ border: 16px solid #f3f3f3;
+ border-radius: 50%;
+ border-top: 16px solid black;
+ width: 120px;
+ height: 120px;
+ -webkit-animation: spin 2s linear infinite;
+ animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+ 0% { -webkit-transform: rotate(0deg); }
+ 100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+ 0% { transform: rotate(0deg); }
+ 100% { transform: rotate(360deg); }
+}
+
+
+@keyframes headerAnimation {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+    animation-name: headAnimation;
+    animation-duration: 2s;
+    animation-delay: .3s;
+    animation-fill-mode: both;
+  }
+}
+
+@keyframes headAnimation {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes subHeaderAnimation {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+    animation-name: subAnimation;
+    animation-duration: 2s;
+    animation-delay: 2.3s;
+    animation-fill-mode: both;
+  }
+}
+
+@keyframes subAnimation {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+/* Add animation to "page content" */
+.animate-bottom {
+ position: relative;
+ -webkit-animation-name: animatebottom;
+ -webkit-animation-duration: 1s;
+ animation-name: animatebottom;
+ animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+ from { bottom:-100px; opacity:0 } 
+ to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+ from{ bottom:-100px; opacity:0 } 
+ to{ bottom:0; opacity:1 }
+}
+
+#explore-body {
+ display: none;
+ text-align: center;
+}
+
+.swipe-img {
+  width: 100%;
+}
+
+.blue {
+  filter: brightness(50%);
+}
+.dark {
+  filter: brightness(70%);
+}
+.header0, .header2 {
+  font-family: "Roboto";
+  font-weight: 500;
+  line-height: 100%;
+  position: absolute;
+  bottom: 25%;
+  left: 7%;
+  color: white;
+  font-size: 60px;
+
+}
+.header1 {
+  font-family: "Roboto";
+  font-weight: 500;
+  line-height: 100%;
+  position: absolute;
+  top: 15%;
+  right: 7%;
+  color: white;
+  font-size: 60px;
+  text-align: left;
+}
+.carousel {
+  margin: 0 0 20px 0;
+}
+.header {
+  animation-name: headerAnimation;
+  animation-duration: 2s;
+}
+.sub-header {
+  animation-name: subHeaderAnimation;
+  animation-duration: 2s;
+  line-height: 100%;
+  font-size: 30px;
+}
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  margin-top: 200px;
+}
+.aligned.right {
+  text-align: left;
+  p {
+      height: 33%;
+  }
+}
+.display-row {
+  margin-top: 100px;
+  display: flex;
+  padding: 0;
+  height: 450px;
+  .aligned {
+      text-align: right;
+      display: inline-block;
+      span {
+          display: inline-block;
+          height: 33%;
+          width: 100%;
+          vertical-align: middle;
+          .sub {
+              height: 100%;
+          }
+      }
+  }
+  .left {
+      text-align: right;
+      .sub {
+          padding: 10px 40px 10px 40px;
+      }
+  }
+  .right {
+      text-align: left;
+      .sub {
+          padding: 10px 60px 10px 60px;
+      }
+  }
+  .main {
+      height: 450px;
+      width: 100%; 
+  }
+}

@@ -5,6 +5,7 @@
 # Edited 11/18/2019 by Leah Gillespie: Fixed typo
 # Edited 11/19/2019 by Neel Mansukhani: Added a destroy_all
 # Edited 11/19/2019 by Neel Mansukhani: Added fake user interests
+# Edited 11/26/2019 by Neel Mansukhani: Fixed seed data for demo
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -48,8 +49,13 @@ User.create({:email => "gillespie.267@osu.edu", :role => 2, :password => "111111
 User.create({:email => "dandu.7@osu.edu", :role => 2, :password => "111111", :password_confirmation => "111111" , :first_name => "Sri Ramya", :last_name => "Dandu", :grad_year => "2021", :gender => "Female"}).save
 User.create({:email => "qiu.374@osu.edu", :role => 2, :password => "111111", :password_confirmation => "111111" , :first_name => "Sharon", :last_name => "Qiu", :grad_year => "2021", :gender => "Female"}).save
 
-user_club = Club.create({:name => "Test Club", :mission => "To demonstrate a club", :link => "www.google.com", :location => "Columbus"})
+user_club = Club.create({:name => "Test Club", :mission => "To demonstrate a club", :link => "https://www.google.com", :location => "Columbus", :img => "https://i.pinimg.com/280x280_RS/3c/4f/7b/3c4f7b6780337191a50d0372f1284d2f.jpg"})
 user_club.save
+3.times do
+  interest = Interest.order("RANDOM()").limit(1)[0]
+  ClubInterest.create({:club_id => user_club.id, :interest_id => interest.id}).save
+end
+
 club_user = User.create({:email => "club.1@osu.edu", :role => 1, :password => "111111", :password_confirmation => "111111" , :first_name => "Club", :last_name => "Cluberson", :grad_year => "2021", :gender => "Female", :club_id => user_club.id})
 club_user.save
 50.times do |i|

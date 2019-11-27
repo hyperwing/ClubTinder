@@ -18,6 +18,8 @@
 # Edited 11/21/2019 by David Wing: Changed redirect to profile
 # Edited 11/21/2019 by David Wing: fixed bug for no selected interests
 # Edited 11/21/2019 by Neel Mansukhani: Changed root
+# Edited 11/26/2019 by Sri Ramya Dandu: Added documentation
+# Edited 11/26/2019 by Leah Gillespie: cleaned up unnecessary comments from code
 
 class UsersController < ApplicationController
   
@@ -26,6 +28,7 @@ class UsersController < ApplicationController
   def home
     @images = ["random_people.jpg", "using_phones.jpg", "naeem.jpg"]
   end
+  
   # Created 11/12/2019 by Sri Ramya Dandu
   # Shows list of all users in the database
   def index
@@ -114,6 +117,7 @@ class UsersController < ApplicationController
   end
 
   # Created 11/13/2019 by Sri Ramya Dandu
+  # Validates user and gets all clubs to display in stats
   def stats
     @user = current_user
     if @user&& @user.role == "admin"
@@ -136,10 +140,6 @@ class UsersController < ApplicationController
     end
     if (params[:search].nil? || params[:search].empty?) #&& @relevant_club_ids.length ==0
       @clubs = Club.all.shuffle.sample(500)
-    # elsif !(params[:search].nil? || params[:search].empty?) && @relevant_club_ids != 0
-    #   @clubs = Club.where("lower(name) LIKE lower(?)", "%#{params[:search]}%") & Club.where(club_id: @relevant_club_ids)
-    # elsif (params[:search].nil? || params[:search].empty?) && @relevant_club_ids != 0
-    #   @clubs = Club.where(club_id: @relevant_club_ids)
     else
       @clubs = Club.where("lower(name) LIKE lower(?)", "%#{params[:search]}%")
     end
@@ -181,10 +181,10 @@ class UsersController < ApplicationController
   end
 
   # Created 11/13/2019 by Sri Ramya Dandu
-  # Obtains params from stats and parses for correct users 
   # Edited 11/15/2019 by Sri Ramya Dandu: Parsing functionality
   # Edited 11/21/2019 by David Wing: graph data
   # Edited 11/22/2019 by David Wing: updated graph data
+  # Obtains params from stats and parses for correct users 
   def display_stats
     
     if current_user && current_user.role == "admin"
@@ -224,6 +224,7 @@ class UsersController < ApplicationController
   end
 
   # Created 11/12/2019 by Sri Ramya Dandu
+  # CRUD Operation in relation to create method
   def new
     if current_user && current_user.role == "admin"
       @user = User.new 
@@ -304,6 +305,7 @@ class UsersController < ApplicationController
   private
 
   # Created 11/15/2019 by Sri Ramya Dandu
+  # Params to update user info  
   def user_params
     params.require(:user).permit(:id ,:email, :first_name, :last_name, :grad_year, :gender, :role)
   end

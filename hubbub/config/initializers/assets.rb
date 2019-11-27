@@ -11,21 +11,12 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
-# Rails.application.config.assets.precompile += %w( admin.js admin.css )
-Rails.application.config.assets.precompile += %w( explore.scss )
-Rails.application.config.assets.precompile += %w( stats.scss )
-Rails.application.config.assets.precompile += %w( user_show.scss )
-Rails.application.config.assets.precompile += %w( user_preferences.scss )
-Rails.application.config.assets.precompile += %w( login.scss )
-Rails.application.config.assets.precompile += %w( edit_user_preferences.scss )
-Rails.application.config.assets.precompile += %w( admin_edit_user_info.scss )
-Rails.application.config.assets.precompile += %w( forgot_password.scss )
-Rails.application.config.assets.precompile += %w( show_matches_page.scss )
-Rails.application.config.assets.precompile += %w( new_session_registration.scss )
-Rails.application.config.assets.precompile += %w( club_page.scss )
-Rails.application.config.assets.precompile += %w( new_club.scss )
-Rails.application.config.assets.precompile += %w( interests.scss )
-Rails.application.config.assets.precompile += %w( swipe.scss )
+
+
+
 Rails.application.config.assets.precompile += %w( home.scss )
 
-
+Rails.application.config.assets.precompile += %w( user.scss )
+Rails.application.config.assets.precompile += %w( welcome.scss )
+Rails.application.config.assets.precompile += %w( admin.scss )
+Rails.application.config.assets.precompile += %w( clubs.scss )

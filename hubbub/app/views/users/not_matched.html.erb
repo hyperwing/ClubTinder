@@ -1,7 +1,7 @@
 <%# File created 11/17/2019 by Sharon Qiu 
 Edited 11/20/2019 by Sharon Qiu: Applied Bootstrap.
 Edited 11/21/2019 by Sri Ramya Dandu: Check for admin or user  %>
-<%= stylesheet_link_tag 'show_matches_page'%>
+<%= stylesheet_link_tag 'user'%>
 <div class="row">
     <div class="col">
     <h1 class="page-title-selected-matches">REJECTIONS</h1>
@@ -48,9 +48,9 @@ Edited 11/21/2019 by Sri Ramya Dandu: Check for admin or user  %>
                             </div>
                             <% if @user.id == current_user.id%>
                             <div class="col-2 club-and-match-update">
-                                <a href="<%=club_url(:id => club.id)%>" class="btn go-to-club">&#8594;</a>
+                                <a href="<%=club_url(:id => club.id)%>" class="btn go-to-club">CLUB INFO&#8594;</a>
                                 <div class="match-update">
-                                    <%= link_to '✓',add_current_club_matches_url(:club => club.id, :id => @user.id), :data =>{confirm: "Are you sure you'd like to match with this club?"}, :method => :patch%>
+                                    <%= link_to 'MATCH ✓',add_current_club_matches_url(:club => club.id, :id => @user.id), :data =>{confirm: "Are you sure you'd like to match with this club?"}, :method => :patch%>
                                 </div>
                             </div>
                             <%end%>

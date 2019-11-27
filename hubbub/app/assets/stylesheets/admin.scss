@@ -1,3 +1,5 @@
+// File Created 11/26/2019 by Sri Ramya Dandu
+
 // Created 11/20/2019 by Sharon Qiu
 // Edited 11/21/2019 by Sri Ramya Dandu: Added form body css
 // CSS for admins editing current user info.
@@ -30,4 +32,33 @@
 
 .form-body{
     text-align: left;
+}
+
+// Created 11/20/2019 by Sri Ramya Dandu
+.stats-options{
+    margin: 0px 300px;
+ }
+
+ .stats-display,.user-display{
+   margin: 20px;
+ }
+
+ .stats-display h1, .stats-display p, .user-display h1, .user-display p{
+   text-align: center;
+   font-weight: bold;
+ }
+
+.createButton{
+  margin:auto;
+  display:block;
+}
+
+#line-graph{
+  margin:auto;
+}
+
+.inspiration{
+  font-size: 30pt;
+  margin: auto;
+  text-align:center;
 }

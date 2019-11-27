@@ -2,40 +2,43 @@
 Edited 11/21/2019 by David Wing: added condition for matches%>
 
 
-<%= stylesheet_link_tag 'stats'%>
+<%= stylesheet_link_tag 'admin'%>
 
 <% if @club_has_matches %>
     <h1> <%= @club.name %> </h1>
 
+    <%= bar_chart @match_data.group(:name).count, title:"Other Popular Clubs", xtitle:"Matches", ytitle:"Club Names" %>
 
     <table class="table col-md-3">
             <thead class="thead-dark">
               <tr>
-                  <th scope="col">Matches per Day</th>
-                  <th scope="col">Gender Breakdown</th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
                   <th scope="col">Club Interests</th>
-                  <th scope="col">Other Popular Clubs</th>
+                  <th scope="col"></th>
         
               </tr>
            </thead>
            <tbody>
               <tr>
-                <td><%= line_chart @club_match_data %></td>
-                <td><%= pie_chart User.group(:gender).count %></td>
+                <td><%= line_chart @club_match_data,title:"Matches per Day", ytitle:"Matches", xtitle:"Day" %></td>
+                <td><%= pie_chart User.group(:gender).count, title:"Gender Breakdown" %></td>
 
                 <td>
                     <% @club_interests.each do |interest| %>
                         <%= interest.name %> <br>
                     <% end %> 
                 </td>
-    
-                <td><%= bar_chart @match_data.group(:name).count %></td>
-        
+            
               </tr>
             </tbody>
             <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Users</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Grad year</th>
+                        <th scope="col"></th>
                     </tr>
             </thead>
         <% @users_x.each do |user| %>
