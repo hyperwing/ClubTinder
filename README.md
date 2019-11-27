@@ -108,15 +108,6 @@ To run the program, follow these steps:
         
 ### Testing
 
-#### Test contributions
-1. David Wing
-* Blackbox integration testing for user preferences
-* Whitebox testing to ensure user profiles are required for user/club select interest prefences
-* Whitebox testing for path redirects
-* Blackbox intergration testing for charts and graphs in User stats page
-* Blackbox intergration testing for charts and graphs in Club stats page
-
-
 #### Testing Models 
 1. Via Rails Console to populate and observe models
 2. Create Users in fixtures and wrote tests in test/models directory
