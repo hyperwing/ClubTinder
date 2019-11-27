@@ -115,6 +115,7 @@ Neel Mansukahni
 3. Created and routed all club role related pages (including controllers)
 4. Created home page
 5. Created most model associations.
+6. Tests
 
 Sharon Qiu
 1. Set up the Matched and Not Matched routes as well as the controller and model for club matches.
@@ -135,7 +136,7 @@ David Wing
 
 ### Running the program
 To run the program, follow these steps:
-1. Change directory to the hubbub folder using cd hubbub
+1. Change directory to the hubbub folder using "cd hubbub"
 2. Run "bundle install"
 3. Migrate the models by typing into console/terminal: "rails db:migrate"
 4. Fill models by typing into console/terminal: "rails db:seed". Note: this will take a while
@@ -170,7 +171,7 @@ To run the program, follow these steps:
 
 ### Running the tests
 To run tests, follow these steps:
-1. Change directory to the hubbub folder using cd hubbub
+1. Change directory to the hubbub folder using "cd hubbub" if you haven't done so already.
 2. In your console/terminal, type in: "rails test"
 
 ### Testing contributions
@@ -182,7 +183,12 @@ Sharon Qiu:
 
 Sri Ramya Dandu:
 1. Model tests for User model validations 
-2. Controller tests for user vs. admin. vs. club routes 
+2. Controller tests for user vs. admin. vs. club routes
+
+Neel Mansukhani:
+1. Model tests for Interest and ClubInterest.
+2. Whitebox testing of match me page algorithm and club interests controller.
+3. Whitebox testing of user and club sign up process
 
 David Wing
 1. Blackbox integration testing for user preferences
