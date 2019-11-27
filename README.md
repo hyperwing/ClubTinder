@@ -184,6 +184,7 @@ Sharon Qiu:
 Sri Ramya Dandu:
 1. Model tests for User model validations 
 2. Controller tests for user vs. admin. vs. club routes
+3. Blackbox integration testing for admin CRUD operations
 
 Neel Mansukhani:
 1. Model tests for Interest and ClubInterest.
