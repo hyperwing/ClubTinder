@@ -1,5 +1,5 @@
 <%= stylesheet_link_tag 'home' %>
-
+<div class="bg-light">
 <div id="mainCarousel" class="carousel slide" data-ride="carousel" data-interval="false" data-keyboard="false">
     <div class="carousel-inner">
         <div class="carousel-item active">
@@ -18,24 +18,23 @@
         </div>
         <div class="carousel-item">
             <div class="list-of-clubs-container">
-                <%= image_tag(@images[1], :alt => "Not Available", :class => "swipe-img") %>
+                <%= image_tag(@images[1], :alt => "Not Available", :class => "swipe-img dark") %>
                 <span class="header1">
-                    Welcome to Hubbub.
+                    Connect.
                     <div class="sub-header">
-                        Hubbub was built as a platform<br />
-                        to help YOU join clubs at your school.
+                        We provide an intuitive experience<br />
+                        for connecting with clubs.
                     </div>
                 </span>
             </div>
         </div>
         <div class="carousel-item">
             <div class="list-of-clubs-container">
-                <%= image_tag(@images[2], :alt => "Not Available", :class => "swipe-img") %>
+                <%= image_tag(@images[2], :alt => "Not Available", :class => "swipe-img dark") %>
                 <span class="header2">
-                    Welcome to Hubbub.
+                    Naeem Shareef
                     <div class="sub-header">
-                        Hubbub was built as a platform<br />
-                        to connect you with clubs at YOUR school
+                        "I'd give this project 100%"
                     </div>
                 </span>
             </div>
@@ -49,29 +48,48 @@
     <div class="carousel-control-next-icon" aria-hidden="true"></div>
 </a>
 
-<div class="jumbotron p-3 p-md-5 display-row">
+<div class="jumbotron display-row bg-light">
         <div class="col-md-6 px-0 aligned left">
-          <p class="lead mb-1">Match with clubs with our state of the art matching algorithm</p>
-          <p class="lead mb-1">We'll be sure to find you clubs that you will love.</p>
-          <p class="lead mb-1">Find new hobbies you didn't think you would even like!</p>
+          <span class="lead mb-1">
+            Find new clubs with our matching algorithm
+            <%= image_tag("gear-icon.png", :alt => "Not Available", class: "sub") %>    
+          </span>
+          <span class="lead mb-1">
+            We'll be sure to find you clubs that you'll love.
+            <%= image_tag("heart-icon.png", :alt => "Not Available", class: "sub") %>    
+          </span>
+          <span class="lead mb-1">
+            Find new hobbies!
+            <%= image_tag("paintbrush-icon.png", :alt => "Not Available", class: "sub") %>    
+          </span>
         </div>
         <div class="col-md-6 px-0 aligned right">
-            <p class="lead mb-1">Match with clubs with our state of the art matching algorithm</p>
+            <%= image_tag("swipe.jpg", :alt => "Not Available", class: "main") %>
         </div>
 </div>
 
-<div class="jumbotron display-row">
+<div class="jumbotron display-row bg-light">
         <div class="col-md-6 px-0 aligned left">
-            <%= image_tag("laptop.jpg", :alt => "Not Available", :class => "swipe-img") %>
+            <%= image_tag("laptop.jpg", :alt => "Not Available", class: "main") %>
         </div>
         <div class="col-md-6 px-0 aligned right">
-          <p class="lead mb-1">Help users find and join your club</p>
-          <p class="lead mb-1">View statistics about your users</p>
-          <p class="lead mb-1">Learn more about your users</p>
+            <span class="lead mb-1">
+                <%= image_tag("users-icon.png", :alt => "Not Available", class: "sub") %>    
+                Help users find and join your club
+            </span>
+            <span class="lead mb-1">
+                <%= image_tag("graph-icon.png", :alt => "Not Available", class: "sub") %>    
+                View statistics about your users
+            </span>
+            <span class="lead mb-1">
+                <%= image_tag("lightbulb-icon.png", :alt => "Not Available", class: "sub") %>    
+                Learn more about your users
+            </span>
         </div>
+</div>
 </div>
 <script>
     $('#mainCarousel').carousel({
-    interval: 4000
+    interval: 6000
 });
 </script>

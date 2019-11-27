@@ -6,32 +6,30 @@
 .blue {
     filter: brightness(50%);
 }
-
-.header0 {
+.dark {
+    filter: brightness(70%);
+}
+.header0, .header2 {
     font-family: "Roboto";
+    font-weight: 500;
     line-height: 100%;
     position: absolute;
-    bottom: 15%;
+    bottom: 25%;
     left: 7%;
     color: white;
     font-size: 60px;
 
   }
 .header1 {
-position: absolute;
-bottom: 30%;
-left: 16px;
-color: white;
-font-size: 40px;
-
-}
-.header2 {
-position: absolute;
-bottom: 30%;
-left: 16px;
-color: white;
-font-size: 40px;
-
+    font-family: "Roboto";
+    font-weight: 500;
+    line-height: 100%;
+    position: absolute;
+    top: 15%;
+    right: 7%;
+    color: white;
+    font-size: 60px;
+    text-align: left;
 }
 .carousel {
     margin: 0 0 20px 0;
@@ -50,17 +48,37 @@ font-size: 40px;
     }
 }
 .display-row {
+    margin-top: 100px;
     display: flex;
-    .aligned.left {
+    padding: 0;
+    height: 450px;
+    .aligned {
         text-align: right;
-        p {
+        display: inline-block;
+        span {
+            display: inline-block;
             height: 33%;
+            width: 100%;
+            vertical-align: middle;
+            .sub {
+                height: 100%;
+            }
         }
     }
-
-    .aligned {
-        flex: 1;
-        display: table-cell;
-        width: 50%;
+    .left {
+        text-align: right;
+        .sub {
+            padding: 10px 40px 10px 40px;
+        }
+    }
+    .right {
+        text-align: left;
+        .sub {
+            padding: 10px 60px 10px 60px;
+        }
+    }
+    .main {
+        height: 450px;
+        width: 100%; 
     }
 }
