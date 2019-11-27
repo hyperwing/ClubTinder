@@ -43,6 +43,7 @@ class UsersController < ApplicationController
   end
 
   # Created 11/17/19 by David Wing
+  # gathers interests from the user's form
   def select_user_interests
     @interests = Interest.all
     # current user interests
@@ -51,26 +52,9 @@ class UsersController < ApplicationController
 
   end
 
-  # Created 11/22/2019 by Leah Gillespie
-  def handle_explore_interests
-    @explore_interest_ids = []
-    tag_ids = params[:tag_ids]
-    @interests = Interest.all
-    @interests.each do |i_box|
-      # Set the interest information from form to instance variable
-      @interest_info = i_box.id
-
-      if (!tag_ids.nil?) && (tag_ids.include? i_box.id.to_s)
-        @explore_interest_ids.push i_box.id
-      else
-        @explore_interest_ids.delete i_box.id
-      end
-    end
-    redirect_to users_explore_path
-  end
-
   # Created 11/17/19 by David Wing
   # Edited 11/21/2019 by David Wing
+  # Works with user's form to gather interests
   def handle_check_boxes
 
     @cur_u = current_user
@@ -295,6 +279,8 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  # Created 11/15/2019 by Neel Mansukhani
+  # directs authenticated users on sign in
   def root
     if current_user.club?
       redirect_to clubs_my_club_path
