@@ -20,6 +20,7 @@ $('.carousel-control-next').on('click', function(e){
         $(".carousel-inner").html('<h4 class="finished-matches">Match limit reached.</h4></br><h4 class="finished-matches">Be sure to check out your matches!</h4>');
         $(this).remove();
         $('.carousel-control-next').remove();
+        $('.carousel-control-prev').remove();
     }
 });
 
