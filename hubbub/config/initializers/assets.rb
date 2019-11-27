@@ -15,14 +15,10 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w( explore.scss )
 
 Rails.application.config.assets.precompile += %w( user_show.scss )
-Rails.application.config.assets.precompile += %w( login.scss )
-Rails.application.config.assets.precompile += %w( edit_user_preferences.scss )
 
-Rails.application.config.assets.precompile += %w( forgot_password.scss )
-Rails.application.config.assets.precompile += %w( new_session_registration.scss )
 Rails.application.config.assets.precompile += %w( club_page.scss )
 Rails.application.config.assets.precompile += %w( new_club.scss )
-Rails.application.config.assets.precompile += %w( swipe.scss )
+
 Rails.application.config.assets.precompile += %w( home.scss )
 
 Rails.application.config.assets.precompile += %w( user.scss )
