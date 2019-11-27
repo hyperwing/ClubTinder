@@ -17,5 +17,6 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w( home.scss )
 
 Rails.application.config.assets.precompile += %w( user.scss )
+Rails.application.config.assets.precompile += %w( welcome.scss )
 Rails.application.config.assets.precompile += %w( admin.scss )
 Rails.application.config.assets.precompile += %w( clubs.scss )
