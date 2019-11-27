@@ -181,3 +181,10 @@ Sharon Qiu:
 Sri Ramya Dandu:
 1. Model tests for User model validations 
 2. Controller tests for user vs. admin. vs. club routes 
+
+David Wing
+1. Blackbox integration testing for user preferences
+2. Whitebox testing to ensure user profiles are required for user/club select interest prefences
+3. Whitebox testing for path redirects
+4. Blackbox intergration testing for charts and graphs in User stats page
+5. Blackbox intergration testing for charts and graphs in Club stats page
