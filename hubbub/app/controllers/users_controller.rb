@@ -19,6 +19,7 @@
 # Edited 11/21/2019 by David Wing: fixed bug for no selected interests
 # Edited 11/21/2019 by Neel Mansukhani: Changed root
 # Edited 11/26/2019 by Sri Ramya Dandu: Added documentation
+# Edited 11/26/2019 by Leah Gillespie: cleaned up unnecessary comments from code
 
 class UsersController < ApplicationController
   
@@ -139,10 +140,6 @@ class UsersController < ApplicationController
     end
     if (params[:search].nil? || params[:search].empty?) #&& @relevant_club_ids.length ==0
       @clubs = Club.all.shuffle.sample(500)
-    # elsif !(params[:search].nil? || params[:search].empty?) && @relevant_club_ids != 0
-    #   @clubs = Club.where("lower(name) LIKE lower(?)", "%#{params[:search]}%") & Club.where(club_id: @relevant_club_ids)
-    # elsif (params[:search].nil? || params[:search].empty?) && @relevant_club_ids != 0
-    #   @clubs = Club.where(club_id: @relevant_club_ids)
     else
       @clubs = Club.where("lower(name) LIKE lower(?)", "%#{params[:search]}%")
     end
