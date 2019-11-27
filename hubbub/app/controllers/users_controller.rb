@@ -299,6 +299,8 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  # Created 11/15/2019 by Neel Mansukhani
+  # directs authenticated users on sign in
   def root
     if current_user.club?
       redirect_to clubs_my_club_path

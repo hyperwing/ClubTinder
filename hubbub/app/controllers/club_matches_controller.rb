@@ -67,12 +67,11 @@ class ClubMatchesController < ApplicationController
   end
 
   # Created 11/22/2019 by Leah Gillespie
+  # Adds club and user to club_matches table
   def add_new_match
     @current_club = Club.find_by name: params[:club_name]
     newest_match = ClubMatch.create user_id: current_user.id, club_id: @current_club.id, matched: params[:matched]
     newest_match.save
-    # @slide_num = @slide_num + 1
-    #render "club_matches/swipe"
   end
   
   # DELETE /club_matches/1
@@ -85,6 +84,8 @@ class ClubMatchesController < ApplicationController
     end
   end
 
+  # Created 11/22/2019 by Leah Gillespie
+  # sets up swipe page (route)
   def swipe
     @potential_matches =[]
     @slide_num = 0

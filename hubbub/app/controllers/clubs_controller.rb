@@ -95,7 +95,7 @@ class ClubsController < ApplicationController
   end
 
   # Created 11/20/2019 by Neel Mansukhani
-  # Controller for my_club page
+  # returns the club that belongs to a given user
   def my_club
     if current_user.club_id.nil?
       redirect_to new_club_path
