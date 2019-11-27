@@ -20,6 +20,10 @@ $('.carousel-control-next').on('click', function(e){
     if (wantedSlide.val() == undefined){
         $(".carousel-inner").html('<h4 class="finished-matches">Match limit reached.</h4></br><h4 class="finished-matches">Be sure to check out your matches!</h4>');
         $(this).remove();
+<<<<<<< HEAD
+=======
+        $('.carousel-control-next').remove();
+>>>>>>> 73ceb0d52e750686f7e77572e75b4aaffe6e94ba
         $('.carousel-control-prev').remove();
     }
 });
