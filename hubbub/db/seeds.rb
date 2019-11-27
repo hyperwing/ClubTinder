@@ -49,7 +49,7 @@ User.create({:email => "gillespie.267@osu.edu", :role => 2, :password => "111111
 User.create({:email => "dandu.7@osu.edu", :role => 2, :password => "111111", :password_confirmation => "111111" , :first_name => "Sri Ramya", :last_name => "Dandu", :grad_year => "2021", :gender => "Female"}).save
 User.create({:email => "qiu.374@osu.edu", :role => 2, :password => "111111", :password_confirmation => "111111" , :first_name => "Sharon", :last_name => "Qiu", :grad_year => "2021", :gender => "Female"}).save
 
-user_club = Club.create({:name => "Test Club", :mission => "To demonstrate a club", :link => "www.google.com", :location => "Columbus", :img => "https://i.pinimg.com/280x280_RS/3c/4f/7b/3c4f7b6780337191a50d0372f1284d2f.jpg"})
+user_club = Club.create({:name => "Test Club", :mission => "To demonstrate a club", :link => "https://www.google.com", :location => "Columbus", :img => "https://i.pinimg.com/280x280_RS/3c/4f/7b/3c4f7b6780337191a50d0372f1284d2f.jpg"})
 user_club.save
 3.times do
   interest = Interest.order("RANDOM()").limit(1)[0]
