@@ -11,6 +11,7 @@ class ClubsController < ApplicationController
 
   # GET /clubs
   # GET /clubs.json
+  # Shows all clubs
   def index
     if current_user.role == "admin"
       @clubs = Club.all
@@ -21,8 +22,8 @@ class ClubsController < ApplicationController
 
   # GET /clubs/1
   # GET /clubs/1.jsons
+  # Shows a single club
   def show
-    #redirect_to club_interests_select_club_interests_urls
     if current_user.nil? || current_user.role != "1"
       @club = Club.find(params[:id])
     else
@@ -31,16 +32,19 @@ class ClubsController < ApplicationController
   end
 
   # GET /clubs/new
+  # Form for creating a new club
   def new
     @club = Club.new
   end
 
   # GET /clubs/1/edit
+  # Form for editing a club
   def edit
   end
 
   # POST /clubs
   # POST /clubs.json
+  # Created a club in the database.
   def create
     @club = Club.new(club_params)
     respond_to do |format|
@@ -58,6 +62,7 @@ class ClubsController < ApplicationController
 
   # PATCH/PUT /clubs/1
   # PATCH/PUT /clubs/1.json
+  # Updated a club in the database.
   def update
     respond_to do |format|
       if @club.update(club_params)
@@ -72,6 +77,7 @@ class ClubsController < ApplicationController
 
   # DELETE /clubs/1
   # DELETE /clubs/1.json
+  # Deletes club from the database.
   def destroy
     Club.find_by(id: params[:id]).destroy
     respond_to do |format|
@@ -89,6 +95,7 @@ class ClubsController < ApplicationController
   end
 
   # Created 11/20/2019 by Neel Mansukhani
+  # Controller for my_club page
   def my_club
     if current_user.club_id.nil?
       redirect_to new_club_path
