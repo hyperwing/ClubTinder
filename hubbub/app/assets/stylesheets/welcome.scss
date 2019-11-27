@@ -1,5 +1,7 @@
 
 // File created 11/20/2019 by Sri Ramya Dandu
+// File edited 11/26/2019 by Neel Mansukhani: Moved home page css here.
+
 @import "bootstrap";
  
 .explore-cards .card-columns {
@@ -53,6 +55,61 @@
  100% { transform: rotate(360deg); }
 }
 
+
+@keyframes headerAnimation {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+    animation-name: headAnimation;
+    animation-duration: 2s;
+    animation-delay: .3s;
+    animation-fill-mode: both;
+  }
+}
+
+@keyframes headAnimation {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes subHeaderAnimation {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+    animation-name: subAnimation;
+    animation-duration: 2s;
+    animation-delay: 2.3s;
+    animation-fill-mode: both;
+  }
+}
+
+@keyframes subAnimation {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 /* Add animation to "page content" */
 .animate-bottom {
  position: relative;
@@ -112,7 +169,13 @@
 .carousel {
   margin: 0 0 20px 0;
 }
+.header {
+  animation-name: headerAnimation;
+  animation-duration: 2s;
+}
 .sub-header {
+  animation-name: subHeaderAnimation;
+  animation-duration: 2s;
   line-height: 100%;
   font-size: 30px;
 }
