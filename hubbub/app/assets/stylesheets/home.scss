@@ -34,12 +34,33 @@ font-size: 40px;
 
 }
 .carousel {
-    margin-bottom: 20px;
+    margin: 0 0 20px 0;
 }
 .sub-header {
     line-height: 100%;
     font-size: 30px;
 }
 .carousel-control-prev-icon, .carousel-control-next-icon {
-    vertical-align: center;
+    margin-top: 200px;
+}
+.aligned.right {
+    text-align: left;
+    p {
+        height: 33%;
+    }
+}
+.display-row {
+    display: flex;
+    .aligned.left {
+        text-align: right;
+        p {
+            height: 33%;
+        }
+    }
+
+    .aligned {
+        flex: 1;
+        display: table-cell;
+        width: 50%;
+    }
 }

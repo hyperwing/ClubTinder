@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag 'home' %>
 
-<div id="swipeCarousel" class="carousel slide" data-ride="carousel" data-interval="false" data-keyboard="false">
+<div id="mainCarousel" class="carousel slide" data-ride="carousel" data-interval="false" data-keyboard="false">
     <div class="carousel-inner">
         <div class="carousel-item active">
             <div class="list-of-clubs-container">
@@ -42,22 +42,36 @@
         </div>
     </div>
 </div>
-<a class="carousel-control-prev" href="#swipeCarousel" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+<a class="carousel-control-prev" href="#mainCarousel" role="button" data-slide="prev">
+    <div class="carousel-control-prev-icon" aria-hidden="true"></div>
 </a>
-<a class="carousel-control-next" href="#swipeCarousel" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+<a class="carousel-control-next" href="#mainCarousel" role="button" data-slide="next">
+    <div class="carousel-control-next-icon" aria-hidden="true"></div>
 </a>
 
-<div class="jumbotron p-3 p-md-5 bg-light">
-        <div class="col-md-6 px-0">
-          <h1 class="display-4">Match with clubs with our state of the art matching algorithm</h1>
-          <p class="lead my-4">We'll be sure to find you clubs that you will love.</p>
+<div class="jumbotron p-3 p-md-5 display-row">
+        <div class="col-md-6 px-0 aligned left">
+          <p class="lead mb-1">Match with clubs with our state of the art matching algorithm</p>
+          <p class="lead mb-1">We'll be sure to find you clubs that you will love.</p>
           <p class="lead mb-1">Find new hobbies you didn't think you would even like!</p>
+        </div>
+        <div class="col-md-6 px-0 aligned right">
+            <p class="lead mb-1">Match with clubs with our state of the art matching algorithm</p>
+        </div>
+</div>
+
+<div class="jumbotron display-row">
+        <div class="col-md-6 px-0 aligned left">
+            <%= image_tag("laptop.jpg", :alt => "Not Available", :class => "swipe-img") %>
+        </div>
+        <div class="col-md-6 px-0 aligned right">
+          <p class="lead mb-1">Help users find and join your club</p>
+          <p class="lead mb-1">View statistics about your users</p>
+          <p class="lead mb-1">Learn more about your users</p>
         </div>
 </div>
 <script>
-    $('#swipeCarousel').carousel({
-    interval: 2000
+    $('#mainCarousel').carousel({
+    interval: 4000
 });
 </script>
