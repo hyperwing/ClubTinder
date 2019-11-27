@@ -186,3 +186,11 @@ Sri Ramya Dandu:
 Neel Mansukhani:
 1. Model tests for Interest and ClubInterest.
 2. Whitebox testing of match me page algorithm and club interests controller.
+3. Whitebox testing of user and club sign up process
+
+David Wing
+1. Blackbox integration testing for user preferences
+2. Whitebox testing to ensure user profiles are required for user/club select interest prefences
+3. Whitebox testing for path redirects
+4. Blackbox intergration testing for charts and graphs in User stats page
+5. Blackbox intergration testing for charts and graphs in Club stats page
