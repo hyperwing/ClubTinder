@@ -106,6 +106,8 @@ Leah Gillespie
 2. Set up the view and bootstrap carousel for the swipe page, and adjusted matched results for the user (model, view, controller)
 3. Created club_interests model, added parsed data in seed
 4. Added parsed data to clubs model in seed
+6. Some navbar and club form css.
+5. Tests
 
 Neel Mansukahni 
 1. Set up admin and club privileges for users model.
@@ -194,3 +196,8 @@ David Wing
 3. Whitebox testing for path redirects
 4. Blackbox intergration testing for charts and graphs in User stats page
 5. Blackbox intergration testing for charts and graphs in Club stats page
+
+Leah Gillespie
+1. Model tests for UserInterest, Club
+2. Whitebox testing for swipe functionality, including additions to ClubMatches database
+3. Whitebox routing tests using local_host
