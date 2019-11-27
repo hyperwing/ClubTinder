@@ -7,6 +7,7 @@
     Edited 11/21/2019 by Sri Ramya Dandu: Added links
     Edited 11/22/2019 by Neel Mansukhani: Clubs can't edit users
     Edited 11/24/2019 by Sharon Qiu: Added right-side class for css styles.
+    Edited 11/26/2019 by Leah Gillespie: fixed display bug
     %>
 
 
@@ -25,7 +26,6 @@
             <h5 class = "user_info"> Gender: </h5> <%= @user.gender %> <br/>  <br/>
             <h5 class = "user_info"> Email: </h5> <%= @user.email %> <br/>  <br/>
             <h5 class = "user_info"> Graduation Year: </h5> <%= @user.grad_year %> <br/>  <br/>
-            <h5 class = "user_info"> Gender: </h5> <%= @user.gender %> <br/>  <br/>
           <% if !current_user.club? %>
             <a href = "/users/preferences"> Edit Info </a>
           <% end %>
