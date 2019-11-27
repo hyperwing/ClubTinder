@@ -157,6 +157,7 @@ To run the program, follow these steps:
         1. Login as club.1@osu.edu, the password should be 111111.
         
 ### Testing
+
 #### Testing Models 
 1. Via Rails Console to populate and observe models
 2. Create Users in fixtures and wrote tests in test/models directory
