@@ -102,12 +102,13 @@ Sri Ramya Dandu
 6. Tests
 
 Leah Gillespie
-1. Set up filtering on interests on the explore page (model, controller, and view work)
+1. Controller code for adding matches/rejections from swipe page
 2. Set up the view and bootstrap carousel for the swipe page, and adjusted matched results for the user (model, view, controller)
-3. Created club_interests model, added parsed data in seed
-4. Added parsed data to clubs model in seed
-6. Some navbar and club form css.
-5. Tests
+3. Routing for swipe page, club matches
+4. Created club_interests model, added parsed data in seed
+5. Added parsed data to clubs model in seed
+6. Work on navbar css.
+7. Tests
 
 Neel Mansukahni 
 1. Set up admin and club privileges for users model.
