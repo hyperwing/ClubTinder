@@ -1,4 +1,5 @@
 // File created 11/26/2019 by Leah Gillespie
+// Edited 11/26/2019 by Sharon Qiu: Swapped movement
 // Code was originally in the swipe view in a script tag, moved here for greater accessibility
 var name;
 //swipey swipey left transition
@@ -19,7 +20,7 @@ $('.carousel-control-next').on('click', function(e){
     if (wantedSlide.val() == undefined){
         $(".carousel-inner").html('<h4 class="finished-matches">Match limit reached.</h4></br><h4 class="finished-matches">Be sure to check out your matches!</h4>');
         $(this).remove();
-        $('.carousel-control-next').remove();
+        $('.carousel-control-prev').remove();
     }
 });
 
@@ -38,9 +39,9 @@ $('.carousel-control-prev').on('click', function(e){
         $("div[value=\""+String(currentIndex)+"\"]").remove();
     },1000)
     if (wantedSlide.val() == undefined){
-        $(".carousel-inner").html('<h4 class="finished-matches">Match limit reached.</h4></br><h4 class="finished-matches">Be sure to check out your matches!</h4>');
+        $(".carousel-inner").html('<h4 class="finished-matches">Miatch limit reached.</h4></br><h4 class="finished-matches">Be sure to check out your matches!</h4>');
         $(this).remove();
-        $('.carousel-control-prev').remove();
+        $('.carousel-control-next').remove();
     }
 });
 
